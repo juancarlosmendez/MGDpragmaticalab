@@ -92,7 +92,8 @@ function init(){
 
 
 
- loadPage('goldenlifestyle',false);
+  loadPage('galeria',false);
+ //loadPage('goldenlifestyle',false);
 
 
  
@@ -218,7 +219,10 @@ switch(pantalla) {
   break;
   case 'galeria':
   $('#screen_title').html('GALERIA');
-  initGaleria();
+  //initGaleria();
+
+
+  
   break;
   case 'eventos':
   $('#screen_title').html('EVENTOS');

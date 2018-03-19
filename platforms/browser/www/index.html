@@ -7,7 +7,15 @@
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
     <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
 
+    <!--
     <link rel="stylesheet" type="text/css" href="css/nanogallery2/nanogallery2.min.css">
+    -->
+
+
+    <link rel="stylesheet" href="css/blueimp-gallery.css">
+    <link rel="stylesheet" href="css/blueimp-gallery-indicator.css">
+    <link rel="stylesheet" href="css/blueimp-gallery-video.css">
+
     <link rel="stylesheet" type="text/css" href="css/fullcalendar/fullcalendar.min.css">
     <!--
     <link rel="stylesheet" type="text/css" href="css/fullcalendar/fullcalendar.print.min.css">
@@ -137,20 +145,59 @@
                 PHOTO GALLERY
             -->
             <div id="galeria" class="section" style="display:none">    
+            
                 
-                    <a href="img/gallery/cover_album1.png" data-ngthumb="img/gallery/cover_album1.png" >Title Image1</a>
+                    <div id="links" style="text-align:center;">
+                            <a href="img/gallery/cover_album1.png" title="MGD Beach Party">
+                                <div class="cont">
+                                        <img src="img/gallery/cover_album1.png" alt="MGD Beach Party">
+                                        <p>MGD Beach Party</p>
+                                </div>                                
+                            </a>
 
-                    <div data-nanogallery2 = '{
-                        "thumbnailHeight":  150,
-                        "thumbnailWidth":   150,
-                        "itemsBaseURL":     "http://appdoyoudo.com/miller/content/gallery/"
-                      }'>
-                    
-                      <!-- ### gallery content ### -->
-                      <a href="http://appdoyoudo.com/miller/content/gallery/photo1.jpg" data-ngthumb="http://appdoyoudo.com/miller/content/gallery/photo1.jpg">Title Image 1</a>
-                      <a href="img_02.jpg" data-ngthumb="img_02t.jpg">Title Image 2</a>
-                      <a href="img_03.jpg" data-ngthumb="img_03t.jpg">Title Image 3</a>
-                    </div>
+                            <a href="img/gallery/cover_album1.png" title="MGD Beach Party">
+                                <div class="cont">
+                                        <a href="img/gallery/cover_album2.png" title="HALLOWEEN Party">
+                                            <img src="img/gallery/cover_album2.png" alt="HALLOWEEN Party">
+                                            <p>HALLOWEEN Party</p>
+                                        </a>
+                                </div>                                
+                            </a>
+
+                            <a href="img/gallery/cover_album1.png" title="MGD Beach Party">
+                                <div class="cont">
+                                        <a href="img/gallery/cover_album3.png" title="Deadmau5">
+                                            <img src="img/gallery/cover_album3.png" alt="Deadmau5">
+                                            <p>Deadmau5</p>
+                                        </a>
+                                </div>                                
+                            </a>
+
+                            <a href="img/gallery/cover_album1.png" title="MGD Beach Party">
+                                <div class="cont">
+                                        <a href="img/gallery/cover_album4.png" title="Turn up the night">
+                                            <img src="img/gallery/cover_album4.png" alt="Turn up the night">
+                                            <p>MGD Beach Party</p>
+                                        </a>  
+                                </div>                                
+                            </a>
+
+                            
+                           
+                            
+                        </div>
+
+                        <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
+                                <div class="slides"></div>
+                                <h3 class="title"></h3>
+                                <a class="prev">‹</a>
+                                <a class="next">›</a>
+                                <a class="close">×</a>
+                                <a class="play-pause"></a>
+                                <ol class="indicator"></ol>
+                            </div>
+
+
             </div>
 
             <!--
@@ -597,7 +644,21 @@
     <script type="text/javascript" src="js/fullcalendar/fullcalendar.min.js"></script>
 
     <!-- nanogallery2 -->
+    <!--
     <script  type="text/javascript" src="js/nanogallery2/jquery.nanogallery2.min.js"></script>
+    -->
+
+    <script src="js/blueimp-helper.js"></script>
+    <script src="js/blueimp-gallery.js"></script>
+    <script src="js/blueimp-gallery-fullscreen.js"></script>
+    <script src="js/blueimp-gallery-indicator.js"></script>
+    <script src="js/blueimp-gallery-video.js"></script>
+    <script src="js/blueimp-gallery-vimeo.js"></script>
+    <script src="js/blueimp-gallery-youtube.js"></script>
+    <script src="js/jquery.blueimp-gallery.js"></script>
+
+
+
     <script type="text/javascript" src="js/index.js?v=fasdf"></script>
     <script type="text/javascript">
         //window.location.href = 'authentication.html';

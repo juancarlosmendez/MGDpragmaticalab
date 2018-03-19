@@ -92,8 +92,8 @@ function init(){
 
 
 
-  loadPage('galeria',false);
- //loadPage('goldenlifestyle',false);
+  //loadPage('galeria',false);
+ loadPage('goldenlifestyle',false);
 
 
  
@@ -219,7 +219,7 @@ switch(pantalla) {
   break;
   case 'galeria':
   $('#screen_title').html('GALERIA');
-  //initGaleria();
+  initGaleria();
 
 
   
@@ -338,7 +338,23 @@ Galeria
 //var alreadyGaleria=false;
 
 function initGaleria(){
+
+
+  document.getElementById('links').onclick = function (event) {
+    event = event || window.event;
+    var target = event.target || event.srcElement,
+        link = target.src ? target.parentNode : target,
+        options = {index: link, event: event},
+        links = this.getElementsByTagName('a');
+    blueimp.Gallery(links, options);
+};
+
+
 //if(!alreadyGaleria){
+
+
+
+/*
 jQuery("#galeria").nanogallery2({
   items:[
     // album 1
@@ -399,6 +415,8 @@ jQuery("#galeria").nanogallery2({
   hoverout:false,
   touchAnimation:false
 });
+
+*/
 //alreadyGaleria=true;
 //}
 }

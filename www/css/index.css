@@ -688,8 +688,31 @@ nav li img{
 */
 #galeria{
   width:100%;
+  padding-top: 20px;
+}
+#links{
+  width:100%;
+
+}
+#links .cont{
+  display: inline-block;
+  vertical-align: top;
+  width:46%;
+  margin-left:2%;
+  height: auto;
+}#links .cont img{
+  display: inline-block;
+  vertical-align: top;
+  width:100%;
+  height: auto;
 }
 
+#links p{
+  width:100%;
+  height: auto;
+  font-size: 1em;
+  color:#FFF;
+}
 
 
 

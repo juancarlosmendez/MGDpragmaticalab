@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+
+    <link rel="stylesheet" type="text/css" href="css/nanogallery2/nanogallery2.min.css">
+    <link rel="stylesheet" type="text/css" href="css/fullcalendar/fullcalendar.min.css">
+    <!--
+    <link rel="stylesheet" type="text/css" href="css/fullcalendar/fullcalendar.print.min.css">
+    -->
+    <link rel="stylesheet" type="text/css" href="css/swiper.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />    
+    <title>MGD</title>
+</head>
+<body>
+    <div id="container">
+
+        <!--
+            HEADER
+        -->
+        <header>
+                
+            <div id="screen_title" class="title" data-i18n='app-title'>GOLDEN STORE</div>
+            <div id="backbutton" onclick="back()">
+                    <img src="img/left-chevron.png" alt=""/>
+                </div>
+                <div id="hamburger" onclick="return false;">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+
+
+            
+           
+        </header>
+        <nav class="clear">
+            <div class="nav_header">
+                <img src="img/miller_top_logo.png" alt=""/>
+            </div>
+            <ul>
+                <li><a href="javascript:loadPage('goldenlifestyle',true);"><img src="img/miller_menu1.png" alt="" /></a></li>
+                <li><a href="javascript:loadPage('eventos',true);"><img src="img/miller_menu2.png" alt="" /></a></li>
+                <li><a href="javascript:loadPage('galeria',true);"><img src="img/miller_menu3.png" alt="" /></a></li>
+                <li><a href="javascript:loadPage('spotify',true);"><img src="img/miller_menu4.png" alt="" /></a></li>
+                <li><a href="javascript:loadPage('safeinthecity',true);"><img src="img/miller_menu5.png" alt="" /></a></li>
+                <li><a href="javascript:loadPage('goldenstore',true);"><img src="img/miller_menu6.png" alt="" /></a></li>
+                <li><a href="javascript:loadPage('micomunidad',true);"><img src="img/miller_menu7.png" alt="" /></a></li>
+            </ul>
+        </nav>
+        <!--
+            END OF HEADER
+        -->
+
+        <!--
+            CONTENT
+        -->
+        <div id="content">
+
+            <!--
+                SAFE IN THE CITY
+            -->
+            <div id="safeinthecity" class="section" style="display:none">   
+                <a href="#"  onclick="window.open('https://cabify.com/es', '_system');"><img class="cover" src="img/safeinthecity.png" alt=""/></a>
+            </div>
+
+            <!--
+                SPOTIFY
+            -->
+            <div id="spotify" class="section" style="display:none">    
+                <iframe id="spotify_iframe" src="blank.html" frameborder="0" width="100%" allowtransparency="true"></iframe>     
+            </div>
+
+            <!--
+                MI COMUNIDAD
+            -->
+            <div id="micomunidad" class="section" style="display:none">
+                <div class="micomunidad_top">
+                    <img class="user-avatar" src="img/miller_avatar.png" alt=""/>
+                    <div class="user-info">
+                        <div class="user-name">
+                            DENNISSE GARCIA
+                        </div>
+                        <div class="user-city">
+                            Guayaquil-Ecuador
+                        </div>
+                        <div class="user-session">
+                            Cerrar sesión
+                        </div>
+                    </div>
+                </div>
+                <div class="micomunidad_button_codigo">
+                    Ingresar Código Producto
+                </div>
+                <div class="text-info row_col2">
+                    <strong>20</strong><br/>
+                    Amigos en <br/>mi Red
+                </div>
+                <div class="text-info row_col2">
+                    <strong>200</strong><br/>
+                    Golden <br/>Points
+                </div>
+                <div class="space"></div>
+                <div class="micomunidad_amigos">
+                    <div class="row_col3">
+                        <img src="img/miller_friend_add.png" alt=""/>
+                        <div class="name_friend add_new_label">Add New</div>
+                    </div>
+                    <div class="row_col3">
+                        <img src="img/miller_friend_confirmed.png" alt=""/>
+                        <div class="name_friend">Dayan Aragundi</div>
+                    </div>
+                    <div class="row_col3">
+                        <img src="img/miller_friend_unconfirmed.png" alt=""/>
+                        <div class="name_friend">Mariuxi Méndez Guevara</div>
+                    </div>
+                    <div class="row_col3">
+                        <img src="img/miller_friend_unconfirmed.png" alt=""/>
+                        <div class="name_friend">Mariuxi Méndez Guevara</div>
+                    </div>
+                    <div class="row_col3">
+                        <img src="img/miller_friend_unconfirmed.png" alt=""/>
+                        <div class="name_friend">Mariuxi Méndez Guevara</div>
+                    </div>
+                    <div class="row_col3">
+                        <img src="img/miller_friend_unconfirmed.png" alt=""/>
+                        <div class="name_friend">Mariuxi Méndez Guevara</div>
+                    </div>
+                </div>
+            </div>
+
+            <!--
+                PHOTO GALLERY
+            -->
+            <div id="galeria" class="section" style="display:none">                   
+            </div>
+
+            <!--
+                EVENTOS
+            -->
+            <div id="eventos" class="section" style="display:none">    
+                <div id="calendar"></div>
+                <ul class="eventos-list">
+
+                        <li class="evento-item">
+                            <div class="day">
+                                Sat
+                            </div>
+                            <div class="date">
+                                14
+                            </div>
+                            <div class="separator"></div>
+                            <div class="description">
+                                <h4>Long Beach party</h4>
+                                <p>
+                                    Lorem ipsum dolor amet, Lorem ipsum dolor amet Lorem ipsum dolor amet
+                                </p>
+                            </div>
+                            <div class="hour">
+                                17:00
+                            </div>
+                        </li>
+
+                        <li class="evento-item">
+                                <div class="day">
+                                    Sat
+                                </div>
+                                <div class="date">
+                                    14
+                                </div>
+                                <div class="separator"></div>
+                                <div class="description">
+                                    <h4>Long Beach party</h4>
+                                    <p>
+                                        Lorem ipsum dolor amet, Lorem ipsum dolor amet Lorem ipsum dolor amet
+                                    </p>
+                                </div>
+                                <div class="hour">
+                                    17:00
+                                </div>
+                            </li>
+
+                            <li class="evento-item">
+                                    <div class="day">
+                                        Sat
+                                    </div>
+                                    <div class="date">
+                                        14
+                                    </div>
+                                    <div class="separator"></div>
+                                    <div class="description">
+                                        <h4>Long Beach party</h4>
+                                        <p>
+                                            Lorem ipsum dolor amet, Lorem ipsum dolor amet Lorem ipsum dolor amet
+                                        </p>
+                                    </div>
+                                    <div class="hour">
+                                        17:00
+                                    </div>
+                                </li>
+
+                                <li class="evento-item">
+                                        <div class="day">
+                                            Sat
+                                        </div>
+                                        <div class="date">
+                                            14
+                                        </div>
+                                        <div class="separator"></div>
+                                        <div class="description">
+                                            <h4>Long Beach party</h4>
+                                            <p>
+                                                Lorem ipsum dolor amet, Lorem ipsum dolor amet Lorem ipsum dolor amet
+                                            </p>
+                                        </div>
+                                        <div class="hour">
+                                            17:00
+                                        </div>
+                                    </li>
+                   
+                
+                    </ul>
+            </div>            
+            
+            <!--
+                GOLDEN LIFESTYLE
+            -->
+            <div id="goldenlifestyle" class="section" style="display:none">
+                <div id="goldenlifestyle_list" class="sub_section" style="display:block">
+                    <ul>
+                        <li>
+                            <div class="cell-picture" onclick="newsInfo(1)" style="background-image:url('img/noticias/ARGENTINA.jpg')"></div>
+                            <div class="cell-info">
+                                <div class="cell-title">
+                                    LOS 5 DESTINOS QUE DEBES VISITAR ANTES DE LOS 30
+                                </div>
+                                <div class="cell-viewmore" onclick="newsInfo(1)">
+                                    Leer Más
+                                </div>
+                            </div>
+                            <div class="cell-separator"></div>
+                        </li>
+                        <li>
+                                <div class="cell-picture" onclick="newsInfo(1)" style="background-image:url('img/noticias/ARGENTINA.jpg')"></div>
+                                <div class="cell-info">
+                                    <div class="cell-title">
+                                        LOS 5 DESTINOS QUE DEBES VISITAR ANTES DE LOS 30
+                                    </div>
+                                    <div class="cell-viewmore" onclick="newsInfo(1)">
+                                        Leer Más
+                                    </div>
+                                </div>
+                                <div class="cell-separator"></div>
+                            </li>
+                            <li>
+                                    <div class="cell-picture" onclick="newsInfo(1)" style="background-image:url('img/noticias/ARGENTINA.jpg')"></div>
+                                    <div class="cell-info">
+                                        <div class="cell-title">
+                                            LOS 5 DESTINOS QUE DEBES VISITAR ANTES DE LOS 30
+                                        </div>
+                                        <div class="cell-viewmore" onclick="newsInfo(1)">
+                                            Leer Más
+                                        </div>
+                                    </div>
+                                    <div class="cell-separator"></div>
+                                </li>
+                                <li>
+                                        <div class="cell-picture" onclick="newsInfo(1)" style="background-image:url('img/noticias/ARGENTINA.jpg')"></div>
+                                        <div class="cell-info">
+                                            <div class="cell-title">
+                                                LOS 5 DESTINOS QUE DEBES VISITAR ANTES DE LOS 30
+                                            </div>
+                                            <div class="cell-viewmore" onclick="newsInfo(1)">
+                                                Leer Más
+                                            </div>
+                                        </div>
+                                        <div class="cell-separator"></div>
+                                    </li>
+                                    <li>
+                                            <div class="cell-picture" onclick="newsInfo(1)" style="background-image:url('img/noticias/ARGENTINA.jpg')"></div>
+                                            <div class="cell-info">
+                                                <div class="cell-title">
+                                                    LOS 5 DESTINOS QUE DEBES VISITAR ANTES DE LOS 30
+                                                </div>
+                                                <div class="cell-viewmore" onclick="newsInfo(1)">
+                                                    Leer Más
+                                                </div>
+                                            </div>
+                                            <div class="cell-separator"></div>
+                                        </li>
+                    </ul>
+                </div>
+                <div id="goldenlifestyle_item" style="display:none">
+                    <img src="img/noticias/ARGENTINA.jpg" class="item-picture" />
+                    <div class="item-description">
+                        <h2>
+                                LOS 5 DESTINOS QUE DEBES VISITAR ANTES DE LOS 30
+                        </h2>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                         </p>
+                    </div>
+                </div>
+            </div>
+
+            <!--
+                GOLDEN STORE
+            -->
+            <div id="goldenstore" class="section" style="display:none">
+                <div id="goldenstore_categories" class="sub_section" style="display:block">
+                    <div class="categories_title">
+                        BUSCA Y CANJEA POR GOLDEN POINTS PREMIOS INCREIBLES
+                    </div>
+                    <div class="categories_wrapper">
+                        <img src="img/category_tecnologia.jpg" onclick="listProducts(1)" class="category_button" alt=""/>
+                        <img src="img/category_producto.jpg" onclick="listProducts(1)"  class="category_button" alt=""/>
+                        <img src="img/category_merchandising.jpg" onclick="listProducts(1)"  class="category_button" alt=""/>
+                        <img src="img/category_goldenparty.jpg" onclick="listProducts(1)"  class="category_button" alt=""/>
+                    </div>
+                    <div class="revisar_goldenpoints">
+                        <div class="line-top"></div>
+                        <div class="title">
+                            REVISAR MIS <strong>GOLDEN POINTS</strong>
+                        </div>
+                        <img src="img/arrow_down.png" alt=""/>
+                    </div>                    
+                </div>
+                <div id="goldenstore_list" class="sub_section" style="display:none">
+                    <div class="list-title">
+                        MERCHANDISING
+                    </div>
+                    <ul>
+                        <li>
+                            <div class="cell-picture" onclick="productInfo()" style="background-image:url('img/productos/cargador.png')">                                
+                            </div>
+                            <div class="cell-info">
+                                <div class="cell-title" onclick="productInfo()">
+                                    PRODUCTO COMPRABLE
+                                </div>
+                                <div class="cell-price">
+                                    1800 GOLDEN POINTS
+                                </div>
+                                <div class="cell-action">
+                                    CANJEAR
+                                </div>
+                                <div class="cell-viewmore" onclick="productInfo()">
+                                    CARACTERISTICAS
+                                </div>
+                            </div>
+                            <div class="cell-separator"></div>
+                        </li>
+                        <li>
+                            <div class="cell-picture" onclick="productInfo()" style="background-image:url('img/productos/parlante_miller.png')">                                
+                            </div>
+                            <div class="cell-info">
+                                <div class="cell-title">
+                                    PRODUCTO COMPRABLE
+                                </div>
+                                <div class="cell-price">
+                                    1800 GOLDEN POINTS
+                                </div>
+                                <div class="cell-action">
+                                    CANJEAR
+                                </div>
+                                <div class="cell-viewmore" onclick="productInfo()">
+                                    CARACTERISTICAS
+                                </div>
+                            </div>
+                            <div class="cell-separator"></div>
+                        </li>
+                        <li>
+                            <div class="cell-picture" onclick="productInfo()" style="background-image:url('img/productos/parlante_skullcandy.png')">                                
+                            </div>
+                            <div class="cell-info">
+                                <div class="cell-title">
+                                    PRODUCTO COMPRABLE
+                                </div>
+                                <div class="cell-price">
+                                    1800 GOLDEN POINTS
+                                </div>
+                                <div class="cell-action">
+                                    CANJEAR
+                                </div>
+                                <div class="cell-viewmore" onclick="productInfo()">
+                                    CARACTERISTICAS
+                                </div>
+                            </div>
+                            <div class="cell-separator"></div>
+                        </li>
+                        <li>
+                            <div class="cell-picture" onclick="productInfo()" style="background-image:url('img/productos/sixpack.png')">                                
+                            </div>
+                            <div class="cell-info">
+                                <div class="cell-title">
+                                    PRODUCTO COMPRABLE
+                                </div>
+                                <div class="cell-price">
+                                    1800 GOLDEN POINTS
+                                </div>
+                                <div class="cell-action">
+                                    CANJEAR
+                                </div>
+                                <div class="cell-viewmore" onclick="productInfo()">
+                                    CARACTERISTICAS
+                                </div>
+                            </div>
+                            <div class="cell-separator"></div>
+                        </li>
+                        <li>
+                            <div class="cell-picture" onclick="productInfo()" style="background-image:url('img/productos/tablet.png')">                                
+                            </div>
+                            <div class="cell-info">
+                                <div class="cell-title">
+                                    PRODUCTO COMPRABLE
+                                </div>
+                                <div class="cell-price">
+                                    1800 GOLDEN POINTS
+                                </div>
+                                <div class="cell-action">
+                                    CANJEAR
+                                </div>
+                                <div class="cell-viewmore" onclick="productInfo()">
+                                    CARACTERISTICAS
+                                </div>
+                            </div>
+                            <div class="cell-separator"></div>
+                        </li>
+                        <li>
+                            <div class="cell-picture" onclick="productInfo()" style="background-image:url('img/productos/vaso.png')">                                
+                            </div>
+                            <div class="cell-info">
+                                <div class="cell-title">
+                                    PRODUCTO COMPRABLE
+                                </div>
+                                <div class="cell-price">
+                                    1800 GOLDEN POINTS
+                                </div>
+                                <div class="cell-action">
+                                    CANJEAR
+                                </div>
+                                <div class="cell-viewmore" onclick="productInfo()">
+                                    CARACTERISTICAS
+                                </div>
+                            </div>
+                            <div class="cell-separator"></div>
+                        </li>
+                    </ul>
+                    <div class="revisar_goldenpoints" onclick="alert('Tienes 1200 GOLDEN POINTS');">
+                        <div class="line-top"></div>
+                        <div class="title">
+                            REVISAR MIS <strong>GOLDEN POINTS</strong>
+                        </div>
+                        <img src="img/arrow_down.png" alt=""/>
+                    </div>
+
+                </div>
+                <div id="goldenstore_item" style="display:none">
+                    <div class="item-picture" style="background-image:url('img/productos/parlante_miller.png')">                                
+                    </div>
+                    <div class="item-info">
+                        <div class="item-title">
+                            PRODUCTO COMPRABLE
+                        </div>
+                        <div class="item-price">
+                            1800 GOLDEN POINTS
+                        </div>
+                        <div class="item-action">
+                            CANJEAR
+                        </div>
+                    </div>
+                    <div class="item-description">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                         </p>
+                    </div>
+                    <div class="revisar_goldenpoints">
+                        <div class="line-top"></div>
+                        <div class="title">
+                            REVISAR MIS <strong>GOLDEN POINTS</strong>
+                        </div>
+                        <img src="img/arrow_down.png" alt=""/>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+        <!--
+            END OF CONTENT
+        -->
+
+        <!--
+            FOOTER
+        -->
+        <footer>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="img/miller_slide_1.png" alt="" /></div>
+                <div class="swiper-slide"><img src="img/miller_slide_2.png" alt="" /></div>
+                <div class="swiper-slide"><img src="img/miller_slide_3.png" alt="" /></div>
+                <div class="swiper-slide"><img src="img/miller_slide_4.jpg" alt="" /></div>
+                </div>
+            </div>
+            <div class="disclaimer"></div>
+        </footer>
+        <!--
+            END OF FOOTER
+        -->
+
+    </div>
+   
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/jquery.3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/moment.min.js"></script>
+    <script type="text/javascript" src="js/swiper.min.js"></script>
+    <script type="text/javascript" src="js/hammer.min.js"></script>
+    <script type="text/javascript" src="js/fullcalendar/fullcalendar.min.js"></script>
+
+    <!-- nanogallery2 -->
+    <script  type="text/javascript" src="js/nanogallery2/jquery.nanogallery2.min.js"></script>
+    <script type="text/javascript" src="js/index.js?v=fasdf"></script>
+    <script type="text/javascript">
+        //window.location.href = 'authentication.html';
+        app.initialize();
+    </script>
+</body>
+
+</html>

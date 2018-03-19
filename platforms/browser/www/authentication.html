@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+
+    <link rel="stylesheet" type="text/css" href="css/authentication.css" />    
+    <title>MGD</title>
+</head>
+<body>
+    <div id="container">
+
+        <!--
+            HEADER
+        -->
+        <header>
+            <img class="title_image"  src="img/miller_top_logo.png" alt="" />
+        </header>
+        <!--
+            END OF HEADER
+        -->
+
+        <!--
+            CONTENT
+        -->
+        <div id="content">
+            
+
+            <!--
+                REGISTRO SELECTOR
+            -->
+            <div id="registroselector" style="display:none">
+                <button class="button_miller">SOY MIEMBRO</button>
+                <br/>
+                <br/>
+                <button class="button_miller">SOY NUEVO</button>
+                <br/>
+                <br/>
+                <img src="img/beer.jpg" alt="" class="beer"/>
+            </div>
+
+
+
+
+            <!--
+                LOGIN
+            -->
+            <div id="login" style="display:none">
+                <img class="loginavatar" src="img/miller_avatar.png" alt="" />
+                <br/>
+                <br/>
+                <br/>
+                <input type="email" class="miller_input"  placeholder="CORREO ELECTRÓNICO" />
+                <br/>
+                <br/>
+                <br/>
+                <input type="password" class="miller_input"  placeholder="CONTRASEÑA" />
+                <br/>
+                <br/>
+                <br/>
+                <button class="button_miller" onclick="alert(0)">INGRESAR</button>
+                <br/>
+                <br/>
+            </div>
+
+
+
+            <!--
+                REGISTER
+            -->
+            <div id="register" style="display:block">
+                <h2>
+                    COMPLETA TUS DATOS
+                </h2>
+                <br/>
+                <input type="text" class="miller_input"  placeholder="Nombres" />
+                <br/>
+                <br/>
+                <input type="text" class="miller_input"  placeholder="Apellidos" />
+                <br/>
+                <br/>
+                <input type="date" class="miller_input"  placeholder="Fecha de nacimiento"  value="2013-01-08"/>
+                <br/>
+                <br/>
+                <input type="email" class="miller_input"  placeholder="E-Mail" />
+                <br/>
+                <br/>
+                <input type="tel" class="miller_input"  placeholder="Teléfono" />
+                <br/>
+                <br/>
+                <input type="password" class="miller_input"  placeholder="Contraseña" />
+                <br/>
+                <br/>
+                <input type="password" class="miller_input"  placeholder="Confirmar contraseña" />
+                <br/>
+                <br/>
+                <br/>
+                <button class="button_miller" onclick="alert(0)">REGISTRARME</button>
+                <br/>
+                <br/>
+                <p>Revisa tu bandeja de entrada o no deseados para obtener la confirmación de tu registro</p>
+                <br/>
+            </div>
+            
+
+
+
+        </div>
+        <!--
+            END OF CONTENT
+        -->
+
+        <!--
+            FOOTER
+        -->
+        <footer>
+            
+            <div class="disclaimer"></div>
+        </footer>
+        <!--
+            END OF FOOTER
+        -->
+
+    </div>
+   
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/jquery.3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/authentication.js"></script>
+    <script type="text/javascript">
+        app.initialize();
+    </script>
+</body>
+
+</html>

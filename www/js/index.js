@@ -206,24 +206,30 @@ function loadPage(pantalla,willTouchDrawer){
 
   switch(pantalla) {
     case 'safeinthecity':
-        
+        $('#screen_title').html('SAFE IN THE CITY');
     break;    
     case 'spotify':
+    $('#screen_title').html('SPOTIFY');
         
     break;    
     case 'micomunidad':
+    $('#screen_title').html('MI COMUNIDAD');
         
     break;
     case 'galeria':
+    $('#screen_title').html('GALERIA');
     initGaleria();
     break;
     case 'eventos':
+    $('#screen_title').html('EVENTOS');
     initEventos();
     break;
     case 'goldenlifestyle':
+    $('#screen_title').html('GOLDEN LIFESTYLE');
     initGoldenLifeStyle();
     break;
     case 'goldenstore':
+    $('#screen_title').html('GOLDEN STORE');
     
     break;
     default:

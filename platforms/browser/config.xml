@@ -15,6 +15,10 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <access origin="https://nanogallery2.nanostudio.org" />
+    <access origin="https://open.spotify.com" />
+    <access origin="http://http://appdoyoudo.com/miller/content/gallery" />
+    <access origin="http://appdoyoudo.com" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />

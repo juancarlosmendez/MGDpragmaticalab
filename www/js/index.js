@@ -339,28 +339,57 @@ function initGaleria(){
     items:[
       // album 1
       {
-          src:   'berlin1.jpg',		     // image url
-          srct:  'berlin1t.jpg',	     // thumbnail url
-          title: 'Berlin - album 1',   // item title
+          src:   'cover_album1.png',		     // image url
+          srct:  'cover_album1.png',	     // thumbnail url
+          title: 'MGD BEACH PARTY',   // item title
           ID: 1,                       // item ID
           kind: 'album'                // item kind
       },
-      { src: 'berlin1.jpg', srct: 'berlin1t.jpg', title: 'Berlin 1', ID: 10, albumID: 1},
-      { src: 'berlin2.jpg', srct: 'berlin2t.jpg', title: 'Berlin 2', ID: 11, albumID: 1},
+      { src: 'cover_album1.png', srct: 'cover_album1.png', title: 'Foto 1', ID: 10, albumID: 1},
+      { src: 'photo1.jpg', srct: 'photo1.jpg', title: 'Foto 2', ID: 11, albumID: 1},
 
-      // album 2
-      { src: 'berlin2.jpg', srct: 'berlin2t.jpg', title: 'Berlin - album 2', ID: 2, kind: 'album'},
-      { src: 'berlin2.jpg', srct: 'berlin2t.jpg', title: 'Berlin 2', ID: 21, albumID: 2},
-      { src: 'berlin1.jpg', srct: 'berlin1t.jpg', title: 'Berlin 1', ID: 22, albumID: 2},
-      { src: 'berlin3.jpg', srct: 'berlin3t.jpg', title: 'Berlin 3', ID: 23, albumID: 2},
+      // album 1
+      {
+        src:   'cover_album2.png',		     // image url
+        srct:  'cover_album2.png',	     // thumbnail url
+        title: 'HALLOWEEN PARTY',   // item title
+        ID: 2,                       // item ID
+        kind: 'album'                // item kind
+    },
+    { src: 'cover_album2.png', srct: 'cover_album2.png', title: 'Foto 2', ID: 12, albumID: 2},
+    { src: 'photo2.jpg', srct: 'photo2.jpg', title: 'Foto 2', ID: 13, albumID: 2},
+
+    // album 1
+    {
+      src:   'cover_album3.png',		     // image url
+      srct:  'cover_album3.png',	     // thumbnail url
+      title: 'DEADMAU5',   // item title
+      ID: 3,                       // item ID
+      kind: 'album'                // item kind
+  },
+  { src: 'cover_album3.png', srct: 'cover_album3.png', title: 'Foto 3', ID: 14, albumID: 3},
+  { src: 'photo3.jpg', srct: 'photo3.jpg', title: 'Foto 3', ID: 15, albumID: 3},
+
+  // album 1
+  {
+    src:   'cover_album4.png',		     // image url
+    srct:  'cover_album4.png',	     // thumbnail url
+    title: 'TURN ON THE NIGHT',   // item title
+    ID: 4,                       // item ID
+    kind: 'album'                // item kind
+},
+{ src: 'cover_album4.png', srct: 'cover_album4.png', title: 'Foto 4', ID: 16, albumID: 4},
+{ src: 'photo4.jpg', srct: 'photo4.jpg', title: 'Foto 4', ID: 17, albumID: 4}
+
       
-      // top level images
-      { src: 'berlin2.jpg', srct: 'berlin2t.jpg', title: 'Berlin 2' },
-      { src: 'berlin3.jpg', srct: 'berlin3t.jpg', title: 'Berlin 3' }
+      
+
+
     ],
     thumbnailWidth:  'auto',
     thumbnailHeight: 170,
-    itemsBaseURL:    'https://nanogallery2.nanostudio.org/samples/',
+    //itemsBaseURL:    'http://appdoyoudo.com/miller/content/gallery/',
+    itemsBaseURL:    'img/gallery/',
     locationHash:    false,
     hoverin: false,
     hoverout:false,

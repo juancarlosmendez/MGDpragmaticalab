@@ -32,7 +32,9 @@
     <plugin name="cordova-plugin-splashscreen" source="npm" spec="~3.2.1" />
     <plugin name="cordova-plugin-statusbar" source="npm" spec="~2.1.2" />
     <plugin name="cordova-plugin-vibration" source="npm" spec="~2.1.0" />
+    <!-->
     <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />
+    -->
     <platform name="android">
         <icon density="ldpi" src="www/res/icon/android/drawable-ldpi-icon.png" />
         <icon density="mdpi" src="www/res/icon/android/drawable-mdpi-icon.png" />
@@ -109,6 +111,7 @@
 
 <access origin="https://nanogallery2.nanostudio.org" />
 <access origin="https://open.spotify.com" />
+<access origin="http://http://appdoyoudo.com/miller/content/gallery" />
 <access origin="http://appdoyoudo.com" />
 
     <allow-intent href="http://*/*" />

@@ -21,7 +21,7 @@ var app = {
       INIT CORDOVA
   */
   receivedEvent: function(id) {
-      init();
+      //init();
   }
 };
 
@@ -29,7 +29,7 @@ var app = {
   INIT JQUERY
 */
 (function ($) {
-//init();
+init();
 }($));
 
 //window.location.href='blank.html';

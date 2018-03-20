@@ -428,19 +428,34 @@ GOLDEN STORE
 */
 var actualGoldenStoreSection="categories";
 
-function listProducts(categoryID){
-$('#goldenstore_categories').hide();
-$('#goldenstore_list').show();
-actualGoldenStoreSection="list";
-$('#backbutton').css('visibility','visible');
+function listProducts(categoryID,categoryName){
+  $('#goldenstore_categories').hide();
+  $('#goldenstore_list').show();
+  actualGoldenStoreSection="list";
+  $('#backbutton').css('visibility','visible');
+
+  $('#goldenstore_list .list-title').html(categoryName);
+  $('#goldenstore_list ul li').hide();
+  $('#goldenstore_list ul li.'+categoryID).show();
+
+
 }
 
 
 function productInfo(productID){
-$('#goldenstore_list').hide();
-$('#goldenstore_item').show();
-actualGoldenStoreSection="info";
-$('#backbutton').css('visibility','visible');
+
+  $('#goldenstore_list').hide();
+  $('#goldenstore_item').show();
+  actualGoldenStoreSection="info";
+  $('#backbutton').css('visibility','visible');
+
+
+  //displays product info
+  $('#goldenstore_item .item-picture').css('background-image',$('.product-'+productID).find('.cell-picture').css('background-image'));
+  $('#goldenstore_item .item-title').html($('.product-'+productID).find('.cell-title').html());
+  $('#goldenstore_item .item-price').html($('.product-'+productID).find('.cell-price').html());
+  $('#goldenstore_item .item-description').html($('.product-'+productID).find('.cell-description').html());
+
 }
 
 
@@ -450,11 +465,19 @@ GOLDEN LIFESTYLE
 var  actualLifeStyleSection="list";
 
 
-function newsInfo(productID){
-$('#goldenlifestyle_list').hide();
-$('#goldenlifestyle_item').show();
-actualLifeStyleSection="info";
-$('#backbutton').css('visibility','visible');
+function newsInfo(newsID){
+  $('#goldenlifestyle_list').hide();
+  $('#goldenlifestyle_item').show();
+  actualLifeStyleSection="info";
+  $('#backbutton').css('visibility','visible');
+
+  //displays newsInfo
+
+  $('#goldenlifestyle_item .item-picture').attr('src',$('.news-'+newsID).find('.cell-picture-path').html());
+  $('#goldenlifestyle_item .item-title').html($('.news-'+newsID).find('.cell-title').html());
+  $('#goldenlifestyle_item .item-detail').html($('.news-'+newsID).find('.cell-detail').html());
+
+
 }
 
 
@@ -493,6 +516,90 @@ switch(actualPage) {
 
 
 function addFriend(){
-  var fr = prompt('Ingresa el E-Mail del amigo al que deseas invitar: ');
-  alert('Listo invitaste a '+fr+ ' con éxito, debes esperar a que confirme en su cuenta.');
+
+  swal({
+    title: 'Ingresa el E-Mail de tu amigo/a:',
+    input: 'email',
+    showCancelButton: true,
+    confirmButtonText: 'Invitar',
+    showLoaderOnConfirm: true,
+    preConfirm: (email) => {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          if (email === 'jmendez.ec@gmail.com') {
+            swal.showValidationError(
+              'Ya has invitado a este amigo.'
+            )
+          }
+          resolve()
+        }, 2000)
+      })
+    },
+    allowOutsideClick: () => !swal.isLoading()
+  }).then((result) => {
+    if (result.value) {
+      swal({
+        type: 'success',
+        title: 'MGD',
+        html: 'Has invitado a ' + result.value+ ', debes esperar a que confirme su cuenta.'
+      })
+    }
+  })
+
+
+}
+
+
+function addProducto(){
+
+  swal({
+    title: 'Ingresa el código del producto:',
+    input: 'text',
+    showCancelButton: true,
+    confirmButtonText: 'Agregar',
+    showLoaderOnConfirm: true,
+    preConfirm: (text) => {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          
+          resolve()
+        }, 2000)
+      })
+    },
+    allowOutsideClick: () => !swal.isLoading()
+  }).then((result) => {
+    if (result.value) {
+      swal({
+        type: 'success',
+        title: 'MGD',
+        html: 'Has agregado correctamente el código ' + result.value+ ', en unos momentos se actualizarán tus GOLDEN POINTS'
+      })
+    }
+  })
+
+
+}
+
+function displayGoldenPoints(){
+  /*swal({
+    title: 'Atención!',
+    text: 'El username o password no se encuentran registrados, por favor inténtalo nuevamente',
+    type: 'error',
+    confirmButtonText: 'OK'
+  });*/
+  swal({
+    title: 'MGD',
+    text: 'Actualmente tienes 1200 GOLDEN POINTS',
+    confirmButtonText: 'OK'
+  });
+}
+
+
+
+function canjear(productID){
+  swal({
+    type: 'error',
+    title: 'MGD',
+    html: 'No cuentas con suficientes GoldenPoints para canjear este artículo.'
+  })
 }

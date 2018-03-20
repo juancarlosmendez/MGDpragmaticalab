@@ -5,6 +5,7 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <meta name="viewport" content="viewport-fit=cover, initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width" />
     <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
@@ -22,6 +23,8 @@
     <link rel="stylesheet" type="text/css" href="css/fullcalendar/fullcalendar.print.min.css">
     -->
     <link rel="stylesheet" type="text/css" href="css/swiper.min.css" />
+    
+    <link rel="stylesheet" type="text/css" href="css/sweetalert2.css" />
     <link rel="stylesheet" type="text/css" href="css/index.css" />    
     <title>MGD</title>
 </head>
@@ -102,7 +105,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="micomunidad_button_codigo">
+                <div class="micomunidad_button_codigo" onclick="addProducto()">
                     Ingresar Código Producto
                 </div>
                 <div class="text-info row_col2">
@@ -351,79 +354,129 @@
             <div id="goldenlifestyle" class="section" style="display:none">
                 <div id="goldenlifestyle_list" class="sub_section" style="display:block">
                     <ul>
-                        <li>
-                            <div class="cell-picture" onclick="newsInfo(1)" style="background-image:url('img/noticias/ARGENTINA.jpg')"></div>
-                            <div class="cell-info">
-                                <div class="cell-title">
-                                        Argentina, más que tango
 
+
+                        <li class="news-1">
+                            <div class="cell-picture" onclick="newsInfo(1)" style="background-image:url('img/noticias/ARGENTINA.jpg')"></div>
+                            <div class="cell-picture-path" style="display:none">img/noticias/ARGENTINA.jpg</div>
+                            <div class="cell-info">
+                                <div class="cell-title" onclick="newsInfo(1)">
+                                        Argentina, más que tango
                                 </div>
                                 <div class="cell-viewmore" onclick="newsInfo(1)">
                                     Leer Más
                                 </div>
+                                <div class="cell-detail" onclick="newsInfo(1)" style="display:none">
+                                    La oferta en Argentina es amplia, si quieres conocer alo diferente sin extrañar el movimiento de una gran ciudad, visita Buenos Aires, puedes caminar a lo largo de la Av. Corrientes, cruzar el Obelisco y avanzar hasta la Av. De Mayo para llegar a la Plaza de Mayo y a la Casa Rosa, en la misma dirección puedes conocer San Telmo y terminar la tarde en Caminito.
+Si lo que quieres es ser parte de una de las experiencias mas asombrosas del mundo,  asegura tu ticket para El Tren a las Nubes, uno de los tres ferrocarriles más altos del mundo. El tren sale desde la cuidad de Salta y recorre un trayecto de 217 km, a una velocidad de 35 km/h. (El Tren a las Nubes no opera durante los meses de verano, diciembre a marzo, época de lluvias). 
+                                </div>
                             </div>
                             <div class="cell-separator"></div>
                         </li>
-                        <li>
-                                <div class="cell-picture" onclick="newsInfo(1)" style="background-image:url('img/noticias/BOLIVIA.jpg')"></div>
+
+
+
+                        <li class="news-2">
+                                <div class="cell-picture" onclick="newsInfo(2)" style="background-image:url('img/noticias/BOGOTA.jpg')"></div>
+                                <div class="cell-picture-path" style="display:none">img/noticias/BOGOTA.jpg</div>
                                 <div class="cell-info">
-                                    <div class="cell-title">
-                                            Bolivia, descubrimiento y aventura
+                                    <div class="cell-title" onclick="newsInfo(2)">
+                                            Bogota, cultura y diversion
 
                                     </div>
-                                    <div class="cell-viewmore" onclick="newsInfo(1)">
+                                    <div class="cell-viewmore" onclick="newsInfo(2)">
                                         Leer Más
                                     </div>
+                                    <div class="cell-detail" onclick="newsInfo(2)" style="display:none">
+                                            Si quieres combinar cultura y diversión, Bogotá es el destino ideal para ti. 
+                                            La capital colombiana ofrece diferentes opciones culturales, en el día puedes visitar la Biblioteca Virgilio Barco, Teatro Colón, Casa Cultural Gabriel García Marques, el museo de oro, etc. y para cerrar el día, visita la  Zona T, se encuentra en la zona rosa y en ella puedes encontrar una gran variedad de cafés, bares, discotecas y restaurantes, diversión para todos los gustos.
+                                             </div>
                                 </div>
                                 <div class="cell-separator"></div>
                             </li>
-                            <li>
-                                    <div class="cell-picture" onclick="newsInfo(1)" style="background-image:url('img/noticias/CANADA.jpg')"></div>
-                                    <div class="cell-info">
-                                        <div class="cell-title">
-                                                Canadá, tranquilidad y naturaleza
 
+
+
+
+                            <li class="news-3">
+                                    <div class="cell-picture" onclick="newsInfo(3)" style="background-image:url('img/noticias/BOLIVIA.jpg')"></div>
+                                    <div class="cell-picture-path" style="display:none">img/noticias/BOLIVIA.jpg</div>
+                                    <div class="cell-info">
+                                        <div class="cell-title" onclick="newsInfo(3)">
+                                                Bolivia, descubrimiento y aventura    
                                         </div>
-                                        <div class="cell-viewmore" onclick="newsInfo(1)">
+                                        <div class="cell-viewmore" onclick="newsInfo(3)">
                                             Leer Más
                                         </div>
+                                        <div class="cell-detail" onclick="newsInfo(3)" style="display:none">
+                                                Si lo que quieres es descubrir lugares increíbles, Bolivia es una parada.
+                                                Puedes aventurarte y recorrer el país como uno de los muchos mochileros que incluyen este trayecto en su ruta o ir por lo seguro y comprar tus tickets de avión o autobús.
+                                                Te recomendamos visitar el Lago Titicaca, el Salar de Uyuni, el Parque Nacional Noel Kempff Mercado, Cal Orcko, entre otros.
+                                                Eso sí, no olvides llevar ropa abrigada y tu cámara fotográfica, te sorprenderán sus paisajes.
+                                                   </div>
                                     </div>
                                     <div class="cell-separator"></div>
                                 </li>
-                                <li>
-                                        <div class="cell-picture" onclick="newsInfo(1)" style="background-image:url('img/noticias/REPUBLICA_DOMINICANA.jpg')"></div>
-                                        <div class="cell-info">
-                                            <div class="cell-title">
-                                                    República Dominicana, arena y sol
 
+
+
+
+
+                                <li class="news-4">
+                                        <div class="cell-picture" onclick="newsInfo(4)" style="background-image:url('img/noticias/REPUBLICA_DOMINICANA.jpg')"></div>
+                                        <div class="cell-picture-path" style="display:none">img/noticias/REPUBLICA_DOMINICANA.jpg</div>
+                                        <div class="cell-info">
+                                            <div class="cell-title" onclick="newsInfo(4)">
+                                                    República Dominicana, arena y sol
+   
                                             </div>
-                                            <div class="cell-viewmore" onclick="newsInfo(1)">
+                                            <div class="cell-viewmore" onclick="newsInfo(4)">
                                                 Leer Más
                                             </div>
+                                            <div class="cell-detail" onclick="newsInfo(4)" style="display:none">
+                                                    Si necesitas relajarte, cierra los ojos y piensa que estás acostado en una hermosa playa  con cielo azul y arena blanca, si lo hiciste, no dudes en visitar República Dominicana. Las ofertas de hospedaje son variadas y están al alcance de todos los bolsillos.
+                                                    No lo pienses más, esta es tu oportunidad para hacer deportes acuáticos  nadar con delfines y estar en contacto con la naturaleza.
+                                                        </div>
                                         </div>
                                         <div class="cell-separator"></div>
                                     </li>
-                                    <li>
-                                            <div class="cell-picture" onclick="newsInfo(1)" style="background-image:url('img/noticias/BOGOTA.jpg')"></div>
+
+
+
+                                    <li class="news-5">
+                                            <div class="cell-picture" onclick="newsInfo(5)" style="background-image:url('img/noticias/CANADA.jpg')"></div>
+                                            <div class="cell-picture-path" style="display:none">img/noticias/CANADA.jpg</div>
                                             <div class="cell-info">
-                                                <div class="cell-title">
-                                                        Bogota, cultura y diversion
+                                                <div class="cell-title" onclick="newsInfo(5)">
+                                                        Canadá, tranquilidad y naturaleza
+
+       
                                                 </div>
-                                                <div class="cell-viewmore" onclick="newsInfo(1)">
+                                                <div class="cell-viewmore" onclick="newsInfo(5)">
                                                     Leer Más
                                                 </div>
+                                                <div class="cell-detail" onclick="newsInfo(5)" style="display:none">
+                                                        Si quieres practicar tu inglés o francés, visita Quebec, una ciudad tranquila y pintoresca, con un aire francés, ideal para recorrer a pie, en sus calles puedes encontrar pintores, acróbatas , cantantes  y demás artistas.  Existe además una variada oferta de plazas, bares y cafés. 
+
+                                                        Otros lugares de interés en Cánada son el Parque Provincial de los Dinosaurios, en Alberta, al oeste de Canadá, Saskatchewan, una provincia del norte del país, que es también uno de los mejores sitios para visualizar una Aurora Boreal en todo el mundo, y las inflatable Cataratas del Niágara, que se encuentran justo en la frontera con Estados Unidos.
+                                                              </div>
                                             </div>
                                             <div class="cell-separator"></div>
                                         </li>
+
+
+
+                    
                     </ul>
                 </div>
                 <div id="goldenlifestyle_item" style="display:none">
                     <img src="img/noticias/ARGENTINA.jpg" class="item-picture" />
+
                     <div class="item-description">
-                        <h2>
+                        <h2 class="item-title">
                                 LOS 5 DESTINOS QUE DEBES VISITAR ANTES DE LOS 30
                         </h2>
-                        <p>
+                        <p class="item-detail">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                          </p>
                     </div>
@@ -439,12 +492,12 @@
                         BUSCA Y CANJEA POR GOLDEN POINTS PREMIOS INCREIBLES
                     </div>
                     <div class="categories_wrapper">
-                        <img src="img/category_tecnologia.jpg" onclick="listProducts(1)" class="category_button" alt=""/>
-                        <img src="img/category_producto.jpg" onclick="listProducts(1)"  class="category_button" alt=""/>
-                        <img src="img/category_merchandising.jpg" onclick="listProducts(1)"  class="category_button" alt=""/>
-                        <img src="img/category_goldenparty.jpg" onclick="listProducts(1)"  class="category_button" alt=""/>
+                        <img src="img/category_tecnologia.jpg" onclick="listProducts('TECNOLOGIA','TECNOLOGIA')" class="category_button" alt=""/>
+                        <img src="img/category_producto.jpg" onclick="listProducts('PRODUCTO','PRODUCTOS')"  class="category_button" alt=""/>
+                        <img src="img/category_merchandising.jpg" onclick="listProducts('MERCHANDISING','MERCHANDISING')"  class="category_button" alt=""/>
+                        <img src="img/category_goldenparty.jpg" onclick="listProducts('FIESTA','GOLDEN PARTY')"  class="category_button" alt=""/>
                     </div>
-                    <div class="revisar_goldenpoints" onclick="alert('Tienes 1200 GOLDEN POINTS');">
+                    <div class="revisar_goldenpoints" onclick="displayGoldenPoints()">
                         <div class="line-top"></div>
                         <div class="title">
                             REVISAR MIS <strong>GOLDEN POINTS</strong>
@@ -457,122 +510,180 @@
                         MERCHANDISING
                     </div>
                     <ul>
-                        <li>
-                            <div class="cell-picture" onclick="productInfo()" style="background-image:url('img/productos/cargador.png')">                                
+                        <li class="product-1 TECNOLOGIA">
+                            <div class="cell-picture" onclick="productInfo(1)" style="background-image:url('img/productos/cargador.png')">                                
                             </div>
                             <div class="cell-info">
-                                <div class="cell-title" onclick="productInfo()">
-                                    PRODUCTO COMPRABLE
+                                <div class="cell-title" onclick="productInfo(1)">
+                                    CARGADOR
                                 </div>
                                 <div class="cell-price">
                                     1800 GOLDEN POINTS
                                 </div>
-                                <div class="cell-action">
+                                <div class="cell-action" onclick="canjear(1)">
                                     CANJEAR
                                 </div>
-                                <div class="cell-viewmore" onclick="productInfo()">
+                                <div class="cell-viewmore" onclick="productInfo(1)">
                                     CARACTERISTICAS
+                                </div>
+                                <div class="cell-description"  style="display:none">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                                 </div>
                             </div>
                             <div class="cell-separator"></div>
                         </li>
-                        <li>
-                            <div class="cell-picture" onclick="productInfo()" style="background-image:url('img/productos/parlante_miller.png')">                                
-                            </div>
-                            <div class="cell-info">
-                                <div class="cell-title">
-                                    PRODUCTO COMPRABLE
+                        <li class="product-2 TECNOLOGIA">
+                                <div class="cell-picture" onclick="productInfo(2)" style="background-image:url('img/productos/parlante_miller.png')">                                
                                 </div>
-                                <div class="cell-price">
-                                    1800 GOLDEN POINTS
+                                <div class="cell-info">
+                                    <div class="cell-title" onclick="productInfo(2)">
+                                        PARLANTE MILLER
+                                    </div>
+                                    <div class="cell-price">
+                                        2300 GOLDEN POINTS
+                                    </div>
+                                    <div class="cell-action" onclick="canjear(1)">
+                                        CANJEAR
+                                    </div>
+                                    <div class="cell-viewmore" onclick="productInfo(2)">
+                                        CARACTERISTICAS
+                                    </div>
+                                    <div class="cell-description"  style="display:none">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    </div>
                                 </div>
-                                <div class="cell-action">
-                                    CANJEAR
-                                </div>
-                                <div class="cell-viewmore" onclick="productInfo()">
-                                    CARACTERISTICAS
-                                </div>
-                            </div>
-                            <div class="cell-separator"></div>
-                        </li>
-                        <li>
-                            <div class="cell-picture" onclick="productInfo()" style="background-image:url('img/productos/parlante_skullcandy.png')">                                
-                            </div>
-                            <div class="cell-info">
-                                <div class="cell-title">
-                                    PRODUCTO COMPRABLE
-                                </div>
-                                <div class="cell-price">
-                                    1800 GOLDEN POINTS
-                                </div>
-                                <div class="cell-action">
-                                    CANJEAR
-                                </div>
-                                <div class="cell-viewmore" onclick="productInfo()">
-                                    CARACTERISTICAS
-                                </div>
-                            </div>
-                            <div class="cell-separator"></div>
-                        </li>
-                        <li>
-                            <div class="cell-picture" onclick="productInfo()" style="background-image:url('img/productos/sixpack.png')">                                
-                            </div>
-                            <div class="cell-info">
-                                <div class="cell-title">
-                                    PRODUCTO COMPRABLE
-                                </div>
-                                <div class="cell-price">
-                                    1800 GOLDEN POINTS
-                                </div>
-                                <div class="cell-action">
-                                    CANJEAR
-                                </div>
-                                <div class="cell-viewmore" onclick="productInfo()">
-                                    CARACTERISTICAS
-                                </div>
-                            </div>
-                            <div class="cell-separator"></div>
-                        </li>
-                        <li>
-                            <div class="cell-picture" onclick="productInfo()" style="background-image:url('img/productos/tablet.png')">                                
-                            </div>
-                            <div class="cell-info">
-                                <div class="cell-title">
-                                    PRODUCTO COMPRABLE
-                                </div>
-                                <div class="cell-price">
-                                    1800 GOLDEN POINTS
-                                </div>
-                                <div class="cell-action">
-                                    CANJEAR
-                                </div>
-                                <div class="cell-viewmore" onclick="productInfo()">
-                                    CARACTERISTICAS
-                                </div>
-                            </div>
-                            <div class="cell-separator"></div>
-                        </li>
-                        <li>
-                            <div class="cell-picture" onclick="productInfo()" style="background-image:url('img/productos/vaso.png')">                                
-                            </div>
-                            <div class="cell-info">
-                                <div class="cell-title">
-                                    PRODUCTO COMPRABLE
-                                </div>
-                                <div class="cell-price">
-                                    1800 GOLDEN POINTS
-                                </div>
-                                <div class="cell-action">
-                                    CANJEAR
-                                </div>
-                                <div class="cell-viewmore" onclick="productInfo()">
-                                    CARACTERISTICAS
-                                </div>
-                            </div>
-                            <div class="cell-separator"></div>
-                        </li>
+                                <div class="cell-separator"></div>
+                            </li>
+
+                            <li class="product-3 TECNOLOGIA">
+                                    <div class="cell-picture" onclick="productInfo(3)" style="background-image:url('img/productos/parlante_skullcandy.png')">                                
+                                    </div>
+                                    <div class="cell-info">
+                                        <div class="cell-title" onclick="productInfo(3)">
+                                            PARLANTE SKULLCANDY
+                                        </div>
+                                        <div class="cell-price">
+                                            3300 GOLDEN POINTS
+                                        </div>
+                                        <div class="cell-action" onclick="canjear(1)">
+                                            CANJEAR
+                                        </div>
+                                        <div class="cell-viewmore" onclick="productInfo(3)">
+                                            CARACTERISTICAS
+                                        </div>
+                                        <div class="cell-description"  style="display:none">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                        </div>
+                                    </div>
+                                    <div class="cell-separator"></div>
+                                </li>
+
+
+                                <li class="product-4 PRODUCTO">
+                                        <div class="cell-picture" onclick="productInfo(4)" style="background-image:url('img/productos/sixpack.png')">                                
+                                        </div>
+                                        <div class="cell-info">
+                                            <div class="cell-title" onclick="productInfo(4)">
+                                                SIXPACK MILLER
+                                            </div>
+                                            <div class="cell-price">
+                                                1300 GOLDEN POINTS
+                                            </div>
+                                            <div class="cell-action" onclick="canjear(1)">
+                                                CANJEAR
+                                            </div>
+                                            <div class="cell-viewmore" onclick="productInfo(4)">
+                                                CARACTERISTICAS
+                                            </div>
+                                            <div class="cell-description"  style="display:none">
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                            </div>
+                                        </div>
+                                        <div class="cell-separator"></div>
+                                    </li>
+
+
+
+                                    <li class="product-5 TECNOLOGIA">
+                                            <div class="cell-picture" onclick="productInfo(5)" style="background-image:url('img/productos/tablet.png')">                                
+                                            </div>
+                                            <div class="cell-info">
+                                                <div class="cell-title" onclick="productInfo(5)">
+                                                    TABLET MILLER
+                                                </div>
+                                                <div class="cell-price">
+                                                    10000 GOLDEN POINTS
+                                                </div>
+                                                <div class="cell-action" onclick="canjear(1)">
+                                                    CANJEAR
+                                                </div>
+                                                <div class="cell-viewmore" onclick="productInfo(5)">
+                                                    CARACTERISTICAS
+                                                </div>
+                                                <div class="cell-description"  style="display:none">
+                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                                </div>
+                                            </div>
+                                            <div class="cell-separator"></div>
+                                        </li>
+
+
+
+                                        <li class="product-6 MERCHANDISING">
+                                                <div class="cell-picture" onclick="productInfo(6)" style="background-image:url('img/productos/vaso.png')">                                
+                                                </div>
+                                                <div class="cell-info">
+                                                    <div class="cell-title" onclick="productInfo(6)">
+                                                        VASO MILLER
+                                                    </div>
+                                                    <div class="cell-price">
+                                                        1250 GOLDEN POINTS
+                                                    </div>
+                                                    <div class="cell-action" onclick="canjear(1)">
+                                                        CANJEAR
+                                                    </div>
+                                                    <div class="cell-viewmore" onclick="productInfo(6)">
+                                                        CARACTERISTICAS
+                                                    </div>
+                                                    <div class="cell-description"  style="display:none">
+                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                                    </div>
+                                                </div>
+                                                <div class="cell-separator"></div>
+                                            </li>
+
+
+
+                                            <li class="product-7 FIESTA">
+                                                    <div class="cell-picture" onclick="productInfo(7)" style="background-image:url('img/productos/goldenparty.png')">                                
+                                                    </div>
+                                                    <div class="cell-info">
+                                                        <div class="cell-title" onclick="productInfo(7)">
+                                                            FIESTA
+                                                        </div>
+                                                        <div class="cell-price">
+                                                            120000 GOLDEN POINTS
+                                                        </div>
+                                                        <div class="cell-action" onclick="canjear(1)">
+                                                            CANJEAR
+                                                        </div>
+                                                        <div class="cell-viewmore" onclick="productInfo(7)">
+                                                            CARACTERISTICAS
+                                                        </div>
+                                                        <div class="cell-description"  style="display:none">
+                                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                                        </div>
+                                                    </div>
+                                                    <div class="cell-separator"></div>
+                                                </li>
+
+
+                                            
+    
+
+
                     </ul>
-                    <div class="revisar_goldenpoints" onclick="alert('Tienes 1200 GOLDEN POINTS');">
+                    <div class="revisar_goldenpoints" onclick="displayGoldenPoints()">
                         <div class="line-top"></div>
                         <div class="title">
                             REVISAR MIS <strong>GOLDEN POINTS</strong>
@@ -591,7 +702,7 @@
                         <div class="item-price">
                             1800 GOLDEN POINTS
                         </div>
-                        <div class="item-action">
+                        <div class="item-action" onclick="canjear(1)">
                             CANJEAR
                         </div>
                     </div>
@@ -600,7 +711,7 @@
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                          </p>
                     </div>
-                    <div class="revisar_goldenpoints" onclick="alert('Tienes 1200 GOLDEN POINTS');">
+                    <div class="revisar_goldenpoints" onclick="displayGoldenPoints()">
                         <div class="line-top"></div>
                         <div class="title">
                             REVISAR MIS <strong>GOLDEN POINTS</strong>
@@ -610,7 +721,10 @@
                 </div>
             </div>
 
-
+            
+            <div  style="width:100%;height:30px;background-color:#ccc;position:fixed;top:-20px;">
+            </div >
+        
 
         </div>
         <!--
@@ -657,6 +771,9 @@
     <script src="js/blueimp-gallery-vimeo.js"></script>
     <script src="js/blueimp-gallery-youtube.js"></script>
     <script src="js/jquery.blueimp-gallery.js"></script>
+
+    <script src="js/sweetalert2.all.js"></script>
+    <script src="js/sweetalert2.js"></script>
 
 
 

@@ -189,6 +189,7 @@ footer {
   min-height: 100%;
   -webkit-box-shadow: -10px 0px 9px 0px rgba(0, 0, 0, 0.4);
   box-shadow: -10px 0px 9px 0px rgba(0, 0, 0, 0.4);
+  overflow-y: auto; 
 }
 
 nav {
@@ -407,7 +408,7 @@ nav li img{
 #goldenstore_categories .categories_title{
   width: 100%;
   text-align: center;
-  font-size: 1.9em;
+  font-size: 1.7em;
   color:#FFFFFF;
   padding-top: 20px;
   margin-bottom: 8px;
@@ -558,6 +559,7 @@ nav li img{
   border-top: solid #bf9700 1px;
   padding-top: 5px;
   margin-top: 10px;
+  padding-top: 20px;
   margin-bottom: 95px; /* space between description and revisar mis golden points*/
 }
 

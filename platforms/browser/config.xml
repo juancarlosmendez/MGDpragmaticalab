@@ -14,9 +14,11 @@
         PracmaticaLab
     </author>
     <content src="index.html" />
-    <access origin="*" />
-    <access origin="https://open.spotify.com" />
-    <access origin="http://appdoyoudo.com" />
+    <allow-navigation href="*" />
+    <access origin="https://open.spotify.com/*" />
+    <access origin="http://appdoyoudo.com/*" />
+    <access minimum-tls-version="TLSv1.1" origin="https://open.spotify.com" requires-certificate-transparency="true" requires-forward-secrecy="false" />
+    <access allows-arbitrary-loads-for-media="true" allows-arbitrary-loads-in-web-content="true" allows-local-networking="true" origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />

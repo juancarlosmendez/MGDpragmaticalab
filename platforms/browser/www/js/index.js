@@ -1,3 +1,5 @@
+var platform='ANDROID'; // ANDROID / IOS
+
 var app = {
   // Application Constructor
   initialize: function() {
@@ -21,6 +23,10 @@ var app = {
       INIT CORDOVA
   */
   receivedEvent: function(id) {
+    platform = device.platform.toUpperCase();;
+    //alert(id);
+
+    //var ref = cordova.InAppBrowser.open('http://apache.org', '_blank', 'location=yes');
       //init();
   }
 };
@@ -92,15 +98,25 @@ function init(){
 
   //FIX MIN HEIGHT IN GENERAL CONTENT
   $('#content').css('min-height',$(window).height()-$('footer').height()-$('header').height());
+
+
+
+//fix tutorial height
+  $('.tutorial').css('height',$(window).height());
  
 
 
 
 
   //loadPage('galeria',false);
- loadPage('goldenlifestyle',false);
+ //loadPage('goldenlifestyle',false);
+touchDrawer();
+/*
+setTimeout(function(){
 
-
+  var ref = cordova.InAppBrowser.open('img/info.png', '_blank', 'closebuttoncaption=volver a MGD,location=no');
+},1000);
+*/
  
    /*
     SPOTIFY
@@ -197,9 +213,7 @@ NAVIGATION
 var actualPage="goldenlifestyle";
 
 function loadPage(pantalla,willTouchDrawer){
-if(willTouchDrawer){
-  touchDrawer();
-}
+
 
 
 $('#safeinthecity').css('display','none');
@@ -215,6 +229,7 @@ switch(pantalla) {
       $('#screen_title').html('SAFE IN THE CITY');
   break;    
   case 'spotify':
+
   $('#screen_title').html('SPOTIFY');
       
   break;    
@@ -245,7 +260,16 @@ switch(pantalla) {
 
   break;
 }
-$('#'+pantalla).css('display','block'); 
+if( platform=='IOS' && pantalla=='spotify'){
+  var ref = cordova.InAppBrowser.open('https://open.spotify.com/user/millersounds', '_blank', 'closebuttoncaption=volver a MGD,location=no');
+}
+else{
+  if(willTouchDrawer){
+    touchDrawer();
+  }
+  $('#'+pantalla).css('display','block'); 
+}
+
 actualPage=pantalla;
 
 }
@@ -612,4 +636,9 @@ function canjear(productID){
     title: 'MGD',
     html: 'No cuentas con suficientes GoldenPoints para canjear este artículo.'
   })
+}
+
+
+function closeInfo(){
+  $('.tutorial').fadeOut();
 }

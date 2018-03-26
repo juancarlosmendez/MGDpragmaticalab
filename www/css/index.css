@@ -657,6 +657,13 @@ nav li img{
   width: 100%;
   padding-top: 15px;
 } 
+#goldenlifestyle_item .item-main-title{
+  width: 90%;
+  margin-left: 5%;
+  color: #FFFFFF;
+  font-size: 1.7em;
+  text-align: bold;
+}
 #goldenlifestyle_item .item-picture{
   width: 90%;
   margin-left: 5%;
@@ -674,15 +681,20 @@ nav li img{
   border-top: solid #bf9700 1px;
   padding-top: 5px;
   margin-top: 10px;
-  text-align: justify;
+  text-align: left;
+  text-transform: capitalize;
 }
-#goldenlifestyle_item h2{
+#goldenlifestyle_item .item-description h2{
   color: #FFFFFF;
   font-size: 1.5em;
-  font-weight: bold;
+  font-weight: 500;
   text-align: left;
+  margin-top: 9px;
+margin-bottom: 0px;
 }
-
+.item-news{
+  display:none;
+}
 
 
 /*

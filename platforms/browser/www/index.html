@@ -8,7 +8,7 @@
     <meta name="viewport" content="viewport-fit=cover, initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width" />
     <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
+    <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *">
     <!--
     <link rel="stylesheet" type="text/css" href="css/nanogallery2/nanogallery2.min.css">
     -->
@@ -84,7 +84,7 @@
                 SPOTIFY
             -->
             <div id="spotify" class="section" style="display:none">    
-                <iframe id="spotify_iframe" src="blank.html" frameborder="0" width="100%" allowtransparency="true"></iframe>     
+                <iframe id="spotify_iframe" src="https://open.spotify.com/user/millersounds" frameborder="0" width="100%" allowtransparency="true"></iframe>     
             </div>
 
             <!--
@@ -361,14 +361,10 @@
                             <div class="cell-picture-path" style="display:none">img/noticias/ARGENTINA.jpg</div>
                             <div class="cell-info">
                                 <div class="cell-title" onclick="newsInfo(1)">
-                                        Argentina, más que tango
+                                        LOS 5 DESTINOS QUE DEBES VISITAR ANTES DE LOS 30
                                 </div>
                                 <div class="cell-viewmore" onclick="newsInfo(1)">
                                     Leer Más
-                                </div>
-                                <div class="cell-detail" onclick="newsInfo(1)" style="display:none">
-                                    La oferta en Argentina es amplia, si quieres conocer alo diferente sin extrañar el movimiento de una gran ciudad, visita Buenos Aires, puedes caminar a lo largo de la Av. Corrientes, cruzar el Obelisco y avanzar hasta la Av. De Mayo para llegar a la Plaza de Mayo y a la Casa Rosa, en la misma dirección puedes conocer San Telmo y terminar la tarde en Caminito.
-Si lo que quieres es ser parte de una de las experiencias mas asombrosas del mundo,  asegura tu ticket para El Tren a las Nubes, uno de los tres ferrocarriles más altos del mundo. El tren sale desde la cuidad de Salta y recorre un trayecto de 217 km, a una velocidad de 35 km/h. (El Tren a las Nubes no opera durante los meses de verano, diciembre a marzo, época de lluvias). 
                                 </div>
                             </div>
                             <div class="cell-separator"></div>
@@ -377,20 +373,17 @@ Si lo que quieres es ser parte de una de las experiencias mas asombrosas del mun
 
 
                         <li class="news-2">
-                                <div class="cell-picture" onclick="newsInfo(2)" style="background-image:url('img/noticias/BOGOTA.jpg')"></div>
+                                <div class="cell-picture" onclick="newsInfo(2)" style="background-image:url('img/noticias/PUESTO 1.jpg')"></div>
                                 <div class="cell-picture-path" style="display:none">img/noticias/BOGOTA.jpg</div>
                                 <div class="cell-info">
                                     <div class="cell-title" onclick="newsInfo(2)">
-                                            Bogota, cultura y diversion
+                                            TOP TEN EDM MUSIC & DANCE SONGS
+
 
                                     </div>
                                     <div class="cell-viewmore" onclick="newsInfo(2)">
                                         Leer Más
                                     </div>
-                                    <div class="cell-detail" onclick="newsInfo(2)" style="display:none">
-                                            Si quieres combinar cultura y diversión, Bogotá es el destino ideal para ti. 
-                                            La capital colombiana ofrece diferentes opciones culturales, en el día puedes visitar la Biblioteca Virgilio Barco, Teatro Colón, Casa Cultural Gabriel García Marques, el museo de oro, etc. y para cerrar el día, visita la  Zona T, se encuentra en la zona rosa y en ella puedes encontrar una gran variedad de cafés, bares, discotecas y restaurantes, diversión para todos los gustos.
-                                             </div>
                                 </div>
                                 <div class="cell-separator"></div>
                             </li>
@@ -398,88 +391,349 @@ Si lo que quieres es ser parte de una de las experiencias mas asombrosas del mun
 
 
 
-                            <li class="news-3">
-                                    <div class="cell-picture" onclick="newsInfo(3)" style="background-image:url('img/noticias/BOLIVIA.jpg')"></div>
-                                    <div class="cell-picture-path" style="display:none">img/noticias/BOLIVIA.jpg</div>
-                                    <div class="cell-info">
-                                        <div class="cell-title" onclick="newsInfo(3)">
-                                                Bolivia, descubrimiento y aventura    
-                                        </div>
-                                        <div class="cell-viewmore" onclick="newsInfo(3)">
-                                            Leer Más
-                                        </div>
-                                        <div class="cell-detail" onclick="newsInfo(3)" style="display:none">
-                                                Si lo que quieres es descubrir lugares increíbles, Bolivia es una parada.
-                                                Puedes aventurarte y recorrer el país como uno de los muchos mochileros que incluyen este trayecto en su ruta o ir por lo seguro y comprar tus tickets de avión o autobús.
-                                                Te recomendamos visitar el Lago Titicaca, el Salar de Uyuni, el Parque Nacional Noel Kempff Mercado, Cal Orcko, entre otros.
-                                                Eso sí, no olvides llevar ropa abrigada y tu cámara fotográfica, te sorprenderán sus paisajes.
-                                                   </div>
-                                    </div>
-                                    <div class="cell-separator"></div>
-                                </li>
-
-
-
-
-
-                                <li class="news-4">
-                                        <div class="cell-picture" onclick="newsInfo(4)" style="background-image:url('img/noticias/REPUBLICA_DOMINICANA.jpg')"></div>
-                                        <div class="cell-picture-path" style="display:none">img/noticias/REPUBLICA_DOMINICANA.jpg</div>
-                                        <div class="cell-info">
-                                            <div class="cell-title" onclick="newsInfo(4)">
-                                                    República Dominicana, arena y sol
-   
-                                            </div>
-                                            <div class="cell-viewmore" onclick="newsInfo(4)">
-                                                Leer Más
-                                            </div>
-                                            <div class="cell-detail" onclick="newsInfo(4)" style="display:none">
-                                                    Si necesitas relajarte, cierra los ojos y piensa que estás acostado en una hermosa playa  con cielo azul y arena blanca, si lo hiciste, no dudes en visitar República Dominicana. Las ofertas de hospedaje son variadas y están al alcance de todos los bolsillos.
-                                                    No lo pienses más, esta es tu oportunidad para hacer deportes acuáticos  nadar con delfines y estar en contacto con la naturaleza.
-                                                        </div>
-                                        </div>
-                                        <div class="cell-separator"></div>
-                                    </li>
-
-
-
-                                    <li class="news-5">
-                                            <div class="cell-picture" onclick="newsInfo(5)" style="background-image:url('img/noticias/CANADA.jpg')"></div>
-                                            <div class="cell-picture-path" style="display:none">img/noticias/CANADA.jpg</div>
-                                            <div class="cell-info">
-                                                <div class="cell-title" onclick="newsInfo(5)">
-                                                        Canadá, tranquilidad y naturaleza
-
-       
-                                                </div>
-                                                <div class="cell-viewmore" onclick="newsInfo(5)">
-                                                    Leer Más
-                                                </div>
-                                                <div class="cell-detail" onclick="newsInfo(5)" style="display:none">
-                                                        Si quieres practicar tu inglés o francés, visita Quebec, una ciudad tranquila y pintoresca, con un aire francés, ideal para recorrer a pie, en sus calles puedes encontrar pintores, acróbatas , cantantes  y demás artistas.  Existe además una variada oferta de plazas, bares y cafés. 
-
-                                                        Otros lugares de interés en Cánada son el Parque Provincial de los Dinosaurios, en Alberta, al oeste de Canadá, Saskatchewan, una provincia del norte del país, que es también uno de los mejores sitios para visualizar una Aurora Boreal en todo el mundo, y las inflatable Cataratas del Niágara, que se encuentran justo en la frontera con Estados Unidos.
-                                                              </div>
-                                            </div>
-                                            <div class="cell-separator"></div>
-                                        </li>
-
 
 
                     
                     </ul>
                 </div>
                 <div id="goldenlifestyle_item" style="display:none">
-                    <img src="img/noticias/ARGENTINA.jpg" class="item-picture" />
 
-                    <div class="item-description">
-                        <h2 class="item-title">
-                                LOS 5 DESTINOS QUE DEBES VISITAR ANTES DE LOS 30
-                        </h2>
-                        <p class="item-detail">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                         </p>
+
+
+                    <div class="item-news item-news-1" >
+                            <h2 class="item-main-title">
+                                    LOS 5 DESTINOS QUE DEBES VISITAR ANTES DE LOS 30
+                            </h2>
+        
+                            <img src="img/noticias/BOGOTA.jpg" class="item-picture" />
+                            <div class="item-description">
+                                <h2 class="item-title">
+                                        1. Bogota, cultura y diversion
+        
+                                </h2>
+                                <p class="item-detail">
+                                        Si quieres combinar cultura y diversión, Bogotá es el destino ideal para ti. 
+                                        La capital colombiana ofrece diferentes opciones culturales, en el día puedes visitar la Biblioteca Virgilio Barco, Teatro Colón, Casa Cultural Gabriel García Marques, el museo de oro, etc. y para cerrar el día, visita la  Zona T, se encuentra en la zona rosa y en ella puedes encontrar una gran variedad de cafés, bares, discotecas y restaurantes, diversión para todos los gustos.
+                                    </p>
+                            </div>
+                            <br/>
+                            <br/>
+        
+                            <img src="img/noticias/BOLIVIA.jpg" class="item-picture" />
+                            <div class="item-description">
+                                <h2 class="item-title">
+                                        2. Bolivia, descubrimiento y aventura
+                                </h2>
+                                <p class="item-detail">
+                                        Si lo que quieres es descubrir lugares increíbles, Bolivia es una parada.
+        Puedes aventurarte y recorrer el país como uno de los muchos mochileros que incluyen este trayecto en su ruta o ir por lo seguro y comprar tus tickets de avión o autobús.
+        Te recomendamos visitar el Lago Titicaca, el Salar de Uyuni, el Parque Nacional Noel Kempff Mercado, Cal Orcko, entre otros.
+        Eso sí, no olvides llevar ropa abrigada y tu cámara fotográfica, te sorprenderán sus paisajes.
+        
+                                    </p>
+                            </div>
+                            <br/>
+                            <br/>
+        
+                            <img src="img/noticias/REPUBLICA_DOMINICANA.jpg" class="item-picture" />
+                            <div class="item-description">
+                                <h2 class="item-title">
+                                        3. República Dominicana, arena y sol
+        
+                                </h2>
+                                <p class="item-detail">
+                                        Si necesitas relajarte, cierra los ojos y piensa que estás acostado en una hermosa playa  con cielo azul y arena blanca, si lo hiciste, no dudes en visitar República Dominicana. Las ofertas de hospedaje son variadas y están al alcance de todos los bolsillos.
+                                        No lo pienses más, esta es tu oportunidad para hacer deportes acuáticos  nadar con delfines y estar en contacto con la naturaleza.
+                                        
+        
+                                    </p>
+                            </div>
+                            <br/>
+                            <br/>
+        
+                            <img src="img/noticias/ARGENTINA.jpg" class="item-picture" />
+                            <div class="item-description">
+                                <h2 class="item-title">
+                                        4. Argentina, más que tango
+        
+        
+                                </h2>
+                                <p class="item-detail">
+                                        La oferta en Argentina es amplia, si quieres conocer alo diferente sin extrañar el movimiento de una gran ciudad, visita Buenos Aires, puedes caminar a lo largo de la Av. Corrientes, cruzar el Obelisco y avanzar hasta la Av. De Mayo para llegar a la Plaza de Mayo y a la Casa Rosa, en la misma dirección puedes conocer San Telmo y terminar la tarde en Caminito.
+        Si lo que quieres es ser parte de una de las experiencias mas asombrosas del mundo,  asegura tu ticket para El Tren a las Nubes, uno de los tres ferrocarriles más altos del mundo. El tren sale desde la cuidad de Salta y recorre un trayecto de 217 km, a una velocidad de 35 km/h. (El Tren a las Nubes no opera durante los meses de verano, diciembre a marzo, época de lluvias). 
+        
+                                    </p>
+                            </div>
+                            <br/>
+                            <br/>
+        
+        
+        
+                            <img src="img/noticias/CANADA.jpg" class="item-picture" />
+                            <div class="item-description">
+                                <h2 class="item-title">
+                                        5. Canadá, tranquilidad y naturaleza
+        
+        
+        
+                                </h2>
+                                <p class="item-detail">
+                                        Si quieres practicar tu inglés o francés, visita Quebec, una ciudad tranquila y pintoresca, con un aire francés, ideal para recorrer a pie, en sus calles puedes encontrar pintores, acróbatas , cantantes  y demás artistas.  Existe además una variada oferta de plazas, bares y cafés. 
+        
+        Otros lugares de interés en Cánada son el Parque Provincial de los Dinosaurios, en Alberta, al oeste de Canadá, Saskatchewan, una provincia del norte del país, que es también uno de los mejores sitios para visualizar una Aurora Boreal en todo el mundo, y las inflatable Cataratas del Niágara, que se encuentran justo en la frontera con Estados Unidos.
+        
+                                    </p>
+                            </div>
+                            <br/>
+                            <br/>
                     </div>
+
+
+
+
+
+
+
+
+
+                    <div class="item-news item-news-2" >
+                            <h2 class="item-main-title">
+                                    TOP TEN EDM MUSIC & DANCE SONGS
+
+                            </h2>
+        
+                            <img src="img/noticias/PUESTO 1.jpg" class="item-picture" />
+                            <div class="item-description">
+                                <h2 class="item-title">
+                                        #1 Wolves - Selena Gomez X Marshmello
+
+        
+                                </h2>
+                                <p class="item-detail">
+                                        Semanas en el chart : 7
+                                        Posición mas alta obtenida: 1
+                                        Este dance-country escrito por Selena y producida Marshmello y Andrew Watt, fue lanzado como sencillo el 25 de octubre de 2017 a través de Interscope Records. 
+                                        </p>
+                            </div>
+                            <br/>
+                            <br/>
+        
+                            <img src="img/noticias/PUESTO 2.jpg" class="item-picture" />
+                            <div class="item-description">
+                                <h2 class="item-title">
+                                        #2 Silence - Marshmello Featuring Khalid
+
+                                </h2>
+                                <p class="item-detail">
+                                        Semanas en el chart : 17
+Posición mas alta obtenida: 1
+La superestrella de la música dance, Marshmello y el aclamado cantautor, Khalid, cierran el año triunfando con su éxito "Silence". La canción, además, ha acumulado 167 millones de transmisiones en Spotify.
+
+        
+                                    </p>
+                            </div>
+                            <br/>
+                            <br/>
+        
+                            <img src="img/noticias/PUESTO 3.jpg" class="item-picture" />
+                            <div class="item-description">
+                                <h2 class="item-title">
+                                        #3 Let Me Go - Hailee Steinfeld & Alesso Featuring Florida Georgia Line & Watt
+
+        
+                                </h2>
+                                <p class="item-detail">
+                                        Semanas en el chart : 13
+Posición mas alta obtenida: 3
+Lanzada a través de Republic Records el 8 de septiembre de 2017 y calificada como una "colaboración sorprendente con todos los ingredientes correctos para que sus letras se peguen rápidamente en la cabeza". Sin duda es una canción sorprendentemente pegadiza y muy optimista". 
+
+                                    </p>
+                            </div>
+                            <br/>
+                            <br/>
+        
+                            <img src="img/noticias/PUESTO 4.jpg" class="item-picture" />
+                            <div class="item-description">
+                                <h2 class="item-title">
+                                        #4 Something Just Like This - The Chainsmokers & Coldplay
+
+        
+        
+                                </h2>
+                                <p class="item-detail">
+                                        Semanas en el chart : 42
+Posición mas alta obtenida: 1
+La característica melodía de Chris Martin sobre una base de piano, matizada con los sonidos de electro house del duo de disc jockey y productores The Chainsmokers. A pesar, del predecible resultado de esta colaboración, esta canción se ha convertido en un hit.
+
+                                    </p>
+                            </div>
+                            <br/>
+                            <br/>
+        
+        
+        
+                            <img src="img/noticias/PUESTO 5.jpg" class="item-picture" />
+                            <div class="item-description">
+                                <h2 class="item-title">
+                                        #5 Stay - Zedd & Alessia Cara
+
+        
+        
+        
+                                </h2>
+                                <p class="item-detail">
+                                        Semanas en el chart : 42
+Posición mas alta obtenida: 1
+La canción lanzada el 23 de febrero de 2017, es una acertada combinación de ritmos electrónicos con dancehall.  
+Es parte del soundtrack de la película Everything, Everything. Esta canción, que te invita relajarte y beber ron con cola “Living on my sofa, drinking rum and cola, underneath the rising sun", también se utilizó en varios anuncios de Pepsi.
+
+                                    </p>
+                            </div>
+                            <br/>
+                            <br/>
+
+
+
+
+
+                            <img src="img/noticias/PUESTO 6.jpg" class="item-picture" />
+                            <div class="item-description">
+                                <h2 class="item-title">
+                                        #6 No Promises - Cheat Codes Featuring Demi Lovato
+
+
+        
+        
+        
+                                </h2>
+                                <p class="item-detail">
+                                        Semanas en el chart : 36
+                                        Posición mas alta obtenida: 2
+                                        Grabada por Demi Lovato y el trio de DJs Cheat Codes. Esta canción que debutó en radios estadounidenses el 11 de abril de este año fue creada para ser disfrutada en la pista de baile.
+                                        Esta canción estuvo en los listados de las 20 canciones más populares en Latvia, Australia, Malasia, Nueva Zelanda, Polonia, Portugal y Reino Unido y tras 36 semanas de estar en el listado, cierra el año en el la sexta posición de Billboard.
+                                        
+                                    </p>
+                            </div>
+                            <br/>
+                            <br/>
+
+
+
+
+
+                            <img src="img/noticias/PUESTO 7.jpg" class="item-picture" />
+                            <div class="item-description">
+                                <h2 class="item-title">
+                                        #7 It Ain't Me - Kygo x Selena Gomez
+
+                                        
+        
+        
+                                </h2>
+                                <p class="item-detail">
+                                        Semanas en el chart : 43
+                                        Posición mas alta obtenida: 2
+                                        Esta colaboración con el DJ y productor noruego Kygo fue un éxito comercial seguro, se dice que la letra de la canción está dedicada a Justin Bieber, antes de que retomaran su relación.
+                                        
+        
+                                    </p>
+                            </div>
+                            <br/>
+                            <br/>
+
+
+
+
+
+                            <img src="img/noticias/PUESTO 8.jpg" class="item-picture" />
+                            <div class="item-description">
+                                <h2 class="item-title">
+                                        #8 Faking It - Calvin Harris Featuring Kehlani & Lil Yachty
+
+
+                                        
+        
+        
+                                </h2>
+                                <p class="item-detail">
+                                        Semanas en el chart : 23
+Posición mas alta obtenida: 8
+Este single escrito por Calvin Harris en conjunto con la cantante Kehlani y el rapero Lil Yachty,  es una pieza menos bailable y más melancólica.
+Tras 23 en el chart, “Faking It”  cierra el año en el puesto 8 de la lista Billboard Dance Electronic Songs.
+
+                                    </p>
+                            </div>
+                            <br/>
+                            <br/>
+
+
+
+
+
+                            <img src="img/noticias/PUESTO 9.jpg" class="item-picture" />
+                            <div class="item-description">
+                                <h2 class="item-title">
+                                        #9 I Miss You - Clean Bandit Featuring Julia Michaels
+
+
+                                        
+        
+        
+                                </h2>
+                                <p class="item-detail">
+                                        Semanas en el chart : 6
+Posición mas alta obtenida: 9
+El tema está compuesto por el trío británico y la compositora Julia Michaels ha sido descrito por criticos de Billboard como "repleta de elementos sinfónicos brillantes“ y "una hermosa mezcla de melancolía y melodía". 
+
+        
+                                    </p>
+                            </div>
+                            <br/>
+                            <br/>
+
+
+
+
+
+                            <img src="img/noticias/PUESTO 10.jpg" class="item-picture" />
+                            <div class="item-description">
+                                <h2 class="item-title">
+                                        #10 Best Friend - Sofi Tukker Featuring NERVO, The Knocks & Alisa Ueno
+
+
+                                        
+        
+        
+                                </h2>
+                                <p class="item-detail">
+                                        Semanas en el chart : 8
+                                        Posición mas alta obtenida: 10
+                                         Sofi Tukker es un dúo musical neoyorkino formado por Sophie Hawley-Weld y Tucker Halpern. Su canción, "Best Friend", divertida y pegajoza, se convirtió en una revelación al ser elegido como el tema promocional del iPhone X.
+                                        “Best friend“, cuenta con la colaboración de las productoras y hermanas australianas Nervo, la pareja de productores americanos The Knocks y la vocalista Alisa Ueno. 
+                                        
+        
+                                    </p>
+                            </div>
+                            <br/>
+                            <br/>
+
+                            <br/>
+                            <br/>
+
+                            <p style="font-style:italic;width:90%;padding-left:5%;">
+                                    FUENTE: 
+                                    https://www.billboard.com/charts/dance-electronic-songs 
+                                    Chart hot dance / Electronic songs
+                                    
+                            </p>
+                    </div>
+
+                    
+
+
+                   
+
+                    
                 </div>
             </div>
 
@@ -737,10 +991,10 @@ Si lo que quieres es ser parte de una de las experiencias mas asombrosas del mun
         <footer>
             <div class="swiper-container">
                 <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="img/miller_slide_1.png" alt="" /></div>
-                <div class="swiper-slide"><img src="img/miller_slide_2.png" alt="" /></div>
-                <div class="swiper-slide"><img src="img/miller_slide_3.png" alt="" /></div>
-                <div class="swiper-slide"><img src="img/miller_slide_4.jpg" alt="" /></div>
+                    <div class="swiper-slide"><img src="img/miller_slide_1.png" alt="" /></div>
+                    <div class="swiper-slide"><img src="img/miller_slide_2.png" alt="" /></div>
+                    <div class="swiper-slide"><img src="img/miller_slide_3.png" alt="" /></div>
+                    <div class="swiper-slide"><img src="img/miller_slide_4.jpg" alt="" /></div>
                 </div>
             </div>
             <div class="disclaimer"></div>

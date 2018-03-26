@@ -82,6 +82,11 @@ function init(){
   overlay.click(onClick);
   hamburger.click(onClick);
 
+
+
+  //SWIPER IN GOLDEN LIFESTYLE
+  //var swiper2 = new Swiper('.swiper-container-goldenlifestyle');
+
   //SWIPER IN THE FOOTER
   var swiper = new Swiper('.swiper-container');
 
@@ -101,7 +106,7 @@ function init(){
     SPOTIFY
   */
  fixSpotify();
- $('#spotify_iframe').attr('src','https://open.spotify.com/user/millersounds');
+ //$('#spotify_iframe').attr('src','https://open.spotify.com/user/millersounds');
 
 
 
@@ -466,17 +471,22 @@ var  actualLifeStyleSection="list";
 
 
 function newsInfo(newsID){
+
   $('#goldenlifestyle_list').hide();
   $('#goldenlifestyle_item').show();
+
+  $('.item-news').css('display','none');
   actualLifeStyleSection="info";
   $('#backbutton').css('visibility','visible');
 
-  //displays newsInfo
 
+  //displays newsInfo
+  $('.item-news.item-news-'+newsID).css('display','block');
+/*
   $('#goldenlifestyle_item .item-picture').attr('src',$('.news-'+newsID).find('.cell-picture-path').html());
   $('#goldenlifestyle_item .item-title').html($('.news-'+newsID).find('.cell-title').html());
   $('#goldenlifestyle_item .item-detail').html($('.news-'+newsID).find('.cell-detail').html());
-
+*/
 
 }
 

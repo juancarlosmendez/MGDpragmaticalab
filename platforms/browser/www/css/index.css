@@ -1040,6 +1040,7 @@ tr:first-child > td > .fc-day-grid-event {
   height:500px;
   z-index: 999999;
   background-color: #000;
+  display: none;
 }
 .tutorial img{
   width: 96%;

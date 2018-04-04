@@ -1,4 +1,20 @@
+/*
+  ====================================================================
+  Global Vars
+  ====================================================================
+*/
 var platform='ANDROID'; // ANDROID / IOS
+var SERVICES_HOST='http://appdoyoudo.com/miller/services/';
+var micomunidad_friends=null;
+var sessionID;
+var sessionPicture;
+var sessionName;
+var sessionLastName;
+var sessionEmail;
+var sessionCiudad;
+
+
+
 
 var app = {
   // Application Constructor
@@ -28,21 +44,42 @@ var app = {
 
     //var ref = cordova.InAppBrowser.open('http://apache.org', '_blank', 'location=yes');
       //init();
+    sessionChecker();
+    
   }
 };
+
+function sessionChecker(){
+  if(window.localStorage.getItem("sessionID")!=null){
+    sessionID = window.localStorage.getItem("sessionID");
+    sessionPicture=window.localStorage.getItem("sessionPicture");
+    sessionName=window.localStorage.getItem("sessionName");
+    sessionLastName=window.localStorage.getItem("sessionLastName");
+    sessionEmail=window.localStorage.getItem("sessionEmail");
+    sessionCiudad=window.localStorage.getItem("sessionCiudad");
+    //muestra el tutorial
+    setTimeout(showInfo,1000);
+  }
+  else{
+    window.location='authentication.html';
+  }
+}
 
 /* 
   INIT JQUERY
 */
 (function ($) {
+  //window.location='authentication.html';
 init();
 }($));
 
 //window.location.href='blank.html';
 
 
-/* 
-  INITIALIZATION
+/*
+  ====================================================================
+  Initialization
+  ====================================================================
 */
 function init(){
   'use strict';  
@@ -175,14 +212,32 @@ setTimeout(function(){
 
 
 
+    /*
+      Mi Comunidad
+    */
+   /*
+   setTimeout(function(){
+
+    alert(window.localStorage.getItem("fasdfadsf") );
+
+   },2000);
+*/
 }
 
 
 
 
 
+
+
+
+
+
+
 /*
-Methods
+  ====================================================================
+  Methods
+  ====================================================================
 */
 
 
@@ -235,6 +290,7 @@ switch(pantalla) {
   break;    
   case 'micomunidad':
   $('#screen_title').html('MI COMUNIDAD');
+  loadFriends();
       
   break;
   case 'galeria':
@@ -559,14 +615,33 @@ function addFriend(){
     showLoaderOnConfirm: true,
     preConfirm: (email) => {
       return new Promise((resolve) => {
-        setTimeout(() => {
-          if (email === 'jmendez.ec@gmail.com') {
-            swal.showValidationError(
-              'Ya has invitado a este amigo.'
-            )
-          }
-          resolve()
-        }, 2000)
+
+
+
+        var data = {
+          'Email': email,
+          'ParentID': sessionID
+        };
+      $.post(SERVICES_HOST+"register_invite.php", data)
+          .done(function(submitResponse) {
+              if(submitResponse.success==1){
+                loadFriends();
+                resolve();
+              }
+              else{
+                swal.showValidationError(
+                  submitResponse.error
+                )
+              }
+              }, 'json')
+          .fail( function(xhr, textStatus, errorThrown) {
+              noInternetAction();
+      });   
+
+
+
+
+
       })
     },
     allowOutsideClick: () => !swal.isLoading()
@@ -641,4 +716,100 @@ function canjear(productID){
 
 function closeInfo(){
   $('.tutorial').fadeOut();
+}
+
+
+function showInfo(){
+  $('.tutorial').fadeIn();
+}
+
+
+
+/*
+  ------------------  MI COMUNIDAD ---------------------
+*/
+function loadFriends(){
+
+  //loads my Session info
+  $('.user-info .user-name').html(sessionName+" "+sessionLastName);
+  $('.user-info .user-city').html(sessionCiudad);
+
+  //loads my friends from web service
+  var data = {
+    'parentid': sessionID
+  };
+  $.post(SERVICES_HOST+"getFriends.php", data)
+    .done(function(submitResponse) {
+      $('.user-amigos-count').html(submitResponse.amigos);
+      $('.user-goldenpoints').html(submitResponse.goldenpoints);
+      //adds the add friend button
+      processFriends(submitResponse.data);
+      window.localStorage.setItem("micomunidad_amigos", JSON.stringify(submitResponse.data));
+    }, 'json')
+    .fail( function(xhr, textStatus, errorThrown) {
+      if(window.localStorage.getItem("micomunidad_amigos") !=null) {
+        processFriends(JSON.parse(window.localStorage.getItem("micomunidad_amigos")));
+      }
+      noInternetAction();
+        /*swal({
+            title: 'Atención!',
+            text: 'No se puede acceder en estos momentos, por favor inténtalo más tarde. Gracias',
+            type: 'error',
+            confirmButtonText: 'OK'
+          });*/
+    });
+}
+
+
+function processFriends(data){
+  $('.micomunidad_amigos').empty();
+  $('.micomunidad_amigos').append("<div class='row_col3' onclick='addFriend()'>  <img src='img/miller_friend_add.png' alt=''/>  <div class='name_friend add_new_label'>Add New</div>  </div>");
+      $.each(data,function(key,obj){
+        //alert(key+": "+obj.Name);
+        if(obj.Confirmed==0){
+          $('.micomunidad_amigos').append("<div class='row_col3'> <img src='img/miller_friend_unconfirmed.png' alt=''/> <div class='name_friend'>"+obj.Name+" "+obj.LastName+"</div> </div>");
+        }
+        else{  //then its 1
+          $('.micomunidad_amigos').append("<div class='row_col3'> <img src='img/miller_friend_confirmed.png' alt=''/> <div class='name_friend'>"+obj.Name+" "+obj.LastName+"</div> </div>");
+        }
+      });
+}
+
+
+
+function noInternetAction(){
+  alert("no hay internet");
+
+}
+
+function logout(){
+  swal({
+    title: 'MGD',
+    text: "¿Esta seguro de cerrar la sesión?",
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#d33',
+    cancelButtonColor: '#000000',
+    confirmButtonText: 'Cerrar Sesión.'
+  }).then((result) => {
+    if (result.value) {
+      micomunidad_friends=null;
+      sessionID=null;
+      sessionPicture=null;
+      sessionName=null;
+      sessionLastName=null;
+      sessionEmail=null;
+      sessionCiudad=null;
+      window.localStorage.setItem("micomunidad_amigos",null);
+      window.localStorage.setItem("sessionID",null);
+      window.localStorage.setItem("sessionPicture",null);
+      window.localStorage.setItem("sessionName",null);
+      window.localStorage.setItem("sessionLastName",null);
+      window.localStorage.setItem("sessionEmail",null);
+      window.localStorage.setItem("sessionCiudad",null);
+      window.location='authentication.html';
+      localStorage.clear();
+    }
+  });
+  
 }

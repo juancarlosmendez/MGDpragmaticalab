@@ -310,6 +310,7 @@ switch(pantalla) {
   break;
   case 'goldenstore':
   $('#screen_title').html('GOLDEN STORE');
+  updateGoldenPoints();
   
   break;
   default:
@@ -540,6 +541,9 @@ function productInfo(productID){
   $('#goldenstore_item .item-title').html($('.product-'+productID).find('.cell-title').html());
   $('#goldenstore_item .item-price').html($('.product-'+productID).find('.cell-price').html());
   $('#goldenstore_item .item-description').html($('.product-'+productID).find('.cell-description').html());
+  $('#goldenstore_item .item-action').attr('onclick',"canjear("+productID+","+$('.product-'+productID).find('.cell-price').html()+",'"+$('.product-'+productID).find('.cell-title').html()+"')");
+
+  
 
 }
 
@@ -689,6 +693,22 @@ function addProducto(){
 
 }
 
+
+
+function updateGoldenPoints(){
+  var data = {
+    'UserID': window.localStorage.getItem("sessionID")
+  };
+  $.post(SERVICES_HOST+"getGoldenPoints.php", data)
+    .done(function(submitResponse) {
+      window.localStorage.setItem("sessionGoldenPoints",submitResponse.GoldenPoints);
+      
+    }, 'json')
+    .fail( function(xhr, textStatus, errorThrown) {     
+      noInternetAction();        
+    });
+}
+
 function displayGoldenPoints(){
   /*swal({
     title: 'Atención!',
@@ -698,19 +718,85 @@ function displayGoldenPoints(){
   });*/
   swal({
     title: 'MGD',
-    text: 'Actualmente tienes 1200 GOLDEN POINTS',
+    text: 'Actualmente tienes '+window.localStorage.getItem("sessionGoldenPoints")+' GOLDEN POINTS',
     confirmButtonText: 'OK'
   });
 }
 
 
 
-function canjear(productID){
+function canjear(productID,goldenPoints,productName){
+
+
+
+  if(goldenPoints<=window.localStorage.getItem("sessionGoldenPoints")){
+  swal({
+    title: 'REGISTRA LOS DATOS DE ENVIO',
+    html:
+      '<input id="swal-input1" class="swal2-input" placeholder="CIUDAD">' +
+      '<input id="swal-input2" class="swal2-input" placeholder="DIRECCION" style="margin-top:-17px;">'+
+      '<input id="swal-input3" class="swal2-input" placeholder="CELULAR" style="margin-top:-17px;">',
+      
+    confirmButtonText: 'REGISTRAR Y CANJEAR',
+    preConfirm: function () {
+      return new Promise(function (resolve) {
+        resolve([
+          $('#swal-input1').val(),
+          $('#swal-input2').val()
+        ])
+      })
+    },
+    onOpen: function () {
+      $('#swal-input1').focus()
+    }
+  }).then(function (result) {
+
+
+    var data = {
+      'ProductID': productID,
+      'UserID': window.localStorage.getItem("sessionID"),
+      'GoldenPoints': goldenPoints,
+      'Address': result.value[1],
+      'Email': window.localStorage.getItem("sessionEmail"),
+      'Phone': result.value[2],
+      'City': result.value[0],
+      'ProductName': productName
+    };
+
+
+    $.post(SERVICES_HOST+"canjear.php", data)
+    .done(function(submitResponse) {
+      updateGoldenPoints();
+      
+    }, 'json')
+    .fail( function(xhr, textStatus, errorThrown) {
+     
+      noInternetAction();        
+    });
+
+
+    swal("Listo, nos comunicaremos contigo en breve para coordinar la entrega. Gracias");
+
+    
+    
+  }).catch(swal.noop)
+
+  /*
   swal({
     type: 'error',
     title: 'MGD',
     html: 'No cuentas con suficientes GoldenPoints para canjear este artículo.'
-  })
+  })*/
+
+}
+else{
+  swal({
+    title: 'Atención!',
+    text: 'No tienes los suficientes GoldenPoints para canjear este producto.',
+    type: 'error',
+    confirmButtonText: 'OK'
+  });
+}
 }
 
 
@@ -758,6 +844,8 @@ function loadFriends(){
             confirmButtonText: 'OK'
           });*/
     });
+
+    updateGoldenPoints();
 }
 
 

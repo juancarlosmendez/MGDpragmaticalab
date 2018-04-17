@@ -14,9 +14,7 @@
         PracmaticaLab
     </author>
     <content src="index.html" />
-    <allow-navigation href="*" />
-    <access origin="https://open.spotify.com/*" />
-    <access origin="http://appdoyoudo.com/*" />
+    <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />

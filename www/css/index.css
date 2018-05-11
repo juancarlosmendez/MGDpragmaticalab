@@ -176,7 +176,7 @@ footer {
   width: 100%;
   z-index: 5;
   background-size: 100% 100%;
-  height: 85px;
+  height: 111px;   /* Sin logout es 85px */
   border-top: solid #bd9600 3px;
 }
 
@@ -340,6 +340,16 @@ nav li img{
   background-repeat: no-repeat;
   background-size: 100% 100%;    
   border-bottom: solid #bd9600 2px;
+}
+.logoutButton{
+  color: #bd9600;
+  font-size: 15px;
+  height: 26px;
+  width: 100%;
+  padding-top: 5px;
+  text-align: center;
+  border-bottom: solid #bd9600 2px;
+  font-weight: bold;
 }
 .space{
   width: 100%;

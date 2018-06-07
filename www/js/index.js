@@ -393,44 +393,7 @@ function loadEventosDia(fecha){
       hideLoader();
       noInternetAction();
       
-<<<<<<< HEAD
-    });
-=======
-  break;
-  case 'galeria':
-  $('#screen_title').html('GALERIA');
-  initGaleria();
-
-
-  
-  break;
-  case 'eventos':
-  $('#screen_title').html('EVENTOS');
-  initEventos();
-  break;
-  case 'goldenlifestyle':
-  $('#screen_title').html('GOLDEN LIFESTYLE');
-  initGoldenLifeStyle();
-  break;
-  case 'goldenstore':
-  $('#screen_title').html('GOLDEN STORE');
-  updateGoldenPoints();
-  
-  break;
-  default:
-
-  break;
-}
-if( platform=='IOS' && pantalla=='spotify'){
-  var ref = cordova.InAppBrowser.open('https://open.spotify.com/user/millersounds', '_blank', 'closebuttoncaption=volver a MGD,location=no');
-}
-else{
-  if(willTouchDrawer){
-    touchDrawer();
-  }
-  $('#'+pantalla).css('display','block'); 
->>>>>>> f869ce9bfa6a37e112d8c86842dde5f962163b88
-}
+    });}
 
 function loadEventos(){
   showLoader();
@@ -640,12 +603,7 @@ function productInfo(productID){
   $('#goldenstore_item .item-price').html($('.product-'+productID).find('.cell-price').html());
   $('#goldenstore_item .item-description').html($('.product-'+productID).find('.cell-description').html());
   $('#goldenstore_item .item-action').attr('onclick',"canjear("+productID+","+$('.product-'+productID).find('.cell-price').html()+",'"+$('.product-'+productID).find('.cell-title').html()+"')");
-<<<<<<< HEAD
-=======
 
-  
-
->>>>>>> f869ce9bfa6a37e112d8c86842dde5f962163b88
 }
 
 function canjear(productID,goldenPoints,productName){
@@ -853,9 +811,6 @@ function displayGoldenPoints(){
 }
 
 
-<<<<<<< HEAD
-=======
-
 function canjear(productID,goldenPoints,productName){
 
 
@@ -945,7 +900,6 @@ function showInfo(){
 /*
   ------------------  MI COMUNIDAD ---------------------
 */
->>>>>>> f869ce9bfa6a37e112d8c86842dde5f962163b88
 function loadFriends(){
   showLoader();
   //loads my Session info
@@ -971,10 +925,7 @@ function loadFriends(){
       hideLoader();
       noInternetAction();
     });
-<<<<<<< HEAD
-=======
 
->>>>>>> f869ce9bfa6a37e112d8c86842dde5f962163b88
     updateGoldenPoints();
 }
 

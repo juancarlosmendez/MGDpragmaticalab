@@ -359,12 +359,11 @@ nav li:hover img {
   border-bottom: solid #bd9600 2px;
   font-weight: bold;
 }
-<<<<<<< HEAD
+
 .logoutButton:hover{
   color: #FFF;
 }
-=======
->>>>>>> f869ce9bfa6a37e112d8c86842dde5f962163b88
+
 .space{
   width: 100%;
   clear: both;

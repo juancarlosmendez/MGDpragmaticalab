@@ -80,6 +80,7 @@ function init(){
                     window.localStorage.setItem("sessionLastName",submitResponse.LastName);
                     window.localStorage.setItem("sessionEmail",submitResponse.Email);
                     window.localStorage.setItem("sessionCiudad",submitResponse.Ciudad);
+                    window.localStorage.setItem("sessionGoldenPoints",submitResponse.GoldenPoints);
                     window.location='index.html';
                 }
                 else{

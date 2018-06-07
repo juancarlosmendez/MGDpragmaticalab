@@ -245,6 +245,12 @@ textarea:focus, input:focus{
   margin-bottom: 5px;
 }
 
+.button_miller:hover{
+  border: solid #bd9600 2px;
+  color: #000000;
+  background: #bd9600;
+}
+
 
 .change::-webkit-input-placeholder {
   /* WebKit, Blink, Edge */

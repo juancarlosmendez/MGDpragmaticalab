@@ -234,6 +234,10 @@ function init(){
 
 
 function noInternetAction(){
-    alert("no hay internet");
+    swal({
+        type: 'error',
+        title: 'MGD',
+        html: 'No se ha podido establecer la conexión.'
+      });
   
   }

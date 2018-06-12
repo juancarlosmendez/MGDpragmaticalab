@@ -298,8 +298,7 @@ nav li:hover img {
   z-index: 9999999999;
 }
 #backbutton:hover{
-  background:#bd9600;
-  border-radius: 60px;
+  opacity: 0.7;
 }
 #backbutton img{
   height: 25px;

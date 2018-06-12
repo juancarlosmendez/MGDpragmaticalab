@@ -4,7 +4,7 @@
   ====================================================================
 */
 var platform='ANDROID'; // ANDROID (default) / IOS
-var SERVICES_HOST='http://appdoyoudo.com/miller/services/';
+var SERVICES_HOST='http://mgd.com.ec/services/';
 var micomunidad_friends=null;
 var sessionID;
 var sessionAge;

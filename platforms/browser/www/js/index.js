@@ -993,10 +993,12 @@ function loadEventosDia(fecha){
       addCancelButtonWithLabel: 'Cancelar',
       position: [20, 40], // for iPad pass in the [x, y] position of the popover
   };
-  window.plugins.actionsheet.show(options, null);
-
-
-
+  window.plugins.actionsheet.show(options, function(buttonIndex) {
+    setTimeout(function() {
+      // like other Cordova plugins (prompt, confirm) the buttonIndex is 1-based (first button is index 1)
+      alert('button index clicked: ' + buttonIndex);
+    });
+  });
 
 
 

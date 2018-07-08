@@ -1027,8 +1027,8 @@ function loadEventosDia(fecha){
             //destinationType: Camera.DestinationType.FILE_URI,
             //sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
             quality: 50,
-            allowEdit: true,
-        correctOrientation: true,  //Corrects Android orientation quirks
+            allowEdit: false,
+            correctOrientation: true,  //Corrects Android orientation quirks
             popoverOptions: new CameraPopoverOptions(300, 300, 100, 100, Camera.PopoverArrowDirection.ARROW_ANY)
         });
         

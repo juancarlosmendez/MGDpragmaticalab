@@ -1033,11 +1033,11 @@ function loadEventosDia(fecha){
         });
         
         // Reposition the popover if the orientation changes.
-        window.onorientationchange = function() {
+        /*window.onorientationchange = function() {
             var cameraPopoverHandle = new CameraPopoverHandle();
             var cameraPopoverOptions = new CameraPopoverOptions(0, 0, 100, 100, Camera.PopoverArrowDirection.ARROW_ANY);
             cameraPopoverHandle.setPosition(cameraPopoverOptions);
-        }
+        }*/
     });
     $("#avatar_uploader").change(function () {
       if (this.files && this.files[0]) {

@@ -18,22 +18,22 @@
 </head>
 <body>
     <div id="container" style="visibility: hidden">
-
+        
         <!--
             HEADER
         -->
         <header>
-                
+            
             <div id="screen_title" class="title" data-i18n='app-title'>GOLDEN STORE</div>
             <div id="backbutton">
-                    <img src="img/left-chevron.png" alt=""/>
-                </div>
-                <div id="hamburger" onclick="return false;">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-
+                <img src="img/left-chevron.png" alt=""/>
+            </div>
+            <div id="hamburger" onclick="return false;">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            
         </header>
         <nav class="clear">
             <div class="nav_header">
@@ -52,32 +52,38 @@
         <!--
             END OF HEADER
         -->
-
+        
         <!--
             CONTENT
         -->
         <div id="content">
-
+            
             <!--
                 SAFE IN THE CITY
             -->
             <div id="safeinthecity" class="section" style="display:none">   
                 <a href="#"  onclick="window.open('https://cabify.com/es', '_system');"><img class="cover" src="img/safeinthecity.png" alt=""/></a>
             </div>
-
+            
             <!--
                 SPOTIFY
             -->
             <div id="spotify" class="section" style="display:none">    
                 <iframe id="spotify_iframe" src="https://open.spotify.com/user/millersounds" frameborder="0" width="100%" allowtransparency="true"></iframe>     
             </div>
-
+            
             <!--
                 MI COMUNIDAD
             -->
             <div id="micomunidad" class="section" style="display:none">
                 <div class="micomunidad_top">
-                    <img class="user-avatar" src="img/miller_avatar.png" alt=""/>
+                    
+                   
+                    <div class="user-avatar" style="background-image: url('img/miller_avatar.png')"></div>                   
+
+                    <input id="avatar_uploader" type="file" name="pic" accept="image/*" style="display: none">
+
+
                     <div class="user-info">
                         <div class="user-name">
                             
@@ -103,35 +109,38 @@
                 </div>
                 <div class="space"></div>
                 <div class="micomunidad_amigos">
-            
+                    
                 </div>
             </div>
-
-
-
-
-
+            
+            
+            
+            
+            
             <!--
                 PHOTO GALLERY
             -->
-
+            
             <div id="galeria" class="section" style="display:none">
-                    <div id="albums" style="text-align:center;"></div>    
-                    <div id="links" style="text-align:center;"></div>
-
-                        <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
-                                <div class="slides"></div>
-                                <h3 class="title"></h3>
-                                <a class="prev">‹</a>
-                                <a class="next">›</a>
-                                <a class="close">×</a>
-                                <a class="play-pause"></a>
-                                <ol class="indicator"></ol>
-                            </div>
-                            <br/>
-
+                <div id="albums" style="text-align:center;"></div>    
+                <div id="links" style="text-align:center;"></div>
+                <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
+                    <div class="slides"></div>
+                    <h3 class="title"></h3>
+                    <a class="prev">‹</a>
+                    <a class="next">›</a>
+                    <a class="close">×</a>
+                    <!--
+                    <a class="play-pause"></a>
+                    <ol class="indicator"></ol>
+                    -->
+                    <div class="photo-like-wrapper">
+                        <img class="photo-like" src="img/like.png" alt=""/>
+                        <div class="photo-like-caption">650 Likes</div>
+                    </div>
+                </div>
             </div>
-
+            
             <!--
                 EVENTOS
             -->
@@ -149,7 +158,7 @@
                 </div>
                 <div id="goldenlifestyle_item" style="display:none"></div>
             </div>
-
+            
             <!--
                 GOLDEN STORE
             -->
@@ -185,7 +194,7 @@
                         </div>
                         <img src="img/arrow_down.png" alt=""/>
                     </div>
-
+                    
                 </div>
                 <div id="goldenstore_item" style="display:none">
                     <div class="item-picture">                                
@@ -204,7 +213,7 @@
                     <div class="item-description">
                         <p>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                         </p>
+                        </p>
                     </div>
                     <div class="revisar_goldenpoints" onclick="displayGoldenPoints()">
                         <div class="line-top"></div>
@@ -221,12 +230,12 @@
         <!--
             END OF CONTENT
         -->
-
+        
         <!--
             FOOTER
         -->
         <footer>
-
+            
             
             <div class="logoutButton" onclick="logout()">
                 LOGOUT
@@ -245,30 +254,33 @@
             END OF FOOTER
         -->
     </div>
-
+    
     <div class="tutorial">
         
         <img src="img/infoclose.png" alt="" onclick="closeInfo()" style="width: 40px;
         height: auto;
         position: fixed;
         right: 6%;
-top: 15px;" />
+        top: 15px;" />
         <img src="img/info.png" alt="" />
     </div>
-
-
+    
+    
     <div class="loading" style="display:none">
         <img src="img/botella.gif" alt="" />
     </div>
-
-
+    
+    
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/jquery.3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/ActionSheet.js"></script>
     <script type="text/javascript" src="js/moment.min.js"></script>
     <script type="text/javascript" src="js/swiper.min.js"></script>
     <script type="text/javascript" src="js/hammer.min.js"></script>
     <script type="text/javascript" src="js/fullcalendar/fullcalendar.min.js"></script>
-
+    <script type="text/javascript" src="js/jquery.uploadPreview.min.js"></script>
+    <script type="text/javascript" src="js/imgcache.js"></script>
+    
     <script src="js/blueimp-helper.js"></script>
     <script src="js/blueimp-gallery.js"></script>
     <script src="js/blueimp-gallery-fullscreen.js"></script>
@@ -277,10 +289,10 @@ top: 15px;" />
     <script src="js/blueimp-gallery-vimeo.js"></script>
     <script src="js/blueimp-gallery-youtube.js"></script>
     <script src="js/jquery.blueimp-gallery.js"></script>
-
+    
     <script src="js/sweetalert2.all.js"></script>
     <script src="js/sweetalert2.js"></script>
-
+    
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript">
         app.initialize();

@@ -75,7 +75,12 @@ function init(){
             .done(function(submitResponse) {
                 if(submitResponse.status==1){
                     window.localStorage.setItem("sessionID",submitResponse.ID);
-                    window.localStorage.setItem("sessionPicture",submitResponse.picture);
+                    if(submitResponse.picture!='' && submitResponse.picture!=null && submitResponse.picture!=undefined){
+                        window.localStorage.setItem("sessionPicture",submitResponse.picture);
+                    }
+                    else{
+                        window.localStorage.setItem("sessionPicture",'img/miller_avatar.png'); //by default displays the default in local folder
+                    }      
                     window.localStorage.setItem("sessionName",submitResponse.Name);
                     window.localStorage.setItem("sessionLastName",submitResponse.LastName);
                     window.localStorage.setItem("sessionEmail",submitResponse.Email);

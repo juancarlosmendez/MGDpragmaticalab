@@ -37,7 +37,8 @@
         container.trigger('opened')
       },
       onslide: function () {
-        container.trigger('slide', arguments)
+        container.trigger('slide', arguments);
+       
       },
       onslideend: function () {
         container.trigger('slideend', arguments)

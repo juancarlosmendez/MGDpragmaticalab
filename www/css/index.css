@@ -737,18 +737,19 @@ margin-bottom: 0px;
 */
 #galeria{
   width:100%;
-  padding-top: 20px;
+  padding-top: 20px;  
+  text-transform: capitalize;
 }
 #links{
   width:100%;
-
+  padding-top: 20px;
 }
 #links a{
   width: 43%;
-display: inline-block;
-vertical-align: top;
-margin-left: 2%;
-margin-right: 1%;
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 2%;
+  margin-right: 1%;
 }
 #links .foto{
   width: 100%;
@@ -761,7 +762,14 @@ margin-right: 1%;
   width:100%;
   height: auto;
   font-size: 1em;
-  color:#FFF;
+  color:#FFF;  
+  text-transform: capitalize;
+  margin-bottom: 1px;
+}
+#links .likes{
+  color: #bf9700;
+  /*font-style: italic;*/
+  margin-bottom: 20px;
 }
 
 #albums{
@@ -788,10 +796,28 @@ margin-right: 1%;
 #albums p{
   width:100%;
   height: auto;
-  font-size: 1em;
+  font-size: 1.1em;
   color:#FFF;
 }
-
+.photo-like-wrapper{
+  position: absolute;
+  bottom:0px;
+  left:0px;
+  width:100%;
+  text-align: left;
+  padding-left: 15px;
+}
+.photo-like{
+  width:50px;
+  margin-bottom: 10px;
+}
+.photo-like-caption{
+  color:#bf9700;
+  font-size: 1.1em;
+  text-align: left;
+  margin-bottom: 10px;
+  text-transform: capitalize;
+}
 
 
 
@@ -813,15 +839,22 @@ margin-right: 1%;
   display: inline-block;
   vertical-align: middle;
   margin-left: 5%;
-  width: 25%;
-  height: auto;
+  width: 100px;
+  height: 100px;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  border-radius: 100px; /* future proofing */
+  -khtml-border-radius: 100px; /* for old Konqueror browsers */
+  background-size: 100%;
+  background-repeat: no-repeat;
 }
 #micomunidad .micomunidad_top .user-info{
   display: inline-block;
   vertical-align: middle;
-  width: 60%;
+  width: 55%;
   height: auto;
   padding-left: 5%;
+  width:calc(80% - 100px);
 }
 #micomunidad .micomunidad_top .user-info .user-name{
   color: #FFFFFF;
@@ -1136,3 +1169,5 @@ tr:first-child > td > .fc-day-grid-event {
   margin-top:100px;
   width: 250px;
 }
+
+

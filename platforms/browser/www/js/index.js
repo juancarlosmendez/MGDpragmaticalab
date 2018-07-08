@@ -985,18 +985,14 @@ function loadEventosDia(fecha){
     
     var options = {
       //androidTheme: window.plugins.actionsheet.ANDROID_THEMES.THEME_DEVICE_DEFAULT_LIGHT, // default is THEME_TRADITIONAL
-      title: 'What do you want with this image?',
-      subtitle: 'Choose wisely, my friend', // supported on iOS only
-      buttonLabels: ['Share via Facebook', 'Share via Twitter'],
+      title: 'Imagen de perfil',
+      //subtitle: 'Choose wisely, my friend', // supported on iOS only
+      buttonLabels: ['Tomar Foto', 'Seleccionar de la Galería'],
       androidEnableCancelButton : true, // default false
       winphoneEnableCancelButton : true, // default false
-      addCancelButtonWithLabel: 'Cancel',
-      addDestructiveButtonWithLabel : 'Delete it',
+      addCancelButtonWithLabel: 'Cancelar',
       position: [20, 40], // for iPad pass in the [x, y] position of the popover
-      destructiveButtonLast: true // you can choose where the destructive button is shown
   };
-  // Depending on the buttonIndex, you can now call shareViaFacebook or shareViaTwitter
-  // of the SocialSharing plugin (https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin)
   window.plugins.actionsheet.show(options, null);
 
 

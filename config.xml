@@ -87,19 +87,6 @@
         <splash height="480" platform="ios" src="www/res/screen/ios/Default~iphone.png" width="320" />
 
 
-
-        <custom-config-file target="NSCameraUsageDescription" target="*-Info.plist" mode="merge" platform="ios">
-        <string>need camera access to take pictures</string>
-        </custom-config-file>
-        <custom-config-file target="NSPhotoLibraryUsageDescription" target="*-Info.plist" mode="merge" platform="ios">
-            <string>need photo library access to get pictures from there</string>
-        </custom-config-file>
-        <custom-config-file target="NSLocationWhenInUseUsageDescription" target="*-Info.plist" mode="merge" platform="ios">
-            <string>need location access to find things nearby</string>
-        </custom-config-file>
-        <custom-config-file target="NSPhotoLibraryAddUsageDescription" target="*-Info.plist" mode="merge" platform="ios">
-            <string>need photo library access to save pictures there</string>
-        </custom-config-file>
     </platform>
     <platform name="wp8">
         <icon height="99" platform="wp8" src="www/res/icon/wp8/ApplicationIcon.png" width="99" />

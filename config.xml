@@ -37,6 +37,11 @@
     <plugin name="cordova-plugin-vibration" source="npm" spec="~2.1.0" />
     <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />
     <plugin name="cordova-plugin-actionsheet" />
+    <plugin name="cordova-plugin-camera" spec="~2.1.1">
+        <variable name="CAMERA_USAGE_DESCRIPTION" value="App want to access your camera" />
+        <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="App want to access your camera to upload images" />
+
+ </plugin>
     <platform name="android">
         <icon density="ldpi" src="www/res/icon/android/drawable-ldpi-icon.png" />
         <icon density="mdpi" src="www/res/icon/android/drawable-mdpi-icon.png" />
@@ -133,7 +138,7 @@
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
-    <plugin name="cordova-plugin-camera" spec="~2.1.1" />
+    
 
     
 

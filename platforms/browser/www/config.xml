@@ -29,5 +29,5 @@
     <preference name="ios-statusbarstyle" value="black-opaque" />
     <preference name="StatusBarBackgroundColor" value="#000000" />
     <preference name="StatusBarDefaultScrollToTop" value="false" />
-    <preference name="CameraUsesGeolocation" value="false" />
+    <preference name="CameraUsesGeolocation" value="true" />
 </widget>

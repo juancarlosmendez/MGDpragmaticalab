@@ -1028,8 +1028,8 @@ function loadEventosDia(fecha){
             //sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
             quality: 50,
             allowEdit: false,
-            correctOrientation: true,  //Corrects Android orientation quirks
-            popoverOptions: new CameraPopoverOptions(300, 300, 100, 100, Camera.PopoverArrowDirection.ARROW_ANY)
+            //correctOrientation: true,  //Corrects Android orientation quirks
+            //popoverOptions: new CameraPopoverOptions(300, 300, 100, 100, Camera.PopoverArrowDirection.ARROW_ANY)
         });
         
         // Reposition the popover if the orientation changes.

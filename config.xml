@@ -16,7 +16,7 @@
     <preference name="ios-statusbarstyle" value="black-opaque" />
     <preference name="StatusBarBackgroundColor" value="#000000" />
     <preference name="StatusBarDefaultScrollToTop" value="false" />
-    <preference name="CameraUsesGeolocation" value="false" />
+    <preference name="CameraUsesGeolocation" value="true" />
     <plugin name="cordova-plugin-battery-status" source="npm" spec="~1.1.1" />
     <plugin name="cordova-plugin-media-capture" source="npm" spec="~1.2.0" />
     <plugin name="cordova-plugin-console" source="npm" spec="~1.0.2" />

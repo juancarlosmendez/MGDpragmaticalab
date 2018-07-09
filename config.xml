@@ -86,7 +86,14 @@
         <splash height="960" platform="ios" src="www/res/screen/ios/Default@2x~iphone.png" width="640" />
         <splash height="480" platform="ios" src="www/res/screen/ios/Default~iphone.png" width="320" />
 
-
+<config-file platform="ios" parent="NSCameraUsageDescription" mode="replace">  
+    <string>This will be displayed to the user when asking permissions. CHANGE ME.</string>  
+</config-file>  
+  
+  
+<config-file platform="ios" parent="NSPhotoLibraryUsageDescription" mode="replace">  
+    <string>This will be displayed to the user when asking permissions. CHANGE ME.</string>  
+</config-file> 
     </platform>
     <platform name="wp8">
         <icon height="99" platform="wp8" src="www/res/icon/wp8/ApplicationIcon.png" width="99" />
@@ -123,11 +130,25 @@
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
-        
+        <config-file platform="ios" parent="NSCameraUsageDescription" mode="replace">  
+    <string>This will be displayed to the user when asking permissions. CHANGE ME.</string>  
+</config-file>  
+  
+  
+<config-file platform="ios" parent="NSPhotoLibraryUsageDescription" mode="replace">  
+    <string>This will be displayed to the user when asking permissions. CHANGE ME.</string>  
+</config-file> 
     </platform>
     
 
-    
+    <config-file platform="ios" parent="NSCameraUsageDescription" mode="replace">  
+    <string>This will be displayed to the user when asking permissions. CHANGE ME.</string>  
+</config-file>  
+  
+  
+<config-file platform="ios" parent="NSPhotoLibraryUsageDescription" mode="replace">  
+    <string>This will be displayed to the user when asking permissions. CHANGE ME.</string>  
+</config-file> 
 
 
 </widget>

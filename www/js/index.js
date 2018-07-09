@@ -983,22 +983,7 @@ function loadEventosDia(fecha){
   */
   function initMiComunidad(){
     
-    var options = {
-      //androidTheme: window.plugins.actionsheet.ANDROID_THEMES.THEME_DEVICE_DEFAULT_LIGHT, // default is THEME_TRADITIONAL
-      title: 'Imagen de perfil',
-      //subtitle: 'Choose wisely, my friend', // supported on iOS only
-      buttonLabels: ['Tomar Foto', 'Seleccionar de la Galería'],
-      androidEnableCancelButton : true, // default false
-      winphoneEnableCancelButton : true, // default false
-      addCancelButtonWithLabel: 'Cancelar',
-      position: [20, 40], // for iPad pass in the [x, y] position of the popover
-  };
-  window.plugins.actionsheet.show(options, function(buttonIndex) {
-    setTimeout(function() {
-      // like other Cordova plugins (prompt, confirm) the buttonIndex is 1-based (first button is index 1)
-      alert('button index clicked: ' + buttonIndex);
-    });
-  });
+    
 
 
 
@@ -1027,17 +1012,17 @@ function loadEventosDia(fecha){
             //destinationType: Camera.DestinationType.FILE_URI,
             //sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
             quality: 50,
-            allowEdit: false
-            //correctOrientation: true,  //Corrects Android orientation quirks
-            //popoverOptions: new CameraPopoverOptions(300, 300, 100, 100, Camera.PopoverArrowDirection.ARROW_ANY)
+            allowEdit: false,
+            correctOrientation: true,  //Corrects Android orientation quirks
+            popoverOptions: new CameraPopoverOptions(300, 300, 100, 100, Camera.PopoverArrowDirection.ARROW_ANY)
         });
         
         // Reposition the popover if the orientation changes.
-        /*window.onorientationchange = function() {
+        window.onorientationchange = function() {
             var cameraPopoverHandle = new CameraPopoverHandle();
             var cameraPopoverOptions = new CameraPopoverOptions(0, 0, 100, 100, Camera.PopoverArrowDirection.ARROW_ANY);
             cameraPopoverHandle.setPosition(cameraPopoverOptions);
-        }*/
+        }
     });
     $("#avatar_uploader").change(function () {
       if (this.files && this.files[0]) {
@@ -1070,6 +1055,32 @@ function loadEventosDia(fecha){
       }
   });
   }
+
+
+
+  function photoSelector(){
+    var options = {
+      //androidTheme: window.plugins.actionsheet.ANDROID_THEMES.THEME_DEVICE_DEFAULT_LIGHT, // default is THEME_TRADITIONAL
+      title: 'Imagen de perfil',
+      //subtitle: 'Choose wisely, my friend', // supported on iOS only
+      buttonLabels: ['Tomar Foto', 'Seleccionar de la Galería'],
+      androidEnableCancelButton : true, // default false
+      winphoneEnableCancelButton : true, // default false
+      addCancelButtonWithLabel: 'Cancelar',
+      position: [20, 40], // for iPad pass in the [x, y] position of the popover
+    };
+    window.plugins.actionsheet.show(options, function(buttonIndex) {
+      setTimeout(function() {
+        // like other Cordova plugins (prompt, confirm) the buttonIndex is 1-based (first button is index 1)
+        alert('button index clicked: ' + buttonIndex);
+      });
+    });
+  }
+
+
+
+
+
   function loadFriends(){
     showLoader();
     //loads my Session info

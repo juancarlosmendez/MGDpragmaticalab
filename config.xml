@@ -137,18 +137,6 @@
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
         
-        <custom-config-file target="NSCameraUsageDescription" target="*-Info.plist" mode="merge" platform="ios">
-        <string>need camera access to take pictures</string>
-        </custom-config-file>
-        <custom-config-file target="NSPhotoLibraryUsageDescription" target="*-Info.plist" mode="merge" platform="ios">
-            <string>need photo library access to get pictures from there</string>
-        </custom-config-file>
-        <custom-config-file target="NSLocationWhenInUseUsageDescription" target="*-Info.plist" mode="merge" platform="ios">
-            <string>need location access to find things nearby</string>
-        </custom-config-file>
-        <custom-config-file target="NSPhotoLibraryAddUsageDescription" target="*-Info.plist" mode="merge" platform="ios">
-            <string>need photo library access to save pictures there</string>
-        </custom-config-file>
     </platform>
     
 

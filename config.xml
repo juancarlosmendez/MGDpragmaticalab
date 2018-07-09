@@ -36,9 +36,8 @@
     <plugin name="cordova-plugin-statusbar" source="npm" spec="~2.1.2" />
     <plugin name="cordova-plugin-vibration" source="npm" spec="~2.1.0" />
     <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />
-    <plugin name="cordova-plugin-actionsheet" />
-    
-    <plugin name="cordova-plugin-camera" />
+    <plugin name="cordova-plugin-actionsheet" spec="~2.3.3"/>    
+    <plugin name="cordova-plugin-camera" spec="~4.0.3"/>
     <platform name="android">
         <icon density="ldpi" src="www/res/icon/android/drawable-ldpi-icon.png" />
         <icon density="mdpi" src="www/res/icon/android/drawable-mdpi-icon.png" />
@@ -134,6 +133,18 @@
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
+        <edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge">
+        <string>need camera access to take pictures</string>
+        </edit-config>
+        <edit-config target="NSPhotoLibraryUsageDescription" file="*-Info.plist" mode="merge">
+            <string>need photo library access to get pictures from there</string>
+        </edit-config>
+        <edit-config target="NSLocationWhenInUseUsageDescription" file="*-Info.plist" mode="merge">
+            <string>need location access to find things nearby</string>
+        </edit-config>
+        <edit-config target="NSPhotoLibraryAddUsageDescription" file="*-Info.plist" mode="merge">
+            <string>need photo library access to save pictures there</string>
+        </edit-config>
     </platform>
     
 

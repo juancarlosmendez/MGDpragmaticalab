@@ -1018,7 +1018,7 @@ function loadEventosDia(fecha){
          // var image = document.getElementById('imagenx');
    // image.src = imageData;
           //$('.user-avatar').css('background-image',"url('data:image/jpeg;base64," + imageData + "')");
-          $('.user-avatar').css('background-image',"url('" + imageData + "')");
+          //$('.user-avatar').css('background-image',"url('" + imageData + "')"); //----------
 
         }, function(){
           //alert("fail");

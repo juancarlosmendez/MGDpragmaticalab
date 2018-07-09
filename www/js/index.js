@@ -1004,6 +1004,8 @@ function loadEventosDia(fecha){
    // image.src = imageData;
           //$('.user-avatar').css('background-image',"url('data:image/jpeg;base64," + imageData + "')");
           //$('.user-avatar').css('background-image',"url('" + imageData + "')"); //----------
+          $("#avatar_uploader").val(imageData);
+
 
         }, function(){
           //alert("fail");

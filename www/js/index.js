@@ -1004,16 +1004,260 @@ function loadEventosDia(fecha){
    // image.src = imageData;
           //$('.user-avatar').css('background-image',"url('data:image/jpeg;base64," + imageData + "')");
           //$('.user-avatar').css('background-image',"url('" + imageData + "')"); //----------
-          $("#avatar_uploader").val(imageData);
+          //alert(imageData);
+          //$("#avatar_uploader").attr("value",imageData);
+          //document.getElementById("avatar_uploader").value=imageData;
+          //alert(0);
+          //if ($("#avatar_uploader").files && $("#avatar_uploader").files[0]) {
+             /* var reader = new FileReader();
+              reader.onload = function (e) {
+                  //$('#imgLogo').attr('src', e.target.result);
+                  //alert(e.target.result);
+                  $('.user-avatar').css('background-image',"url('data:image/png;" + e.target.result + "')");
+              }
+              //reader.readAsDataURL($("#avatar_uploader").files[0]);
+              reader.readAsDataURL(new File(imageData));
 
+
+*/
+
+
+           //   $('.user-avatar').css('background-image',"url('" + imageData + "')");
+           
+           $('.user-avatar').css('background-image',"url('data:image/jpeg;base64," + imageData + "')");
+             // var file_data = request.response;   
+                 // var form_data = new FormData();                  
+                  //form_data.append('file', file_data);       
+               //   form_data.append('file', new File(imageData));
+                 //form_data.append("file", { uri: imageData, type: "image/png" });
+                 
+                 //form_data.append("image", { uri: imageData, name: 'image.jpg', type: 'image/jpg'});
+                  //alert(form_data);                             
+                 /* $.ajax({
+                      url: SERVICES_HOST+"uploadAvatar.php?userid="+sessionID, // point to server-side PHP script 
+                      dataType: 'text',  // what to expect back from the PHP script, if anything
+                      cache: false,
+                      contentType: false,
+                      processData: false,
+                      data: form_data,                         
+                      type: 'post',
+                      success: function(php_script_response){
+                        alert(php_script_response);
+                          //alert(php_script_response); // display response from the PHP script, if any
+                          window.localStorage.setItem("sessionPicture",php_script_response);
+                          sessionPicture=php_script_response;
+                      }
+                  });*/
+
+/*
+                 $.ajax({
+                    type: "POST",
+                    url: SERVICES_HOST+"uploadAvatar2.php?userid="+sessionID,
+                    //data: imageData,
+                    data: { img_data:imageData},
+                    cache: false,
+                    contentType: "application/x-www-form-urlencoded",
+                    success: function (result) {
+                      alert("upload OK: "+ result);
+                    }
+                  });
+
+*/
+
+
+                 /* $.ajax({
+                    url: SERVICES_HOST+"uploadAvatar2.php?userid="+sessionID,
+                    type: 'POST',
+                    processData: false,
+                    contentType: 'application/octet-stream',
+                    data: makeblob('data:image/jpeg;base64,'+imageData)
+                 })
+                .done(function(data) {alert(data);})
+                .fail(function() {alert("error");});
+*/
+
+                //var url = "url/action";                
+                var image = $('#image-id').attr('src');
+                //var base64ImageContent = image.replace(/^data:image\/(png|jpg);base64,/, "");
+                var blob = base64ToBlob(imageData, 'image/png');                
+                var formData = new FormData();
+                formData.append('file', blob);
+
+                $.ajax({
+                    url: SERVICES_HOST+"uploadAvatar.php?userid="+sessionID, 
+                    type: "POST", 
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    data: formData})
+                        .done(function(e){
+                            alert(e);
+                        });
+
+                  /*
+                  $.post( SERVICES_HOST+"uploadAvatar2.php", {data: imageData}, function(data) {
+                    alert("Image uploaded!");
+                    alert("upload OK: "+ data);
+                  });*/
+/*
+                  $.ajax({
+                    url: SERVICES_HOST+"uploadAvatar.php?userid="+sessionID, // point to server-side PHP script 
+                    dataType: 'text',  // what to expect back from the PHP script, if anything
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    data: form_data,                         
+                    type: 'post',
+                    success: function(php_script_response){
+                      alert(php_script_response);
+                        //alert(php_script_response); // display response from the PHP script, if any
+                        window.localStorage.setItem("sessionPicture",php_script_response);
+                        sessionPicture=php_script_response;
+                    }
+                });
+*/
+
+/*
+var request = new XMLHttpRequest();
+              request.open('GET', imageData, true);
+              request.responseType = 'blob';
+              request.setRequestHeader('Content-Type', 'image/jpeg');
+              request.onload = function(ev) {
+
+
+                  var reader = new FileReader();
+                  reader.readAsDataURL(request.response);
+                  reader.onload =  function(e){
+                      //console.log('DataURL:', e.target.result);
+                      //$('.user-avatar').css('background-image',"url('data:image/png;" + e.target.result + "')");
+                  };
+
+
+                  var arrayBufferView = new Uint8Array(request.response);
+                  var blob = new Blob([arrayBufferView], {
+                    type: "image/jpeg"
+                  });
+                  var urlCreator = window.URL || window.webkitURL;
+                  var imageUrl = urlCreator.createObjectURL(blob);
+
+                  var file_data = request.response;   
+                  var form_data = new FormData();                  
+                  form_data.append('file', file_data);
+                  //alert(form_data);                             
+                  $.ajax({
+                      url: SERVICES_HOST+"uploadAvatar.php?userid="+sessionID, // point to server-side PHP script 
+                      dataType: 'text',  // what to expect back from the PHP script, if anything
+                      cache: false,
+                      contentType: false,
+                      processData: false,
+                      data: form_data,                         
+                      type: 'post',
+                      success: function(php_script_response){
+                          //alert(php_script_response); // display response from the PHP script, if any
+                          window.localStorage.setItem("sessionPicture",php_script_response);
+                          sessionPicture=php_script_response;
+                      }
+                  });
+
+
+              };
+              request.send();
+
+*/
+
+
+
+
+
+
+
+
+              /*
+              var request = new XMLHttpRequest();
+              request.open('GET', imageData, true);
+              request.responseType = 'blob';
+              request.setRequestHeader('Content-Type', 'image/jpeg');
+              request.onload = function() {
+                  var reader = new FileReader();
+                  reader.readAsDataURL(request.response);
+                  reader.onload =  function(e){
+                      //console.log('DataURL:', e.target.result);
+                      $('.user-avatar').css('background-image',"url('data:image/png;" + e.target.result + "')");
+                  };
+
+
+                  var file_data = request.response;   
+                  var form_data = new FormData();                  
+                  form_data.append('file', file_data);
+                  //alert(form_data);                             
+                  $.ajax({
+                      url: SERVICES_HOST+"uploadAvatar.php?userid="+sessionID, // point to server-side PHP script 
+                      dataType: 'text',  // what to expect back from the PHP script, if anything
+                      cache: false,
+                      contentType: false,
+                      processData: false,
+                      data: form_data,                         
+                      type: 'post',
+                      success: function(php_script_response){
+                          //alert(php_script_response); // display response from the PHP script, if any
+                          window.localStorage.setItem("sessionPicture",php_script_response);
+                          sessionPicture=php_script_response;
+                      }
+                  });
+
+
+
+              };
+              request.send();
+              */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+              //uploads to server
+              //var file_data = $('#avatar_uploader').prop('files')[0];  
+              var file_data = imageData;   
+              var form_data = new FormData();                  
+              form_data.append('file', file_data);
+              //alert(form_data);                             
+              $.ajax({
+                  url: SERVICES_HOST+"uploadAvatar.php?userid="+sessionID, // point to server-side PHP script 
+                  dataType: 'text',  // what to expect back from the PHP script, if anything
+                  cache: false,
+                  contentType: false,
+                  processData: false,
+                  data: form_data,                         
+                  type: 'post',
+                  success: function(php_script_response){
+                      //alert(php_script_response); // display response from the PHP script, if any
+                      window.localStorage.setItem("sessionPicture",php_script_response);
+                      sessionPicture=php_script_response;
+                  }
+              });*/
+          //}
 
         }, function(){
           //alert("fail");
         },
         {
             //destinationType: Camera.DestinationType.FILE_URI,
+            destinationType:Camera.DestinationType.DATA_URL,
             //sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-            quality: 50,
+            quality: 10,
             allowEdit: false,
             correctOrientation: true,  //Corrects Android orientation quirks
             popoverOptions: new CameraPopoverOptions(300, 300, 100, 100, Camera.PopoverArrowDirection.ARROW_ANY)
@@ -1035,12 +1279,14 @@ function loadEventosDia(fecha){
               $('.user-avatar').css('background-image',"url('data:image/png;" + e.target.result + "')");
           }
           reader.readAsDataURL(this.files[0]);
+          //alert(this.files[0]);
           //uploads to server
-          var file_data = $('#avatar_uploader').prop('files')[0];   
+          var file_data = $('#avatar_uploader').prop('files')[0];  
+          //alert($('#avatar_uploader').prop('files')[0]); 
           var form_data = new FormData();                  
           form_data.append('file', file_data);
           //alert(form_data);                             
-          $.ajax({
+          /*$.ajax({
               url: SERVICES_HOST+"uploadAvatar.php?userid="+sessionID, // point to server-side PHP script 
               dataType: 'text',  // what to expect back from the PHP script, if anything
               cache: false,
@@ -1053,11 +1299,40 @@ function loadEventosDia(fecha){
                   window.localStorage.setItem("sessionPicture",php_script_response);
                   sessionPicture=php_script_response;
               }
-          });
+          });*/
       }
   });
   }
 
+
+
+
+  function base64ToBlob(base64, mime) 
+{
+    mime = mime || '';
+    var sliceSize = 1024;
+    var byteChars = window.atob(base64);
+    var byteArrays = [];
+
+    for (var offset = 0, len = byteChars.length; offset < len; offset += sliceSize) {
+        var slice = byteChars.slice(offset, offset + sliceSize);
+
+        var byteNumbers = new Array(slice.length);
+        for (var i = 0; i < slice.length; i++) {
+            byteNumbers[i] = slice.charCodeAt(i);
+        }
+
+        var byteArray = new Uint8Array(byteNumbers);
+
+        byteArrays.push(byteArray);
+    }
+
+    return new Blob(byteArrays, {type: mime});
+}
+
+
+
+  
 
 
   function photoSelector(){
@@ -1072,9 +1347,15 @@ function loadEventosDia(fecha){
       position: [20, 40], // for iPad pass in the [x, y] position of the popover
     };
     window.plugins.actionsheet.show(options, function(buttonIndex) {
-      setTimeout(function() {
-        // like other Cordova plugins (prompt, confirm) the buttonIndex is 1-based (first button is index 1)
-        alert('button index clicked: ' + buttonIndex);
+      setTimeout(function() {        
+        switch(buttonIndex){// like other Cordova plugins (prompt, confirm) the buttonIndex is 1-based (first button is index 1)
+          case 1:
+            openCamera();
+            break;
+          case 2:
+            openPhotoGallery();
+            break;
+        }
       });
     });
   }

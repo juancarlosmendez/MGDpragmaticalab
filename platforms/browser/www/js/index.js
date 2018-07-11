@@ -15,6 +15,7 @@ var sessionEmail;
 var sessionCiudad;
 
 
+
 var app = {
   // Application Constructor
   initialize: function() {
@@ -30,6 +31,11 @@ var app = {
   INIT CORDOVA
   */
   receivedEvent: function(id) {
+    /*define(function (require) {
+      var ImgCache = require("imgcache");
+  });*/
+    ImgCache.init();
+    ImgCache.options.cordovaFilesystemRoot = cordova.file.dataDirectory;
     platform = device.platform.toUpperCase();
     sessionChecker(); //remove comment
     //$('#container').css('visibility','visible'); //remove
@@ -144,22 +150,11 @@ function init(){
   */
   fixSpotify();
 
-  // write log to console
-  ImgCache.options.debug = true;
-  // increase allocated space on Chrome to 50MB, default was 10MB
-  ImgCache.options.chromeQuota = 50*1024*1024;
-  ImgCache.options.cordovaFilesystemRoot = cordova.file.dataDirectory;alert(0);
-  ImgCache.init(function () {
-    alert('ImgCache init: success!');
-    // from within this function you're now able to call other ImgCache methods
-    // or you can wait for the ImgCacheReady event
-    }, function () {
-        alert('ImgCache init: error! Check the log for errors');
-    });
+  
 
   $('.revisar_goldenpoints').css('bottom',$('footer').height());
   //INITS PROFILE PICTURE SO IT WILL BE CACHED WHEN LOADED MI COMUNIDAD
-  $('.user-avatar').css('background-image',"url('"+sessionPicture+"')");
+ // $('.user-avatar').css('background-image',"url('"+sessionPicture+"')");   //REMOVER COMMENT
 }
 
 
@@ -1091,7 +1086,8 @@ function loadEventosDia(fecha){
                     processData: false,
                     data: formData})
                         .done(function(e){
-                            alert(e);
+                            //alert(e);
+                            ImgCache.cacheFile(e);
                         });
 
                   /*
@@ -1381,8 +1377,33 @@ var request = new XMLHttpRequest();
       window.localStorage.setItem("micomunidad_amigos", JSON.stringify(submitResponse.data));
       if(submitResponse.picture!='' && submitResponse.picture!=null && submitResponse.picture!=undefined){
         window.localStorage.setItem("sessionPicture",submitResponse.picture);
+        
+        
         sessionPicture=submitResponse.picture;
-        $('.user-avatar').css('background-image',"url('"+sessionPicture+"')");
+
+      
+        ImgCache.isCached(sessionPicture, function(path, success) {
+         
+          if (success) {
+            // already cached
+            //ImgCache.useCachedFile(target);
+            //alert("guardada previamente en cache");
+            ImgCache.useCachedBackground($('.user-avatar'),function(){
+              alert("callback"+$('.user-avatar').css('background-image'));
+            });
+            alert($('.user-avatar').css('background-image'));
+          } else {
+            // not there, need to cache the image
+            ImgCache.cacheFile(sessionPicture, function () {
+              //ImgCache.useCachedFile(target);
+              //alert("no guardada en cache, se guarda ahorita");
+              ImgCache.useCachedBackground($('.user-avatar'));
+            });
+          }
+        });
+     
+
+        //$('.user-avatar').css('background-image',"url('"+sessionPicture+"')");
       }
       hideLoader();
     }, 'json')

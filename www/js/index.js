@@ -60,6 +60,7 @@ function sessionChecker(){
       setTimeout(function(){
         $('#container').css('visibility','visible');
       },1500);
+      displayProfilePicture();
     }
     else{
       window.location='authentication.html';

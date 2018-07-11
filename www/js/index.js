@@ -980,7 +980,7 @@ function loadEventosDia(fecha){
        
 
 
-    displayProfilePicture();
+    //displayProfilePicture();
     //sets events for changing avatar
     $('.user-avatar').click(function(){
       photoSelector();
@@ -1105,6 +1105,7 @@ function base64ToBlob(base64, mime)
         
         
         sessionPicture=submitResponse.picture;
+        alert(sessionPicture);
         displayProfilePicture();
         //$('.user-avatar').css('background-image',"url('"+sessionPicture+"')");
         

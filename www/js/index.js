@@ -983,48 +983,53 @@ function loadEventosDia(fecha){
     displayProfilePicture();
     //sets events for changing avatar
     $('.user-avatar').click(function(){
-      navigator.camera.getPicture(
-        function(imageData){              
-           $('.user-avatar').css('background-image',"url('data:image/jpeg;base64," + imageData + "')");                     
-                var image = $('#image-id').attr('src');
-                var blob = base64ToBlob(imageData, 'image/png');                
-                var formData = new FormData();
-                formData.append('file', blob);
-                $.ajax({
-                    url: SERVICES_HOST+"uploadAvatar.php?userid="+sessionID, 
-                    type: "POST", 
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    data: formData})
-                        .done(function(e){
-                            //alert(e);
-                            ImgCache.cacheFile(e);
-                            sessionPicture=e;
-                            displayProfilePicture();
-                    });
-        }, function(){
-          //alert("fail");
-        },
-        {
-            //destinationType: Camera.DestinationType.FILE_URI,
-            destinationType:Camera.DestinationType.DATA_URL,
-            sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-            quality: 10,
-            allowEdit: false,
-            correctOrientation: true,  //Corrects Android orientation quirks
-            popoverOptions: new CameraPopoverOptions(300, 300, 100, 100, Camera.PopoverArrowDirection.ARROW_ANY)
-        });        
-        // Reposition the popover if the orientation changes.
-        window.onorientationchange = function() {
-            var cameraPopoverHandle = new CameraPopoverHandle();
-            var cameraPopoverOptions = new CameraPopoverOptions(0, 0, 100, 100, Camera.PopoverArrowDirection.ARROW_ANY);
-            cameraPopoverHandle.setPosition(cameraPopoverOptions);
-        }
+      photoSelector();
     });
     
   }
 
+
+
+function getPhoto(_sourceType){
+  navigator.camera.getPicture(
+    function(imageData){              
+       $('.user-avatar').css('background-image',"url('data:image/jpeg;base64," + imageData + "')");                     
+            var image = $('#image-id').attr('src');
+            var blob = base64ToBlob(imageData, 'image/png');                
+            var formData = new FormData();
+            formData.append('file', blob);
+            $.ajax({
+                url: SERVICES_HOST+"uploadAvatar.php?userid="+sessionID, 
+                type: "POST", 
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: formData})
+                    .done(function(e){
+                        //alert(e);
+                        ImgCache.cacheFile(e);
+                        sessionPicture=e;
+                        displayProfilePicture();
+                });
+    }, function(){
+      //alert("fail");
+    },
+    {
+        //destinationType: Camera.DestinationType.FILE_URI,
+        destinationType:Camera.DestinationType.DATA_URL,
+        sourceType: _sourceType,  //Camera.PictureSourceType.PHOTOLIBRARY, Camera.PictureSourceType.CAMERA
+        quality: 10,
+        allowEdit: false,
+        correctOrientation: true,  //Corrects Android orientation quirks
+        popoverOptions: new CameraPopoverOptions(300, 300, 100, 100, Camera.PopoverArrowDirection.ARROW_ANY)
+    });        
+    // Reposition the popover if the orientation changes.
+    window.onorientationchange = function() {
+        var cameraPopoverHandle = new CameraPopoverHandle();
+        var cameraPopoverOptions = new CameraPopoverOptions(0, 0, 100, 100, Camera.PopoverArrowDirection.ARROW_ANY);
+        cameraPopoverHandle.setPosition(cameraPopoverOptions);
+    }
+}
 
 
 
@@ -1066,10 +1071,10 @@ function base64ToBlob(base64, mime)
       setTimeout(function() {        
         switch(buttonIndex){// like other Cordova plugins (prompt, confirm) the buttonIndex is 1-based (first button is index 1)
           case 1:
-            openCamera();
+              getPhoto(Camera.PictureSourceType.CAMERA);  //Camera.PictureSourceType.PHOTOLIBRARY, Camera.PictureSourceType.CAMERA
             break;
           case 2:
-            openPhotoGallery();
+              getPhoto(Camera.PictureSourceType.PHOTOLIBRARY);
             break;
         }
       });
@@ -1140,9 +1145,9 @@ function base64ToBlob(base64, mime)
     ImgCache.isCached(sessionPicture, function(path, success) {         
       if (success) {
         ImgCache.useCachedBackground($('.user-avatar'),function(){
-          alert("callback"+$('.user-avatar').css('background-image'));
+          //alert("callback"+$('.user-avatar').css('background-image'));
         });
-        alert($('.user-avatar').css('background-image'));
+        //alert($('.user-avatar').css('background-image'));
       } else {
         ImgCache.cacheFile(sessionPicture, function () {
           ImgCache.useCachedBackground($('.user-avatar'));

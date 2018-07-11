@@ -1147,12 +1147,13 @@ function base64ToBlob(base64, mime)
     ImgCache.isCached(sessionPicture, function(path, success) {         
       if (success) {
         ImgCache.useCachedBackground($('.user-avatar'),function(){
-          //alert("callback"+$('.user-avatar').css('background-image'));
+          alert("ya estaba: "+$('.user-avatar').css('background-image'));
         });
         //alert($('.user-avatar').css('background-image'));
       } else {
         ImgCache.cacheFile(sessionPicture, function () {
           ImgCache.useCachedBackground($('.user-avatar'));
+          alert("recien carga: "+$('.user-avatar').css('background-image'));
         });
       }
     });

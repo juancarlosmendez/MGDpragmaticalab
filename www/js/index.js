@@ -1144,6 +1144,7 @@ function base64ToBlob(base64, mime)
   
   
   function displayProfilePicture(){
+    alert(sessionPicture);
     ImgCache.isCached(sessionPicture, function(path, success) {         
       if (success) {
         ImgCache.useCachedBackground($('.user-avatar'),function(){

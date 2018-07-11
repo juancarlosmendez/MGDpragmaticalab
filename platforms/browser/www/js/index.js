@@ -977,107 +977,19 @@ function loadEventosDia(fecha){
   ------------------  MI COMUNIDAD ---------------------
   */
   function initMiComunidad(){
-    
-    
+       
 
 
-
-    //sessionID=50; //remover
-    //sessionPicture='http://mgd.com.ec/uploads/avatars/50_0707182016_pic.jpg';  //remover
-    //sets avatar picture
-    $('.user-avatar').css('background-image',"url('"+sessionPicture+"')");
+    displayProfilePicture();
     //sets events for changing avatar
     $('.user-avatar').click(function(){
-      //$("#avatar_uploader").click();
       navigator.camera.getPicture(
-        function(imageData){
-          //alert("success");
-    //      var image = document.getElementById('imagenx');
-    //image.src = "data:image/jpeg;base64," + imageData;
-    //alert(imageData);
-         // var image = document.getElementById('imagenx');
-   // image.src = imageData;
-          //$('.user-avatar').css('background-image',"url('data:image/jpeg;base64," + imageData + "')");
-          //$('.user-avatar').css('background-image',"url('" + imageData + "')"); //----------
-          //alert(imageData);
-          //$("#avatar_uploader").attr("value",imageData);
-          //document.getElementById("avatar_uploader").value=imageData;
-          //alert(0);
-          //if ($("#avatar_uploader").files && $("#avatar_uploader").files[0]) {
-             /* var reader = new FileReader();
-              reader.onload = function (e) {
-                  //$('#imgLogo').attr('src', e.target.result);
-                  //alert(e.target.result);
-                  $('.user-avatar').css('background-image',"url('data:image/png;" + e.target.result + "')");
-              }
-              //reader.readAsDataURL($("#avatar_uploader").files[0]);
-              reader.readAsDataURL(new File(imageData));
-
-
-*/
-
-
-           //   $('.user-avatar').css('background-image',"url('" + imageData + "')");
-           
-           $('.user-avatar').css('background-image',"url('data:image/jpeg;base64," + imageData + "')");
-             // var file_data = request.response;   
-                 // var form_data = new FormData();                  
-                  //form_data.append('file', file_data);       
-               //   form_data.append('file', new File(imageData));
-                 //form_data.append("file", { uri: imageData, type: "image/png" });
-                 
-                 //form_data.append("image", { uri: imageData, name: 'image.jpg', type: 'image/jpg'});
-                  //alert(form_data);                             
-                 /* $.ajax({
-                      url: SERVICES_HOST+"uploadAvatar.php?userid="+sessionID, // point to server-side PHP script 
-                      dataType: 'text',  // what to expect back from the PHP script, if anything
-                      cache: false,
-                      contentType: false,
-                      processData: false,
-                      data: form_data,                         
-                      type: 'post',
-                      success: function(php_script_response){
-                        alert(php_script_response);
-                          //alert(php_script_response); // display response from the PHP script, if any
-                          window.localStorage.setItem("sessionPicture",php_script_response);
-                          sessionPicture=php_script_response;
-                      }
-                  });*/
-
-/*
-                 $.ajax({
-                    type: "POST",
-                    url: SERVICES_HOST+"uploadAvatar2.php?userid="+sessionID,
-                    //data: imageData,
-                    data: { img_data:imageData},
-                    cache: false,
-                    contentType: "application/x-www-form-urlencoded",
-                    success: function (result) {
-                      alert("upload OK: "+ result);
-                    }
-                  });
-
-*/
-
-
-                 /* $.ajax({
-                    url: SERVICES_HOST+"uploadAvatar2.php?userid="+sessionID,
-                    type: 'POST',
-                    processData: false,
-                    contentType: 'application/octet-stream',
-                    data: makeblob('data:image/jpeg;base64,'+imageData)
-                 })
-                .done(function(data) {alert(data);})
-                .fail(function() {alert("error");});
-*/
-
-                //var url = "url/action";                
+        function(imageData){              
+           $('.user-avatar').css('background-image',"url('data:image/jpeg;base64," + imageData + "')");                     
                 var image = $('#image-id').attr('src');
-                //var base64ImageContent = image.replace(/^data:image\/(png|jpg);base64,/, "");
                 var blob = base64ToBlob(imageData, 'image/png');                
                 var formData = new FormData();
                 formData.append('file', blob);
-
                 $.ajax({
                     url: SERVICES_HOST+"uploadAvatar.php?userid="+sessionID, 
                     type: "POST", 
@@ -1088,177 +1000,21 @@ function loadEventosDia(fecha){
                         .done(function(e){
                             //alert(e);
                             ImgCache.cacheFile(e);
-                        });
-
-                  /*
-                  $.post( SERVICES_HOST+"uploadAvatar2.php", {data: imageData}, function(data) {
-                    alert("Image uploaded!");
-                    alert("upload OK: "+ data);
-                  });*/
-/*
-                  $.ajax({
-                    url: SERVICES_HOST+"uploadAvatar.php?userid="+sessionID, // point to server-side PHP script 
-                    dataType: 'text',  // what to expect back from the PHP script, if anything
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    data: form_data,                         
-                    type: 'post',
-                    success: function(php_script_response){
-                      alert(php_script_response);
-                        //alert(php_script_response); // display response from the PHP script, if any
-                        window.localStorage.setItem("sessionPicture",php_script_response);
-                        sessionPicture=php_script_response;
-                    }
-                });
-*/
-
-/*
-var request = new XMLHttpRequest();
-              request.open('GET', imageData, true);
-              request.responseType = 'blob';
-              request.setRequestHeader('Content-Type', 'image/jpeg');
-              request.onload = function(ev) {
-
-
-                  var reader = new FileReader();
-                  reader.readAsDataURL(request.response);
-                  reader.onload =  function(e){
-                      //console.log('DataURL:', e.target.result);
-                      //$('.user-avatar').css('background-image',"url('data:image/png;" + e.target.result + "')");
-                  };
-
-
-                  var arrayBufferView = new Uint8Array(request.response);
-                  var blob = new Blob([arrayBufferView], {
-                    type: "image/jpeg"
-                  });
-                  var urlCreator = window.URL || window.webkitURL;
-                  var imageUrl = urlCreator.createObjectURL(blob);
-
-                  var file_data = request.response;   
-                  var form_data = new FormData();                  
-                  form_data.append('file', file_data);
-                  //alert(form_data);                             
-                  $.ajax({
-                      url: SERVICES_HOST+"uploadAvatar.php?userid="+sessionID, // point to server-side PHP script 
-                      dataType: 'text',  // what to expect back from the PHP script, if anything
-                      cache: false,
-                      contentType: false,
-                      processData: false,
-                      data: form_data,                         
-                      type: 'post',
-                      success: function(php_script_response){
-                          //alert(php_script_response); // display response from the PHP script, if any
-                          window.localStorage.setItem("sessionPicture",php_script_response);
-                          sessionPicture=php_script_response;
-                      }
-                  });
-
-
-              };
-              request.send();
-
-*/
-
-
-
-
-
-
-
-
-              /*
-              var request = new XMLHttpRequest();
-              request.open('GET', imageData, true);
-              request.responseType = 'blob';
-              request.setRequestHeader('Content-Type', 'image/jpeg');
-              request.onload = function() {
-                  var reader = new FileReader();
-                  reader.readAsDataURL(request.response);
-                  reader.onload =  function(e){
-                      //console.log('DataURL:', e.target.result);
-                      $('.user-avatar').css('background-image',"url('data:image/png;" + e.target.result + "')");
-                  };
-
-
-                  var file_data = request.response;   
-                  var form_data = new FormData();                  
-                  form_data.append('file', file_data);
-                  //alert(form_data);                             
-                  $.ajax({
-                      url: SERVICES_HOST+"uploadAvatar.php?userid="+sessionID, // point to server-side PHP script 
-                      dataType: 'text',  // what to expect back from the PHP script, if anything
-                      cache: false,
-                      contentType: false,
-                      processData: false,
-                      data: form_data,                         
-                      type: 'post',
-                      success: function(php_script_response){
-                          //alert(php_script_response); // display response from the PHP script, if any
-                          window.localStorage.setItem("sessionPicture",php_script_response);
-                          sessionPicture=php_script_response;
-                      }
-                  });
-
-
-
-              };
-              request.send();
-              */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-              //uploads to server
-              //var file_data = $('#avatar_uploader').prop('files')[0];  
-              var file_data = imageData;   
-              var form_data = new FormData();                  
-              form_data.append('file', file_data);
-              //alert(form_data);                             
-              $.ajax({
-                  url: SERVICES_HOST+"uploadAvatar.php?userid="+sessionID, // point to server-side PHP script 
-                  dataType: 'text',  // what to expect back from the PHP script, if anything
-                  cache: false,
-                  contentType: false,
-                  processData: false,
-                  data: form_data,                         
-                  type: 'post',
-                  success: function(php_script_response){
-                      //alert(php_script_response); // display response from the PHP script, if any
-                      window.localStorage.setItem("sessionPicture",php_script_response);
-                      sessionPicture=php_script_response;
-                  }
-              });*/
-          //}
-
+                            sessionPicture=e;
+                            displayProfilePicture();
+                    });
         }, function(){
           //alert("fail");
         },
         {
             //destinationType: Camera.DestinationType.FILE_URI,
             destinationType:Camera.DestinationType.DATA_URL,
-            //sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+            sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
             quality: 10,
             allowEdit: false,
             correctOrientation: true,  //Corrects Android orientation quirks
             popoverOptions: new CameraPopoverOptions(300, 300, 100, 100, Camera.PopoverArrowDirection.ARROW_ANY)
-        });
-        
+        });        
         // Reposition the popover if the orientation changes.
         window.onorientationchange = function() {
             var cameraPopoverHandle = new CameraPopoverHandle();
@@ -1266,63 +1022,27 @@ var request = new XMLHttpRequest();
             cameraPopoverHandle.setPosition(cameraPopoverOptions);
         }
     });
-    $("#avatar_uploader").change(function () {
-      if (this.files && this.files[0]) {
-          var reader = new FileReader();
-          reader.onload = function (e) {
-              //$('#imgLogo').attr('src', e.target.result);
-              //alert(e.target.result);
-              $('.user-avatar').css('background-image',"url('data:image/png;" + e.target.result + "')");
-          }
-          reader.readAsDataURL(this.files[0]);
-          //alert(this.files[0]);
-          //uploads to server
-          var file_data = $('#avatar_uploader').prop('files')[0];  
-          //alert($('#avatar_uploader').prop('files')[0]); 
-          var form_data = new FormData();                  
-          form_data.append('file', file_data);
-          //alert(form_data);                             
-          /*$.ajax({
-              url: SERVICES_HOST+"uploadAvatar.php?userid="+sessionID, // point to server-side PHP script 
-              dataType: 'text',  // what to expect back from the PHP script, if anything
-              cache: false,
-              contentType: false,
-              processData: false,
-              data: form_data,                         
-              type: 'post',
-              success: function(php_script_response){
-                  //alert(php_script_response); // display response from the PHP script, if any
-                  window.localStorage.setItem("sessionPicture",php_script_response);
-                  sessionPicture=php_script_response;
-              }
-          });*/
-      }
-  });
+    
   }
 
 
 
 
-  function base64ToBlob(base64, mime) 
+function base64ToBlob(base64, mime) 
 {
     mime = mime || '';
     var sliceSize = 1024;
     var byteChars = window.atob(base64);
     var byteArrays = [];
-
     for (var offset = 0, len = byteChars.length; offset < len; offset += sliceSize) {
         var slice = byteChars.slice(offset, offset + sliceSize);
-
         var byteNumbers = new Array(slice.length);
         for (var i = 0; i < slice.length; i++) {
             byteNumbers[i] = slice.charCodeAt(i);
         }
-
         var byteArray = new Uint8Array(byteNumbers);
-
         byteArrays.push(byteArray);
     }
-
     return new Blob(byteArrays, {type: mime});
 }
 
@@ -1380,30 +1100,12 @@ var request = new XMLHttpRequest();
         
         
         sessionPicture=submitResponse.picture;
-
-      
-        ImgCache.isCached(sessionPicture, function(path, success) {
-         
-          if (success) {
-            // already cached
-            //ImgCache.useCachedFile(target);
-            //alert("guardada previamente en cache");
-            ImgCache.useCachedBackground($('.user-avatar'),function(){
-              alert("callback"+$('.user-avatar').css('background-image'));
-            });
-            alert($('.user-avatar').css('background-image'));
-          } else {
-            // not there, need to cache the image
-            ImgCache.cacheFile(sessionPicture, function () {
-              //ImgCache.useCachedFile(target);
-              //alert("no guardada en cache, se guarda ahorita");
-              ImgCache.useCachedBackground($('.user-avatar'));
-            });
-          }
-        });
+        displayProfilePicture();
+        //$('.user-avatar').css('background-image',"url('"+sessionPicture+"')");
+        
      
 
-        //$('.user-avatar').css('background-image',"url('"+sessionPicture+"')");
+       
       }
       hideLoader();
     }, 'json')
@@ -1434,7 +1136,20 @@ var request = new XMLHttpRequest();
   
   
   
-  
+  function displayProfilePicture(){
+    ImgCache.isCached(sessionPicture, function(path, success) {         
+      if (success) {
+        ImgCache.useCachedBackground($('.user-avatar'),function(){
+          alert("callback"+$('.user-avatar').css('background-image'));
+        });
+        alert($('.user-avatar').css('background-image'));
+      } else {
+        ImgCache.cacheFile(sessionPicture, function () {
+          ImgCache.useCachedBackground($('.user-avatar'));
+        });
+      }
+    });
+  }
   
   
   

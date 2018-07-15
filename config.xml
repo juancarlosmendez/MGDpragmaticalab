@@ -7,7 +7,7 @@
     <author email="jmendez.ec@gmail.com" href="http://mgd.com.ec">
         PracmaticaLab
     </author>
-    <content src="index.html" />
+    <content src="age.html" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="14" />
     <preference name="Orientation" value="portrait" />

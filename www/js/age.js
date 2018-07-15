@@ -57,8 +57,17 @@ function compareEdad(){
     var month=$('#edad_month').val();
     var year=$('#edad_year').val();
     var date =  new Date(year, month, day);
+    //alert(isValidDate(parseInt(day), parseInt(month), parseInt(year)));
+    if (!isValidDate(parseInt(day), parseInt(month)-1, parseInt(year))){
+    //if (!isValidDate(day, month, year) || calculateDiffYear(day, month, year) < 18){
+        swal({
+            type: 'error',
+            title: 'MGD',
+            html: 'La fecha ingresada no es válida.'
+          })
 
-    if (!isValidDate(day, month, year) || calculateDiffYear(day, month, year) < 18){
+    }
+    else if(calculateDiffYear(parseInt(day), parseInt(month)-1, parseInt(year)) < 18){
         swal({
             type: 'error',
             title: 'MGD',

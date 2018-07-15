@@ -14,7 +14,8 @@ var sessionLastName;
 var sessionEmail;
 var sessionCiudad;
 
-
+var _transitionEntraTime=300;
+var _transitionSaleTime=200;
 
 var app = {
   // Application Constructor
@@ -34,8 +35,8 @@ var app = {
     /*define(function (require) {
       var ImgCache = require("imgcache");
   });*/
-    ImgCache.init();
-    ImgCache.options.cordovaFilesystemRoot = cordova.file.dataDirectory;
+   // ImgCache.init();
+   // ImgCache.options.cordovaFilesystemRoot = cordova.file.dataDirectory;
     platform = device.platform.toUpperCase();
     sessionChecker(); //remove comment
     //$('#container').css('visibility','visible'); //remove
@@ -131,7 +132,14 @@ function init(){
   action.click(onClick);
   overlay.click(onClick);
   //hamburger.click(onClick);
-  hamburger.on({ 'touchend' : onClick });   //menu touch
+  hamburger.on({ 'touchend' : function(){
+    $('#eventos').css('display','none');
+    /*$('#eventos').css('position','relative');
+    $('#calendar').css('position','relative');
+    $('#eventos-list').css('position','relative');*/
+
+    onClick();
+  } });   //menu touch
   //hamburger.on({ 'tap' : onClick });   //menu touch
   //hamburger.on({ 'swipe' : onClick });   //menu touch
   
@@ -155,7 +163,7 @@ function init(){
 
   $('.revisar_goldenpoints').css('bottom',$('footer').height());
   //INITS PROFILE PICTURE SO IT WILL BE CACHED WHEN LOADED MI COMUNIDAD
- // $('.user-avatar').css('background-image',"url('"+sessionPicture+"')");   //REMOVER COMMENT
+  $('.user-avatar').css('background-image',"url('"+sessionPicture+"')");   //REMOVER COMMENT
 }
 
 
@@ -299,7 +307,15 @@ function loadPage(pantalla,willTouchDrawer){
     if(willTouchDrawer){
       touchDrawer();
     }
-    $('#'+pantalla).css('display','block'); 
+    if(pantalla=='eventos'){
+      setTimeout(function(){
+        $('#'+pantalla).css('display','block'); 
+      },500);
+    }
+    else{
+      $('#'+pantalla).css('display','block'); 
+    }
+    
   }
   actualPage=pantalla;
 }
@@ -317,6 +333,8 @@ Eventos (Calendario)
 ====================================================================
 */
 var alreadyEventos=false;
+var pivotCalendarSwipe=true;
+
 function initEventos(){
   if(!alreadyEventos){
     var calendar = $('#calendar').fullCalendar({
@@ -325,30 +343,59 @@ function initEventos(){
       height: getCalendarHeight(),
       eventLimit: true, // allow "more" link when too many events
       events: [],
+      fixedWeekCount :true,
+      header: {
+        left:   'title',
+        center: '',
+        right:  'today'
+    },
+    eventLimit: true, // for all non-agenda views
+    views: {
+      agenda: {
+        eventLimit: 1 // adjust to 6 only for agendaWeek/agendaDay
+      }
+    },
       dayClick: function(date, allDay, jsEvent, view) {
         //yyyy-mm-dd
         loadEventosDia(date.format());
       },
       viewRender:function( view, element ){
         loadEventos();
-      }
-    });    
-    var pivotCalendarSwipe=true;
+      }      
+    });   
+    
     var myElement = document.getElementById('calendar');
     var mc = new Hammer(myElement);      
     mc.on("panleft", function(ev) {
       if(pivotCalendarSwipe){
-        calendar.fullCalendar('next');
+        $('.calendar-loader').show();        
+        $('.fc-view-container').toggle('slide', { direction: 'left' }, 300);     
+        setTimeout(function(){
+          calendar.fullCalendar('next');
+          setTimeout(function(){
+            $('.fc-view-container').toggle('slide', { direction: 'right' }, 200 ,fixEventosList);
+            //$('.fc-view-container').fadeIn();
+            setTimeout(function(){$('.calendar-loader').hide();},400);
+          },300);          
+        },300);
         pivotCalendarSwipe=false;
         setTimeout(function(){
           pivotCalendarSwipe=true;
-        },500);
-        
+        },500);        
       }
     });
     mc.on("panright", function(ev) {
       if(pivotCalendarSwipe){
-        calendar.fullCalendar('prev');
+        $('.calendar-loader').show();
+        $('.fc-view-container').toggle('slide', { direction: 'right' }, 300);    
+        setTimeout(function(){
+          calendar.fullCalendar('prev');
+          setTimeout(function(){
+            $('.fc-view-container').toggle('slide', { direction: 'left' }, 200, fixEventosList);
+            //$('.fc-view-container').fadeIn();
+            setTimeout(function(){$('.calendar-loader').hide();},400);            
+          },300);          
+        },300);       
         pivotCalendarSwipe=false;
         setTimeout(function(){
           pivotCalendarSwipe=true;
@@ -357,6 +404,7 @@ function initEventos(){
       }
     });
     $('#calendar').height(getCalendarHeight());
+    
     fixEventosList();
     alreadyEventos=true;
     //loads events from server
@@ -378,11 +426,11 @@ function getContentHeight(){
 function fixEventosList(){
   var heightCells = $('.fc-row.fc-week.fc-widget-content.fc-rigid').height();
   var calendarHEgith = (getContentHeight()/2)+35;
-  $('.eventos-list').height($(window).height()-$('footer').height()-$('header').height()-getCalendarHeight()-1); //1px el border top de eventos-list
+  $('.eventos-list').height($(window).height()-$('footer').height()-$('header').height()-getCalendarHeight()-15); //1px el border top de eventos-list
 }
 
 function loadEventosDia(fecha){ 
-  showLoader();
+  //showLoader();
   var tmp=fecha.split('-');
   var data = {
     year:tmp[0],
@@ -395,22 +443,31 @@ function loadEventosDia(fecha){
     $('.eventos-list').empty();
     var i=0;
     $.each(submitResponse.data,function(key,obj){
-      $('.eventos-list').append('<li class="evento-item"><div class="day">'+obj.Dayofweek+'</div><div class="date">'+obj.Day+'</div>  <div class="separator"></div>   <div class="description">  <h4>'+obj.Title+'</h4> <p>'+obj.Description+'</p>  </div>   <div class="hour">'+obj.Hour+':'+obj.Minute+'</div> </li>');
+      $('.eventos-list').append('<li class="evento-item"><div class="day">'+obj.Dayofweek+'</div><div class="date">'+obj.Day+'</div>  <div class="separator"></div>   <div class="description">  <h4>'+obj.Title+'</h4> <div class="fecha" style="display:none">'+obj.Day+'/'+obj.Month+'/'+obj.Year+'</div> <p class="shortdesc">'+obj.Description.substring(1,30)+'</p> <p style="display:none" class="desc">'+obj.Description+'</p> </div>   <div class="hour">'+obj.Hour+':'+obj.Minute+'</div> </li>');
       i++;
     });
     if(i==0){
       $('.eventos-list').append('<li class="norecord">NO HAY ACTIVIDADES...</li>');
     }
-    hideLoader();      
+    $('.evento-item').click(function(){
+      $('#eventos').toggle('slide', { direction: 'left' }, _transitionSaleTime);
+      $('#evento').toggle('slide', { direction: 'right' }, _transitionEntraTime);
+      $('#backbutton').css('visibility','visible');
+      $('#evento .dia').html($(this).find('.fecha').html());
+      $('#evento .hora').html($(this).find('.hour').html());
+      $('#evento h3').html($(this).find('h4').html());
+      $('#evento p.description').html($(this).find('.desc').html());
+    });
+   // hideLoader();      
   }, 'json')
   .fail( function(xhr, textStatus, errorThrown) {
-    hideLoader();
-    noInternetAction();
+   // hideLoader();
+    //noInternetAction();
     
   });}
   
   function loadEventos(){
-    showLoader();
+    //showLoader();
     var data = {
     };
     $.post(SERVICES_HOST+"getEvents.php", data)
@@ -423,11 +480,11 @@ function loadEventosDia(fecha){
           allDay: true
         });
       });      
-      hideLoader();      
+      //hideLoader();      
     }, 'json')
     .fail( function(xhr, textStatus, errorThrown) {
-      hideLoader();
-      noInternetAction();      
+      //hideLoader();
+      //noInternetAction();      
     });
   }
   
@@ -461,7 +518,8 @@ function loadEventosDia(fecha){
       $('#goldenlifestyle_item').html('');
       $('#goldenlifestyle_item').empty();
       $.each(submitResponse.data,function(key,obj){
-        $('#goldenlifestyle_list ul').append('<li class="news-'+obj.ID+'"> <div class="cell-picture" onclick="newsInfo('+obj.ID+')" style="background-image:url(\''+obj.PicturePath+'\')"></div>  <div class="cell-picture-path" style="display:none">'+obj.PicturePath+'</div><div class="cell-info"> <div class="cell-title" onclick="newsInfo('+obj.ID+')"> '+obj.Title+' </div>  <div class="cell-viewmore" onclick="newsInfo('+obj.ID+')"> Leer Más</div></div> <div class="cell-separator"></div> </li>');   
+        $('#goldenlifestyle_list ul').append('<li class="news-'+obj.ID+'"> <div class="cell-picture" onclick="newsInfo('+obj.ID+')" style="background-image:url(\''+obj.PicturePath+'\')"></div>  <div class="cell-picture-path" style="display:none">'+obj.PicturePath+'</div><div class="cell-info"> <div class="cell-title" onclick="newsInfo('+obj.ID+')"> '+obj.Title+' </div>  <div class="cell-viewmore" onclick="newsInfo('+obj.ID+')"> Leer Más</div></div> <div class="cell-separator"></div> </li>'); 
+        
         
         $('#goldenlifestyle_item').append('<div class="item-news item-news-'+obj.ID+'">'+obj.Content+'</div>');  
         
@@ -488,8 +546,13 @@ function loadEventosDia(fecha){
   }
   
   function newsInfo(newsID){
-    $('#goldenlifestyle_list').hide();
-    $('#goldenlifestyle_item').show();
+
+    $('#goldenlifestyle_list').toggle('slide', { direction: 'left' }, _transitionSaleTime);
+    $('#goldenlifestyle_item').toggle('slide', { direction: 'right' }, _transitionEntraTime);
+
+
+    //$('#goldenlifestyle_list').hide();
+    //$('#goldenlifestyle_item').show();
     $('.item-news').css('display','none');
     actualLifeStyleSection="info";
     $('#backbutton').css('visibility','visible');
@@ -659,8 +722,14 @@ function loadEventosDia(fecha){
   }
   
   function listProducts(categoryID,categoryName){
-    $('#goldenstore_categories').hide();
-    $('#goldenstore_list').show();
+    /*$('#goldenstore_categories').hide();
+    $('#goldenstore_list').show();*/
+
+
+    $('#goldenstore_categories').toggle('slide', { direction: 'left' }, _transitionSaleTime);
+    $('#goldenstore_list').toggle('slide', { direction: 'right' }, _transitionEntraTime);
+
+
     actualGoldenStoreSection="list";
     $('#backbutton').css('visibility','visible');
     $('#goldenstore_list .list-title').html(categoryName);
@@ -670,8 +739,15 @@ function loadEventosDia(fecha){
   
   
   function productInfo(productID){
-    $('#goldenstore_list').hide();
+    /*$('#goldenstore_list').hide();
     $('#goldenstore_item').show();
+*/
+    
+
+    $('#goldenstore_list').toggle('slide', { direction: 'left' }, _transitionSaleTime);
+    $('#goldenstore_item').toggle('slide', { direction: 'right' }, _transitionEntraTime);
+
+
     actualGoldenStoreSection="info";
     $('#backbutton').css('visibility','visible');
     //displays product info
@@ -983,9 +1059,14 @@ function loadEventosDia(fecha){
 
     //displayProfilePicture();
     //sets events for changing avatar
+
+    //displayProfilePicture();
+
     $('.user-avatar').click(function(){
       photoSelector();
     });
+
+    
     
   }
 
@@ -1008,7 +1089,7 @@ function getPhoto(_sourceType){
                 data: formData})
                     .done(function(e){
                         //alert(e);
-                        ImgCache.cacheFile(e);
+                        //ImgCache.cacheFile(e);
                         sessionPicture=e;
                         displayProfilePicture();
                 });
@@ -1103,16 +1184,8 @@ function base64ToBlob(base64, mime)
       window.localStorage.setItem("micomunidad_amigos", JSON.stringify(submitResponse.data));
       if(submitResponse.picture!='' && submitResponse.picture!=null && submitResponse.picture!=undefined){
         window.localStorage.setItem("sessionPicture",submitResponse.picture);
-        
-        
         sessionPicture=submitResponse.picture;
-        alert(sessionPicture);
         displayProfilePicture();
-        //$('.user-avatar').css('background-image',"url('"+sessionPicture+"')");
-        
-     
-
-       
       }
       hideLoader();
     }, 'json')
@@ -1131,35 +1204,107 @@ function base64ToBlob(base64, mime)
   function processFriends(data){
     $('.micomunidad_amigos').empty();
     $('.micomunidad_amigos').append("<div class='row_col3' onclick='addFriend()'>  <img src='img/miller_friend_add.png' alt=''/>  <div class='name_friend add_new_label'>Add New</div>  </div>");
+    var tmp=0;
     $.each(data,function(key,obj){
       if(obj.Confirmed==0){
-        $('.micomunidad_amigos').append("<div class='row_col3'> <img src='img/miller_friend_unconfirmed.png' alt=''/> <div class='name_friend'>"+obj.Name+" "+obj.LastName+"</div> </div>");
+        $('.micomunidad_amigos').append("<div class='row_col3'> <div id='friend_bubble_"+tmp+"' class='friend_avatar' style='background-image:url(\""+obj.Picture+"\")'><img src='img/avatar_pending.png' alt=''/> </div><div class='name_friend'>"+obj.Name+" "+obj.LastName+"</div> </div>");
       }
       else{  //then its 1
-        $('.micomunidad_amigos').append("<div class='row_col3'> <img src='img/miller_friend_confirmed.png' alt=''/> <div class='name_friend'>"+obj.Name+" "+obj.LastName+"</div> </div>");
-      }
+        $('.micomunidad_amigos').append("<div class='row_col3'> <div id='friend_bubble_"+tmp+"' class='friend_avatar' style='background-image:url(\""+obj.Picture+"\")'><img src='img/avatar_accepted.png' alt=''/> </div><div class='name_friend'>"+obj.Name+" "+obj.LastName+"</div> </div>");
+      }      
+      tmp++;
+    });
+    setFriendAvatarImage(0);    
+  }
+
+
+  function setFriendAvatarImage(_j){
+    $('#friend_bubble_'+_j).imagesLoaded( { background: true }, function() {
+      setFriendAvatarImage(_j+1);
+    }).fail( function( instance ) {
+      $('#friend_bubble_'+_j).css('background-image',"url('img/avatar.png')");
+      setFriendAvatarImage(_j+1);
     });
   }
-  
-  
+   
   
   function displayProfilePicture(){
-    alert(sessionPicture);
-    ImgCache.isCached(sessionPicture, function(path, success) {         
-      if (success) {
-        ImgCache.useCachedBackground($('.user-avatar'),function(){
-          alert("ya estaba: "+$('.user-avatar').css('background-image'));
-        });
-        //alert($('.user-avatar').css('background-image'));
-      } else {
-        ImgCache.cacheFile(sessionPicture, function () {
-          ImgCache.useCachedBackground($('.user-avatar'));
-          alert("recien carga: "+$('.user-avatar').css('background-image'));
-        });
-      }
+    $('.user-avatar').css('background-image',"url('"+sessionPicture+"')"); 
+    $('.user-avatar').imagesLoaded( { background: true }, function() {
+    }).fail( function( instance ) {
+      $('.user-avatar').css('background-image',"url('img/avatar.png')");
     });
   }
   
+function gotoChangePassword(){
+  $('#micomunidad').toggle('slide', { direction: 'left' }, _transitionSaleTime);
+  $('#change_password').toggle('slide', { direction: 'right' }, _transitionEntraTime);
+  $('#backbutton').css('visibility','visible');
+  
+}
+function changePassword(){
+  if($('#txtActualPassword').val()!='' && $('#txtNewPassword').val()!='' && $('#txtReNewPassword').val()!=''){
+    if($('#txtNewPassword').val()==$('#txtReNewPassword').val()){
+      showLoader();
+      var data = {
+        'userid': sessionID,
+        'password':$('#txtActualPassword').val(),
+        'newpassword':$('#txtNewPassword').val()
+      };
+      $.post(SERVICES_HOST+"changePassword.php", data)
+      .done(function(submitResponse) {
+        hideLoader();
+        if(submitResponse.data.success==1){
+          swal({
+            type: 'success',
+            title: 'MGD',
+            html: '¡La contraseña ha sido cambiada con éxito!'
+          });
+          $('#txtActualPassword').val('');
+          $('#txtNewPassword').val('');
+          $('#txtReNewPassword').val('');
+          setTimeout(function(){
+            back();
+          },2000);
+        }
+        else{
+          swal({
+            type: 'error',
+            title: 'MGD',
+            html: submitResponse.data.message
+          });
+        }        
+      }, 'json')
+      .fail( function(xhr, textStatus, errorThrown) {
+        if(window.localStorage.getItem("micomunidad_amigos") !=null) {
+          processFriends(JSON.parse(window.localStorage.getItem("micomunidad_amigos")));
+        }
+        hideLoader();
+        noInternetAction();
+      });
+    }
+    else{
+      swal({
+        type: 'error',
+        title: 'MGD',
+        html: 'La nueva contraseña debe coincidir con el re-ingreso de la misma.'
+      });
+    }
+  }
+  else{
+    swal({
+      type: 'error',
+      title: 'MGD',
+      html: 'Debe llenar todos los campos.'
+    });
+  }
+
+
+  /*
+
+  */
+}
+
   
   
   /*
@@ -1167,17 +1312,22 @@ function base64ToBlob(base64, mime)
   BackButton
   ====================================================================
   */
-  function back(){alert(actualPage);
+  function back(){
     switch(actualPage) {
       case 'goldenstore':
       if(actualGoldenStoreSection=='info'){
-        $('#goldenstore_item').hide();
+        /*$('#goldenstore_item').hide();
         $('#goldenstore_list').show();
+*/
+        $('#goldenstore_item').toggle('slide', { direction: 'right' }, _transitionSaleTime);
+        $('#goldenstore_list').toggle('slide', { direction: 'left' }, _transitionEntraTime);
         actualGoldenStoreSection='list';
       }
       else if(actualGoldenStoreSection=='list'){
-        $('#goldenstore_categories').show();
-        $('#goldenstore_list').hide();
+        /*$('#goldenstore_categories').show();
+        $('#goldenstore_list').hide();*/
+        $('#goldenstore_categories').toggle('slide', { direction: 'left' }, _transitionSaleTime);
+        $('#goldenstore_list').toggle('slide', { direction: 'right' }, _transitionEntraTime);
         $('#backbutton').css('visibility','hidden');
         actualGoldenStoreSection='categories';
       }
@@ -1189,8 +1339,13 @@ function base64ToBlob(base64, mime)
       break;    
       case 'goldenlifestyle':
       if(actualLifeStyleSection=='info'){
-        $('#goldenlifestyle_item').hide();
+        /*$('#goldenlifestyle_item').hide();
         $('#goldenlifestyle_list').show();
+*/
+        $('#goldenlifestyle_list').toggle('slide', { direction: 'left' }, _transitionSaleTime);
+        $('#goldenlifestyle_item').toggle('slide', { direction: 'right' }, _transitionEntraTime);
+
+
         actualLifeStyleSection='list';
         $('#backbutton').css('visibility','hidden');
       }
@@ -1210,6 +1365,28 @@ function base64ToBlob(base64, mime)
         touchDrawer();
       }
       break;   
+      case 'eventos':
+      if( $('#backbutton').css('visibility')=='visible'){
+        /*$('#evento').hide();
+        $('#eventos').fadeIn();*/
+        $('#evento').toggle('slide', { direction: 'right' }, _transitionSaleTime);
+        $('#eventos').toggle('slide', { direction: 'left' }, _transitionEntraTime);
+        $('#backbutton').css('visibility','hidden');
+      }        
+      if( $('#backbutton').css('visibility')=='hidden' && platform!='IOS'){
+        touchDrawer();
+      }
+      break;   
+      case 'micomunidad':
+        if( $('#backbutton').css('visibility')=='visible'){
+          $('#change_password').toggle('slide', { direction: 'right' }, _transitionSaleTime);
+          $('#micomunidad').toggle('slide', { direction: 'left' }, _transitionEntraTime);
+          $('#backbutton').css('visibility','hidden');
+        }
+        if( $('#backbutton').css('visibility')=='hidden' && platform!='IOS'){
+          touchDrawer();
+        }
+      break;
       default:
       if( platform!='IOS'){
         touchDrawer();

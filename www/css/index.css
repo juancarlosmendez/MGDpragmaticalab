@@ -195,6 +195,9 @@ nav ul {
   width: 100%;
   padding: 0;
   margin-top: 80px;
+  z-index: 100;
+  z-index: 100 !important;
+  position: absolute;
 }  
 nav li {
   position: relative;
@@ -257,11 +260,11 @@ nav li:hover img {
   margin-left: 37%;
 }
 #hamburger:hover {
-  background: #bf9700;
-  border-radius: 120px;
+  /*background: #bf9700;
+  border-radius: 120px;*/
 }
 #hamburger:hover div {
-  background-color: #000000;
+  /*background-color: #000000;*/
 }
 
 
@@ -427,6 +430,9 @@ nav li:hover img {
 /*
   GOLDEN STORE
 */
+#goldenstore{
+  position: absolute;
+}
 #goldenstore_categories .categories_title{
   width: 100%;
   text-align: center;
@@ -438,6 +444,7 @@ nav li:hover img {
 #goldenstore_categories{
   width:100%;
   text-align: center;
+  padding-bottom: 90px;
 }
 #goldenstore_categories .categories_wrapper{
   width:80%;
@@ -454,7 +461,10 @@ nav li:hover img {
 #goldenstore_categories .category_button:hover{
   opacity: 0.7;
 }
-
+#goldenstore_list{
+  position: absolute;
+  padding-bottom: 90px;
+}
 #goldenstore_list .list-title{
   width: 100%;
   text-align: center;
@@ -530,6 +540,8 @@ nav li:hover img {
 #goldenstore_item{
   width: 100%;
   padding-top: 20px;
+  position: absolute;
+  padding-bottom: 90px;
 } 
 #goldenstore_item .item-picture{
   width: 35%;
@@ -640,17 +652,27 @@ nav li:hover img {
 /*
   GOLDEN LIFESTYLE
 */
+#goldenlifestyle{
+  position: absolute;
+  top: 63px;
+  padding-top: 0px;
+  padding-bottom: 90px;
+}
 #goldenlifestyle_list ul{
   list-style: none;
   padding: 0px;
   width: 100%;
+  margin-top: 0px;
 }
 #goldenlifestyle_list ul li{
   list-style: none;
   width: 100%;
   min-height: 100px;
-  margin-top: 25px;
-  margin-bottom: 20px;
+  padding-top: 25px;
+  padding-bottom: 20px;
+}
+#goldenlifestyle_list ul li:hover{
+  background-color:#333333;
 }
 #goldenlifestyle_list ul li .cell-picture{
   width: 25%;
@@ -691,6 +713,9 @@ nav li:hover img {
 #goldenlifestyle_item{
   width: 100%;
   padding-top: 15px;
+  position: absolute;
+  top:0px;  
+  padding-bottom: 90px;
 } 
 #goldenlifestyle_item .item-main-title{
   width: 90%;
@@ -828,19 +853,21 @@ margin-right: 1%;
 #micomunidad{
   width:100%;
   text-align: center;
-  padding-bottom: 20px;
+  padding-bottom: 90px;
+  position: absolute;
 }
 #micomunidad .micomunidad_top{
-  width: 90%;
-  padding-left: 5%;
+  width: 95%;
+  padding-left: 0px;
   margin-top: 20px;
 }
 #micomunidad .micomunidad_top .user-avatar{
   display: inline-block;
   vertical-align: middle;
   margin-left: 5%;
-  width: 100px;
-  height: 100px;
+  width: 90px;
+  height: 90px;
+  border: 2px solid #bf9700;
   -moz-border-radius: 100px;
   -webkit-border-radius: 100px;
   border-radius: 100px; /* future proofing */
@@ -854,16 +881,17 @@ margin-right: 1%;
   width: 55%;
   height: auto;
   padding-left: 5%;
-  width:calc(80% - 100px);
+  width:calc(80% - 90px);
+  text-align: left;
 }
 #micomunidad .micomunidad_top .user-info .user-name{
   color: #FFFFFF;
-  font-size: 1.3em;
+  font-size: 1.2em;
   text-align: left;
 }
 #micomunidad .micomunidad_top .user-info .user-city{
-  color: #DDDDDD;
-  font-size: 1em;
+  color: #FFFFFF;
+  font-size: 1.2em;
   text-align: left;
   margin-top: 5px;
 }
@@ -872,6 +900,19 @@ margin-right: 1%;
   font-size: 1.2em;
   text-align: left;
   margin-top: 7px;
+  display: inline-block;
+  vertical-align: top;
+  padding-right: 10px;
+}
+#micomunidad .micomunidad_top .user-info .user-password{
+  color: #bf9700;
+  font-size: 1.2em;
+  text-align: left;
+  margin-top: 7px;
+  display: inline-block;
+  vertical-align: top;
+  border-left: solid 1px #ffffff;
+  padding-left: 10px;
 }
 #micomunidad .micomunidad_button_codigo{
   margin:0 auto;
@@ -899,11 +940,33 @@ margin-right: 1%;
   margin-bottom:10px;
   text-align: left;
   padding-left: 1%;
+  padding-bottom:30px;
 }
 #micomunidad .micomunidad_amigos img{
   width: 65%;
   height: auto;
   margin:0 auto;
+}
+#micomunidad .micomunidad_amigos .friend_avatar{
+  width: 68px;
+  height: 68px;
+  margin:0 auto;
+  margin-top: 3px;
+  text-align: center;  
+  background-image: url('../img/avatar.png');
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  border: 2px solid #bf9700;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  border-radius: 100px; /* future proofing */
+  -khtml-border-radius: 100px; /* for old Konqueror browsers */
+}
+#micomunidad .micomunidad_amigos .friend_avatar img{
+  width: 25px;
+  height: auto;
+  margin:0 auto;
+  margin-top: 55px;
 }
 #micomunidad .micomunidad_amigos .name_friend{
   color: #FFFFFF;
@@ -912,10 +975,140 @@ margin-right: 1%;
   padding-left: 4px;
   padding-right: 4px;
   text-align: center;
+  margin-top: 15px;
+  margin-bottom:8px;
 }
 #micomunidad .micomunidad_amigos .add_new_label{
   color: #bf9700;
+  margin-top: 0px;
 }
+
+/*
+  Change password
+*/
+#change_password{
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  padding-bottom: 90px;
+  margin-top: 90px;
+  padding: 0px;
+  text-align: center;
+} 
+#change_password h2{
+  color: #FFFFFF;
+  font-size: 1.7em;
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
+
+#change_password p{
+  color: #FFFFFF;
+  font-size: 1em;
+  margin-top: 1px;
+  margin-bottom: 1px;
+  width: 80%;
+  padding: 0px;
+  margin-left: 10%;
+  text-transform: capitalize;
+}
+
+.miller_input{
+  width: 80%;
+  border: none;
+  background: #000000;
+  color: #FFFFFF;
+  font-size: 1.3em;
+  padding:5px;
+  border-bottom: solid #bd9600 1px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  margin-top: 10px;
+}
+textarea:focus, input:focus{
+  outline: none;
+}
+*:focus {
+  outline: none;
+}
+.button_miller{
+  border: solid #bd9600 2px;
+  padding: 8px 20px;
+  font-size: 1.5em;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  text-align: center;
+  background: #000000;
+  margin-top: 25px;
+  margin-bottom: 5px;
+}
+
+.button_miller:hover{
+  border: solid #bd9600 2px;
+  color: #000000;
+  background: #bd9600;
+}
+
+
+.change::-webkit-input-placeholder {
+  /* WebKit, Blink, Edge */
+  color: #CCC;
+}
+.change:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #CCC;;
+  opacity: 1;
+}
+.change::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #CCC;;
+  opacity: 1;
+}
+.change:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #CCC;;
+}
+input{
+}
+
+input[type=date]:invalid::-webkit-datetime-edit {
+  color: #ccc;
+}
+
+input[type="date"]::before { 
+	content: attr(data-placeholder);
+	width: 100%;
+}
+
+::placeholder {
+  color: #ccc;
+}
+
+input::-webkit-input-placeholder {
+  color: #ccc !important;
+  }
+   
+  input:-moz-placeholder { /* Firefox 18- */
+  color: #ccc !important;  
+  }
+   
+  input::-moz-placeholder {  /* Firefox 19+ */
+  color: #ccc !important;  
+  }
+   
+  input:-ms-input-placeholder {  
+  color: #ccc !important;  
+  }
+
+/* hide our custom/fake placeholder text when in focus to show the default
+ * 'mm/dd/yyyy' value and when valid to show the users' date of birth value.
+ */
+input[type="date"]:focus::before,
+input[type="date"]:valid::before { display: none }
+
+
+
+
 
 
 
@@ -927,14 +1120,47 @@ margin-right: 1%;
   width:100%;
   text-align: center;
   padding-bottom: 0px;
+  position: absolute;
+  z-index: 12;
 }
 #eventos.section{
   padding-top: 0px;
   
 }
-#calendar{
-  
+#calendar{  
+  z-index: 13;
 }
+
+.calendar-loader{
+  position: absolute;
+  top:40%;
+  width:100%;
+  text-align: center;
+}
+
+
+.loader {
+  margin: 0 auto;
+  border: 11px solid #000000;
+  border-radius: 50%;
+  border-top: 11px solid #ffffff;
+  width: 15px;
+  height: 15px;
+  -webkit-animation: spin 0.5s linear infinite; /* Safari */
+  animation: spin 0.5s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 
 .fc-toolbar.fc-header-toolbar {
   margin-bottom: 0px;
@@ -976,15 +1202,18 @@ margin-right: 1%;
   text-align: center;
   padding-top: 0px;
 }
+
 .fc-basic-view .fc-body .fc-row {
-  min-height: 3em !important;   /* ****************  */
-  height:3em;
+  min-height: 2.5em !important;  
+  height:2.5em;
+  font-size: 1em;
 }
 .fc-ltr .fc-basic-view .fc-day-top .fc-day-number {
   float: none;
-  font-size: 1.2em !important;
-  line-height: 1.6em !important;
+  font-size: 1.1em !important;
+  line-height: 1.4em !important;
 }
+
 .fc-unthemed .fc-content, .fc-unthemed .fc-divider, .fc-unthemed .fc-list-heading td, .fc-unthemed .fc-list-view, .fc-unthemed .fc-popover, .fc-unthemed .fc-row, .fc-unthemed tbody, .fc-unthemed td, .fc-unthemed th, .fc-unthemed thead {
   border: none;
 }
@@ -1021,6 +1250,26 @@ tr:first-child > td > .fc-day-grid-event {
   border: none;
 }
 
+/*hover calendar*/
+.fc-day{
+  
+}
+.fc-day:hover{
+  background:#333;
+}
+/*Allow pointer-events through*/
+.fc-slats, /*horizontals*/
+.fc-content-skeleton, /*day numbers*/
+.fc-bgevent-skeleton /*events container*/{
+  pointer-events:none
+}
+.fc-bgevent,
+.fc-event-container{
+  pointer-events:auto; /*events*/
+}
+#eventos{
+  position: absolute;
+}
 #eventos .eventos-list {
   width: 100%;
   margin:0px;
@@ -1030,7 +1279,9 @@ tr:first-child > td > .fc-day-grid-event {
   height: 100px;
   border-top: solid #ffd348 1px;
   list-style: none;
-  padding-top: 6px;
+  background-color: #000000;
+  position: absolute;  
+  z-index: 15;  
 }
 #eventos .eventos-list .evento-item{
   width:100%;  
@@ -1041,6 +1292,15 @@ tr:first-child > td > .fc-day-grid-event {
   list-style: none;
   padding-top: 10px;
   padding-bottom: 10px;
+  background-color: #000000;
+  -webkit-transition: background-color 0.2s ease-out;
+  -moz-transition: background-color 0.2s ease-out;
+  -o-transition: background-color 0.2s ease-out;
+  transition: background-color 0.2s ease-out;
+
+}
+#eventos .eventos-list .evento-item:hover{
+  background-color: #333333;
 }
 #eventos .eventos-list .evento-item .day{
   width:10%;
@@ -1093,6 +1353,47 @@ tr:first-child > td > .fc-day-grid-event {
   font-size: 1em;
   margin-left: -4px;
   text-align: right;
+}
+#evento{
+  /*padding: 20px;
+  width: 100%;*/  
+  position: absolute;
+  padding-bottom: 90px;
+}
+#evento .fecha{
+  padding-left: 15px;
+  padding-right: 10px;
+  margin-bottom: 0px;
+  color:#AAA;
+  text-transform: uppercase;
+  font-size: 1em;
+}
+#evento .dia{
+}
+#evento .mes{
+}
+#evento .ano{
+}
+#evento .hora{
+  float: right;
+  color:rgb(94, 185, 132);
+  font-size: 1.1em;
+  padding-right: 15px;
+}
+#evento h3{
+  color: #ffd348;
+  font-size: 1.8em;
+  padding-left: 15px;
+  padding-right: 10px;
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+#evento p{
+  color: #EEE;
+  font-size: 1.2em;
+  text-transform: capitalize;
+  padding-left: 15px;
+  padding-right: 10px;
 }
 
 .norecord{
@@ -1169,5 +1470,7 @@ tr:first-child > td > .fc-day-grid-event {
   margin-top:100px;
   width: 250px;
 }
+
+
 
 

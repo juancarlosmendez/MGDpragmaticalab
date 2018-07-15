@@ -214,8 +214,6 @@ footer {
   width: 100%;
   clear: both;
 }
-
-
 .miller_input{
   width: 70%;
   border: none;
@@ -468,10 +466,10 @@ text-align: center;
 
 .edad_input_cont p{
   text-align: center;
-color: #FFF;
-font-size: 1em;
-margin-top: 15px;
-margin-bottom: 25px;
+  color: #FFF;
+  font-size: 1em;
+  margin-top: 15px;
+  margin-bottom: 25px;
 
 }
 
@@ -484,9 +482,8 @@ margin-bottom: 25px;
   display: inline-block;
   vertical-align: top;
   margin-left: 2%;
-
-margin-right: 1%;
-text-align: center;
+  margin-right: 1%;
+  text-align: center;
 
 }
 
@@ -505,4 +502,15 @@ text-align: center;
   border: solid #ff0000 2px;
   color: #FFFFFF;
   background: #ff0000;
+}
+
+.recover-password{
+  color: #fff;
+  font-size: 1.2em;
+  width: 80%;
+  text-align: center;
+  margin-left: 10%;
+  margin-top: 26px;
+  margin-bottom: 5px;
+  text-transform: capitalize;
 }

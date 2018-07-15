@@ -22,8 +22,7 @@
         <!--
             HEADER
         -->
-        <header>
-            
+        <header>            
             <div id="screen_title" class="title" data-i18n='app-title'>GOLDEN STORE</div>
             <div id="backbutton">
                 <img src="img/left-chevron.png" alt=""/>
@@ -40,13 +39,13 @@
                 <img src="img/miller_top_logo.png" alt=""/>
             </div>
             <ul>
-                <li><a href="javascript:loadPage('goldenlifestyle',true);"><img src="img/miller_menu1.png" alt="" /></a></li>
-                <li><a href="javascript:loadPage('eventos',true);"><img src="img/miller_menu2.png" alt="" /></a></li>
-                <li><a href="javascript:loadPage('galeria',true);"><img src="img/miller_menu3.png" alt="" /></a></li>
-                <li><a href="javascript:loadPage('spotify',true);"><img src="img/miller_menu4.png" alt="" /></a></li>
-                <li><a href="javascript:loadPage('safeinthecity',true);"><img src="img/miller_menu5.png" alt="" /></a></li>
                 <li><a href="javascript:loadPage('goldenstore',true);"><img src="img/miller_menu6.png" alt="" /></a></li>
                 <li><a href="javascript:loadPage('micomunidad',true);"><img src="img/miller_menu7.png" alt="" /></a></li>
+                <li><a href="javascript:loadPage('goldenlifestyle',true);"><img src="img/miller_menu1.png" alt="" /></a></li>
+                <li><a href="javascript:loadPage('galeria',true);"><img src="img/miller_menu3.png" alt="" /></a></li>
+                <li><a href="javascript:loadPage('safeinthecity',true);"><img src="img/miller_menu5.png" alt="" /></a></li>                
+                <li><a href="javascript:loadPage('eventos',true);"><img src="img/miller_menu2.png" alt="" /></a></li>
+                <li><a href="javascript:loadPage('spotify',true);"><img src="img/miller_menu4.png" alt="" /></a></li>
             </ul>
         </nav>
         <!--
@@ -77,20 +76,17 @@
             -->
             <div id="micomunidad" class="section" style="display:none">
                 <div class="micomunidad_top">
-                    
-                   
-                    <div class="user-avatar" style="background-image: url('img/miller_avatar.png')"></div>                   
-
-                    
+                    <div class="user-avatar" style="background-image: url('img/miller_avatar.png')"></div>
                     <div class="user-info">
-                        <div class="user-name">
-                            
+                        <div class="user-name">                            
                         </div>
-                        <div class="user-city">
-                            
+                        <div class="user-city">                            
                         </div>
                         <div class="user-session" onclick="logout()">
                             Logout
+                        </div>
+                        <div class="user-password" onclick="gotoChangePassword()">
+                            Password
                         </div>
                     </div>
                 </div>
@@ -106,12 +102,27 @@
                     Golden <br/>Points
                 </div>
                 <div class="space"></div>
-                <div class="micomunidad_amigos">
-                    
+                <div class="micomunidad_amigos">                    
                 </div>
             </div>
             
             
+
+            <div id="change_password" style="display:none">
+                <h2>
+                    Cambiar Contraseña
+                </h2>
+                <br/>
+                <input id="txtActualPassword" type="password" class="miller_input"  placeholder="Contraseña Actual" />                
+                <br/>
+                <input id="txtNewPassword" type="password" class="miller_input"  placeholder="Nueva Contraseña" />
+                <br/>
+                <input id="txtReNewPassword" type="password" class="miller_input"  placeholder="Re-Ingrese Nueva Contraseña" />
+                <br/>
+                <br/>
+                <button class="button_miller" onclick="changePassword()">ACTUALIZAR</button>
+                <br/>
+            </div>
             
             
             
@@ -144,8 +155,27 @@
             -->
             <div id="eventos" class="section" style="display:none">    
                 <div id="calendar"></div>
-                <ul class="eventos-list"></ul>
+                <ul class="eventos-list"></ul>    
+                <div class="calendar-loader" style="display: none">
+                        <div class="loader"></div>
+                </div>            
             </div>            
+            <div id="evento" class="section" style="display: none">
+                <br/>
+                <p class="fecha">
+                    <span class="dia"></span>
+                    <span class="hora"> </span>
+                </p>
+                <br/>
+                <h3>
+                    
+                </h3>
+                <p class="description">
+                    
+                </p>
+                <br/>
+                <br/>
+            </div>
             
             <!--
                 GOLDEN LIFESTYLE
@@ -210,7 +240,7 @@
                     </div>
                     <div class="item-description">
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            
                         </p>
                     </div>
                     <div class="revisar_goldenpoints" onclick="displayGoldenPoints()">
@@ -271,14 +301,20 @@
     
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/jquery.3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="js/ActionSheet.js"></script>
     <script type="text/javascript" src="js/moment.min.js"></script>
     <script type="text/javascript" src="js/swiper.min.js"></script>
     <script type="text/javascript" src="js/hammer.min.js"></script>
     <script type="text/javascript" src="js/fullcalendar/fullcalendar.min.js"></script>
-    <script type="text/javascript" src="js/jquery.uploadPreview.min.js"></script>
-    <script type="text/javascript" src="js/imgcache.js"></script>
+    <script type="text/javascript" src="js/imagesloaded.pkgd.min.js"></script>
     
+    <!--
+        <script type="text/javascript" src="js/pageslider.js"></script>
+    <script type="text/javascript" src="js/imgcache.js"></script>
+    -->
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+
     <script src="js/blueimp-helper.js"></script>
     <script src="js/blueimp-gallery.js"></script>
     <script src="js/blueimp-gallery-fullscreen.js"></script>

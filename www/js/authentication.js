@@ -243,6 +243,9 @@ function noInternetAction(){
         type: 'error',
         title: 'MGD',
         html: 'No se ha podido establecer la conexión.'
-      });
-  
-  }
+      });  
+}
+
+function recoverPassword(){
+    var ref = cordova.InAppBrowser.open('http://mgd.com.ec/recoverpassword/', '_blank', 'closebuttoncaption=volver a MGD,location=no');
+}

@@ -13,7 +13,7 @@
     <author email="jmendez.ec@gmail.com" href="http://mgd.com.ec">
         PracmaticaLab
     </author>
-    <content src="age.html" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />

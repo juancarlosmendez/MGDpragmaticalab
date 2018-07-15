@@ -247,5 +247,6 @@ function noInternetAction(){
 }
 
 function recoverPassword(){
+    alert('recover password');
     var ref = cordova.InAppBrowser.open('http://mgd.com.ec/recoverpassword/', '_blank', 'closebuttoncaption=volver a MGD,location=no');
 }

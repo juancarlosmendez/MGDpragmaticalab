@@ -15,7 +15,7 @@ var sessionEmail;
 var sessionCiudad;
 
 var _transitionEntraTime=300;
-var _transitionSaleTime=200;
+var _transitionSaleTime=400;
 
 var app = {
   // Application Constructor
@@ -164,6 +164,10 @@ function init(){
   $('.revisar_goldenpoints').css('bottom',$('footer').height());
   //INITS PROFILE PICTURE SO IT WILL BE CACHED WHEN LOADED MI COMUNIDAD
   $('.user-avatar').css('background-image',"url('"+sessionPicture+"')");   //REMOVER COMMENT
+
+
+  //scren scroll sizes
+  fixScreenSizes();
 }
 
 
@@ -247,7 +251,12 @@ function hideLoader(){
 }
 
 
-
+function fixScreenSizes(){
+  $('#goldenlifestyle').height($(window).height()-$('footer').height()-$('header').height());
+  $('#goldenlifestyle_item').height($(window).height()-$('footer').height()-$('header').height());
+  $('#goldenstore').height($(window).height()-$('footer').height()-$('header').height());
+  $('#micomunidad').height($(window).height()-$('footer').height()-$('header').height());
+}
 
 
 /*
@@ -265,6 +274,7 @@ function loadPage(pantalla,willTouchDrawer){
   $('#eventos').css('display','none');
   $('#goldenlifestyle').css('display','none');
   $('#goldenstore').css('display','none');
+  $('.revisar_goldenpoints').css('display','none');
   switch(pantalla) {
     case 'safeinthecity':
     $('#screen_title').html('SAFE IN THE CITY');
@@ -296,6 +306,7 @@ function loadPage(pantalla,willTouchDrawer){
     $('#screen_title').html('GOLDEN STORE');
     updateGoldenPoints();
     loadProducts();  
+    $('.revisar_goldenpoints').css('display','block');
     break;
     default:
     break;
@@ -518,8 +529,7 @@ function loadEventosDia(fecha){
       $('#goldenlifestyle_item').html('');
       $('#goldenlifestyle_item').empty();
       $.each(submitResponse.data,function(key,obj){
-        $('#goldenlifestyle_list ul').append('<li class="news-'+obj.ID+'"> <div class="cell-picture" onclick="newsInfo('+obj.ID+')" style="background-image:url(\''+obj.PicturePath+'\')"></div>  <div class="cell-picture-path" style="display:none">'+obj.PicturePath+'</div><div class="cell-info"> <div class="cell-title" onclick="newsInfo('+obj.ID+')"> '+obj.Title+' </div>  <div class="cell-viewmore" onclick="newsInfo('+obj.ID+')"> Leer Más</div></div> <div class="cell-separator"></div> </li>'); 
-        
+        $('#goldenlifestyle_list ul').append('<li class="news-'+obj.ID+'"> <div class="cell-picture" onclick="newsInfo('+obj.ID+')" style="background-image:url(\''+obj.PicturePath+'\')"></div>  <div class="cell-picture-path" style="display:none">'+obj.PicturePath+'</div><div class="cell-info"> <div class="cell-title" onclick="newsInfo('+obj.ID+')"> '+obj.Title+' </div>  <div class="cell-viewmore" onclick="newsInfo('+obj.ID+')"> Leer Más</div></div> <div class="cell-separator"></div> </li>');
         
         $('#goldenlifestyle_item').append('<div class="item-news item-news-'+obj.ID+'">'+obj.Content+'</div>');  
         
@@ -742,10 +752,17 @@ function loadEventosDia(fecha){
     /*$('#goldenstore_list').hide();
     $('#goldenstore_item').show();
 */
-    
+
 
     $('#goldenstore_list').toggle('slide', { direction: 'left' }, _transitionSaleTime);
-    $('#goldenstore_item').toggle('slide', { direction: 'right' }, _transitionEntraTime);
+    $('.goldenstore-loader').show();
+    setTimeout(function(){
+      //$('#goldenstore_item').toggle('slide', { direction: 'right' }, _transitionEntraTime);
+      
+      $('#goldenstore_item').fadeIn();
+      $('.goldenstore-loader').hide();
+    },500);
+    
 
 
     actualGoldenStoreSection="info";
@@ -1237,8 +1254,15 @@ function base64ToBlob(base64, mime)
   }
   
 function gotoChangePassword(){
-  $('#micomunidad').toggle('slide', { direction: 'left' }, _transitionSaleTime);
-  $('#change_password').toggle('slide', { direction: 'right' }, _transitionEntraTime);
+  //$('#micomunidad').toggle('slide', { direction: 'left' }, _transitionSaleTime);
+  $('#micomunidad').hide();
+  $('.micomunidad-loader').show();
+  setTimeout(function(){
+    //$('#change_password').toggle('slide', { direction: 'right' }, _transitionEntraTime);
+    $('#change_password').fadeIn();
+    $('.micomunidad-loader').hide();
+  },500);
+  
   $('#backbutton').css('visibility','visible');
   
 }
@@ -1326,8 +1350,14 @@ function changePassword(){
       else if(actualGoldenStoreSection=='list'){
         /*$('#goldenstore_categories').show();
         $('#goldenstore_list').hide();*/
-        $('#goldenstore_categories').toggle('slide', { direction: 'left' }, _transitionSaleTime);
+        $('.goldenstore-loader').show();
+        setTimeout(function(){
+          $('#goldenstore_categories').toggle('slide', { direction: 'left' }, _transitionSaleTime);          
+          $('.goldenstore-loader').hide();
+        },500);
+        
         $('#goldenstore_list').toggle('slide', { direction: 'right' }, _transitionEntraTime);
+
         $('#backbutton').css('visibility','hidden');
         actualGoldenStoreSection='categories';
       }
@@ -1341,7 +1371,7 @@ function changePassword(){
       if(actualLifeStyleSection=='info'){
         /*$('#goldenlifestyle_item').hide();
         $('#goldenlifestyle_list').show();
-*/
+*/        
         $('#goldenlifestyle_list').toggle('slide', { direction: 'left' }, _transitionSaleTime);
         $('#goldenlifestyle_item').toggle('slide', { direction: 'right' }, _transitionEntraTime);
 
@@ -1378,10 +1408,17 @@ function changePassword(){
       }
       break;   
       case 'micomunidad':
-        if( $('#backbutton').css('visibility')=='visible'){
-          $('#change_password').toggle('slide', { direction: 'right' }, _transitionSaleTime);
-          $('#micomunidad').toggle('slide', { direction: 'left' }, _transitionEntraTime);
+        if( $('#backbutton').css('visibility')=='visible'){          
+          /*$('#change_password').toggle('slide', { direction: 'right' }, _transitionSaleTime);
+          $('#micomunidad').toggle('slide', { direction: 'left' }, _transitionEntraTime);*/
           $('#backbutton').css('visibility','hidden');
+          $('#change_password').hide();
+          $('.micomunidad-loader').show();
+          setTimeout(function(){
+            //$('#change_password').toggle('slide', { direction: 'right' }, _transitionEntraTime);
+            $('#micomunidad').fadeIn();
+            $('.micomunidad-loader').hide();
+          },500);
         }
         if( $('#backbutton').css('visibility')=='hidden' && platform!='IOS'){
           touchDrawer();

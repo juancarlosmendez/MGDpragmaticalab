@@ -105,7 +105,9 @@
                 <div class="micomunidad_amigos">                    
                 </div>
             </div>
-            
+            <div class="micomunidad-loader" style="display: none">
+                <div class="loader"></div>
+            </div> 
             
 
             <div id="change_password" style="display:none">
@@ -157,7 +159,7 @@
                 <div id="calendar"></div>
                 <ul class="eventos-list"></ul>    
                 <div class="calendar-loader" style="display: none">
-                        <div class="loader"></div>
+                    <div class="loader"></div>
                 </div>            
             </div>            
             <div id="evento" class="section" style="display: none">
@@ -201,13 +203,7 @@
                         <img src="img/category_merchandising.jpg" onclick="listProducts('MERCHANDISING','MERCHANDISING')"  class="category_button" alt=""/>
                         <img src="img/category_goldenparty.jpg" onclick="listProducts('FIESTA','GOLDEN PARTY')"  class="category_button" alt=""/>
                     </div>
-                    <div class="revisar_goldenpoints" onclick="displayGoldenPoints()">
-                        <div class="line-top"></div>
-                        <div class="title">
-                            REVISAR MIS <strong>GOLDEN POINTS</strong>
-                        </div>
-                        <img src="img/arrow_down.png" alt=""/>
-                    </div>                    
+                                      
                 </div>
                 <div id="goldenstore_list" class="sub_section" style="display:none">
                     <div class="list-title">
@@ -215,13 +211,7 @@
                     </div>                    
                     <ul>
                     </ul>
-                    <div class="revisar_goldenpoints" onclick="displayGoldenPoints()">
-                        <div class="line-top"></div>
-                        <div class="title">
-                            REVISAR MIS <strong>GOLDEN POINTS</strong>
-                        </div>
-                        <img src="img/arrow_down.png" alt=""/>
-                    </div>
+                    
                     
                 </div>
                 <div id="goldenstore_item" style="display:none">
@@ -242,15 +232,11 @@
                         <p>
                             
                         </p>
-                    </div>
-                    <div class="revisar_goldenpoints" onclick="displayGoldenPoints()">
-                        <div class="line-top"></div>
-                        <div class="title">
-                            REVISAR MIS <strong>GOLDEN POINTS</strong>
-                        </div>
-                        <img src="img/arrow_down.png" alt=""/>
-                    </div>
+                    </div>                    
                 </div>
+                <div class="goldenstore-loader" style="display: none">
+                    <div class="loader"></div>
+                </div> 
             </div>            
             <div  style="width:100%;height:30px;background-color:#ccc;position:fixed;top:-20px;">
             </div >       
@@ -262,9 +248,14 @@
         <!--
             FOOTER
         -->
+        <div class="revisar_goldenpoints" onclick="displayGoldenPoints()">
+            <div class="line-top"></div>
+            <div class="title">
+                REVISAR MIS <strong>GOLDEN POINTS</strong>
+            </div>
+            <img src="img/arrow_down.png" alt=""/>
+        </div>  
         <footer>
-            
-            
             <div class="logoutButton" onclick="logout()">
                 LOGOUT
             </div>
@@ -283,22 +274,17 @@
         -->
     </div>
     
-    <div class="tutorial">
-        
+    <div class="tutorial">        
         <img src="img/infoclose.png" alt="" onclick="closeInfo()" style="width: 40px;
         height: auto;
         position: fixed;
         right: 6%;
         top: 15px;" />
         <img src="img/info.png" alt="" />
-    </div>
-    
-    
+    </div>  
     <div class="loading" style="display:none">
         <img src="img/botella.gif" alt="" />
     </div>
-    
-    
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/jquery.3.3.1.min.js"></script>
     <script type="text/javascript" src="js/jquery-ui.min.js"></script>
@@ -308,13 +294,7 @@
     <script type="text/javascript" src="js/hammer.min.js"></script>
     <script type="text/javascript" src="js/fullcalendar/fullcalendar.min.js"></script>
     <script type="text/javascript" src="js/imagesloaded.pkgd.min.js"></script>
-    
-    <!--
-        <script type="text/javascript" src="js/pageslider.js"></script>
-    <script type="text/javascript" src="js/imgcache.js"></script>
-    -->
     <script src="js/imagesloaded.pkgd.min.js"></script>
-
     <script src="js/blueimp-helper.js"></script>
     <script src="js/blueimp-gallery.js"></script>
     <script src="js/blueimp-gallery-fullscreen.js"></script>
@@ -322,11 +302,9 @@
     <script src="js/blueimp-gallery-video.js"></script>
     <script src="js/blueimp-gallery-vimeo.js"></script>
     <script src="js/blueimp-gallery-youtube.js"></script>
-    <script src="js/jquery.blueimp-gallery.js"></script>
-    
+    <script src="js/jquery.blueimp-gallery.js"></script>    
     <script src="js/sweetalert2.all.js"></script>
-    <script src="js/sweetalert2.js"></script>
-    
+    <script src="js/sweetalert2.js"></script>    
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript">
         app.initialize();

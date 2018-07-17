@@ -1504,6 +1504,7 @@ tr:first-child > td > .fc-day-grid-event {
   background-color: #bd9600;
   padding-bottom: 18px;
   padding-top: 18px;
+  font-weight: bold;
 }
 .menu_logout:hover{
   background-color: #AB2323;

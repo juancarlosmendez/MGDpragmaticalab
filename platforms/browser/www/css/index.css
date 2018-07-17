@@ -183,7 +183,7 @@ nav {
   top: 0px;
   margin-left: 100%;
   position: fixed;
-  z-index: 999999;
+  z-index: 999 !important;
   width: 100%;
   height: 100%;
   background: #000000;
@@ -197,7 +197,12 @@ nav ul {
   margin-top: 80px;
   z-index: 100;
   z-index: 100 !important;
-  position: absolute;  
+  position: absolute;
+  padding-top: 10px;
+  padding-bottom: 15px;  
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  height: 500px;
 }  
 nav li {
   position: relative;
@@ -1492,7 +1497,15 @@ tr:first-child > td > .fc-day-grid-event {
   margin-top:100px;
   width: 250px;
 }
-
-
-
-
+.menu_logout{
+  color: #000000;
+  text-align: center;                
+  font-size: 1.5em;
+  background-color: #bd9600;
+  padding-bottom: 18px;
+  padding-top: 18px;
+}
+.menu_logout:hover{
+  background-color: #AB2323;
+  color: #FFFFFF;
+}

@@ -168,6 +168,10 @@ function init(){
 
   //scren scroll sizes
   fixScreenSizes();
+
+  setTimeout(function(){
+    $('.swal2-container.swal2-shown').css('display','fixed');
+  },2000);
 }
 
 
@@ -256,6 +260,7 @@ function fixScreenSizes(){
   $('#goldenlifestyle_item').height($(window).height()-$('footer').height()-$('header').height());
   $('#goldenstore').height($(window).height()-$('footer').height()-$('header').height());
   $('#micomunidad').height($(window).height()-$('footer').height()-$('header').height());
+  $('nav ul').height($(window).height()-$('.nav_header').height()-10);
 }
 
 
